@@ -42,29 +42,30 @@ def plot_axes_BB( result_element, k, axes_scale, plot_local_axes, plot_reinf): #
 
     # CREATE LOCAL COORDINATES
     if plot_local_axes == True:
-        layer = "local_koordinaten"
+        #layer = "local_koordinaten"
 
-        if k == 0:
-            rs.CurrentLayer(rs.AddLayer(layer))
-            rs.DeleteObjects(rs.ObjectsByLayer(layer))
-        else:
-            rs.CurrentLayer(layer)
-        rs.EnableRedraw(False)
+        #if k == 0:
+        #    rs.CurrentLayer(rs.AddLayer(layer))
+        #    rs.DeleteObjects(rs.ObjectsByLayer(layer))
+        #else:
+        #    rs.CurrentLayer(layer)
+        #rs.EnableRedraw(False)
 
-        ex = rs.AddLine(xyz, add_vectors(xyz, scale_vector(ex, axes_scale)))
-        ey = rs.AddLine(xyz, add_vectors(xyz, scale_vector(ey, axes_scale)))
-        ez = rs.AddLine(xyz, add_vectors(xyz, scale_vector(ez, axes_scale)))
+        #ex = rs.AddLine(xyz, add_vectors(xyz, scale_vector(ex, axes_scale)))
+        #ey = rs.AddLine(xyz, add_vectors(xyz, scale_vector(ey, axes_scale)))
+        #ez = rs.AddLine(xyz, add_vectors(xyz, scale_vector(ez, axes_scale)))
 
-        rs.ObjectColor(ex, [255, 0, 0]) #rot
-        rs.ObjectColor(ey, [0, 255, 0]) #gruen
-        rs.ObjectColor(ez, [0, 0, 255]) #blau
-        rs.ObjectLayer(ex, layer)
-        rs.ObjectLayer(ey, layer)
-        rs.ObjectLayer(ez, layer)
-
+        #rs.ObjectColor(ex, [255, 0, 0]) #rot
+        #rs.ObjectColor(ey, [0, 255, 0]) #gruen
+        #rs.ObjectColor(ez, [0, 0, 255]) #blau
+        #rs.ObjectLayer(ex, layer)
+        #rs.ObjectLayer(ey, layer)
+        #rs.ObjectLayer(ez, layer)
+        pass
         
     else:
-        print("****no local_axes are plotted****")
+        pass
+        #print("****no local_axes are plotted****")
 
 
 

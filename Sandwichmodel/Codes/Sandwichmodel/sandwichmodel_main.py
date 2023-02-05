@@ -45,42 +45,54 @@ def Hauptfunktion(structure = "mdl", data = {}, step = "step_loads", Mindestbewe
 
 
 
-    tic = time.time() #timer start
+  
     
-    print("\n**** sandwichmodel-analysis started... ****")
+    print('')
+    print('')
+    print('Run sandwichmodel analysis')
+    print('--------------------------------------------------------')
+    print('Sandwichmodel analysis is running ... please wait ... ' )
+    tic = time.time() #timer start
     #leeres Resultat dict.
     result_data = {str(step) : {"element" : {"as_xi_bot" : {}, "as_xi_top" : {}, "as_eta_bot" : {}, "as_eta_top" : {},"CC_bot" : {}, "CC_top" : {}, "Fall_bot" : {}, "Fall_top" : {}, "t_bot" : {}, "t_top" : {}, "k_bot" : {}, "k_top" : {},"psi_bot" : {}, "psi_top" : {}, "as_z" : {}, "m_shear_c" : {}, "m_cc_bot" : {}, "m_cc_top" : {}, "m_c_total" : {}, "xyz" : {}, "ex" : {}, "ey" : {}, "ez" : {}, "e_xi_bot" : {}, "e_xi_top" : {}, "e_eta_bot" : {}, "e_eta_top" : {}, }}}
     kmax = structure.element_count() # Anzahl Elemente, Startwert bei 1 nicht bei 0!
     
     k = 0    
     while k < kmax:
-        # Input der Daten fuer Element k # inp = [i,mx,my,mxy,vx,vy,v0,nx,ny,nxy,h,d_strich_bot,d_strich_top,fc_k,theta_grad_kern,fs_d, alpha_bot, alpha_top, beta_bot, beta_top, Mindestbewehrung, Druckzoneniteration, Schubnachweis, xyz, ex,ey,ez]
-        inp = inputer.inputer(structure,data,k,step, Mindestbewehrung, Druckzoneniteration, Schubnachweis, code)
-        
-        # Anwendung des Sandwichmodels auf Element k  # result_element = [i, as_xi, as_eta, as_z, fall, cc, t, k, psi, m_shear_c, m_cc, [xyz, ex, ey, ez, e_xi_bot, e_xi_top, e_eta_bot, e_eta_top], inp]
-        result_element = SM.Sandwichmodel(inp)
-        
-        # Speichert Resultate von Sandwichmodel fuer Element k (result_element) im gesamt Resultatverzeichnis (result_data)
-        result_data = outputer.outputer(result_data, result_element, step)
-        
-        # Plottet Achsen und Bewehrungsrichtungen auf Element k
-        rf.plot_axes_BB(result_element, k, axes_scale, plot_local_axes, plot_reinf)
-        
+        # Berechnung SM nur fuer Shell Elemente (d.h. ele_type=1 -> Shell; ele_type=0 -> MPC oder andere Elemente)
+        ele_type = structure.results[step]['element']['ele_type'][k].values()
+
+        if ele_type[0] == 1.0:
+
+            # Input der Daten fuer Element k # inp = [i,mx,my,mxy,vx,vy,v0,nx,ny,nxy,h,d_strich_bot,d_strich_top,fc_k,theta_grad_kern,fs_d, alpha_bot, alpha_top, beta_bot, beta_top, Mindestbewehrung, Druckzoneniteration, Schubnachweis, xyz, ex,ey,ez]
+            inp = inputer.inputer(structure,data,k,step, Mindestbewehrung, Druckzoneniteration, Schubnachweis, code)
+            
+            # Anwendung des Sandwichmodels auf Element k  # result_element = [i, as_xi, as_eta, as_z, fall, cc, t, k, psi, m_shear_c, m_cc, [xyz, ex, ey, ez, e_xi_bot, e_xi_top, e_eta_bot, e_eta_top], inp]
+            result_element = SM.Sandwichmodel(inp)
+            
+            # Speichert Resultate von Sandwichmodel fuer Element k (result_element) im gesamt Resultatverzeichnis (result_data)
+            result_data = outputer.outputer(result_data, result_element, step, ele_type, k)
+            
+            # Plottet Achsen und Bewehrungsrichtungen auf Element k
+            rf.plot_axes_BB(result_element, k, axes_scale, plot_local_axes, plot_reinf)
+        else:
+            # Speichert Resultate von Sandwichmodel fuer nicht Shell elemente
+            result_data = outputer.outputer(result_data, result_element, step, ele_type, k)
 
         k+=1
     
     toc = time.time()-tic #timer end
-    print("\n**** sandwichmodel-analysis successful... duration: " +str(toc)+ "s ****" )
+    print('Sandwichmodel analysis successfull finished in {0:.3f} s'.format(toc))
     
 
     tic = time.time() #timer start
-    print("\n**** updating results... ****")
 
     # Speichert result_data in die structure.result dict von Compas FEA. damit die Compas FEA Funktion rhino.plot_data() genutzt werden kann
     structure.results[step]['element'].update(result_data[step]['element'])
 
     toc = time.time()-tic #timer end
-    print("\n**** updating successful! duration: " +str(toc)+ "s **** ")
+    print('Saving Sandwichmodel results to the structure object successful in {0:.3f} s'.format(toc))
+
     return
 
 
@@ -88,7 +100,7 @@ def Hauptfunktion(structure = "mdl", data = {}, step = "step_loads", Mindestbewe
 
 
 
-def additionalproperty(data, prop_name = 'prop_name' , d_strich_bot = 40, d_strich_top = 40, fc_k = 30, theta_grad_kern = 45, fs_d=435, alpha_bot = 0, beta_bot = 90, alpha_top = 0, beta_top = 90):
+def additionalproperty(data, prop_name = 'prop_name' , d_strich_bot = 40, d_strich_top = 40, fc_k = 30, theta_grad_kern = 45, fs_d=435, alpha_bot = 0, beta_bot = 90, alpha_top = 0, beta_top = 90, ex=None, ey=None, ez=None):
     """
     Parameters
     ----------
@@ -123,6 +135,14 @@ def additionalproperty(data, prop_name = 'prop_name' , d_strich_bot = 40, d_stri
     beta_top : int
         Neigung der zweiten oberen Deckelbewehrung zur lokalen x-achse in Grad, positiv gegen y-Achse
 
+    ex : int
+        Einheitsvektor der lokalen x Koordinate
+
+    ey : int
+        Einheitsvektor der lokalen y Koordinate
+
+    ez : int
+        Einheitsvektor der lokalen z Koordinate        
     """
 
 
@@ -137,6 +157,9 @@ def additionalproperty(data, prop_name = 'prop_name' , d_strich_bot = 40, d_stri
     data[prop_name].update({'alpha_top' : alpha_top})
     data[prop_name].update({'beta_bot' : beta_bot})
     data[prop_name].update({'beta_top' : beta_top})
+    data[prop_name].update({'ex' : ex})
+    data[prop_name].update({'ey' : ey})
+    data[prop_name].update({'ez' : ez})
     return data
 
 
