@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-import sandwichmodel_function as SM
+from strucenglib.sandwichmodel import sandwichmodel_function as SM
 import numpy
 
 greek_alphabet = {
@@ -72,11 +72,11 @@ def cleaner(plotcc, plot):
 
 
 res_dic = {
-    "as_xi_bot" : {"aaa" : [1], "bbb" : [0], "xmax" : 701, "ymax" : 10000, "ylabelname" : "$a_{s,x,bot}$ [mm\u00b2/m]", "ylabelname2" : "$a_{s,\u03BE,bot}$ [mm\u00b2/m]"},
-    "as_xi_top" : {"aaa" : [1], "bbb" : [1], "xmax" : 701, "ymax" : 10000, "ylabelname" : "$a_{s,x,top}$ [mm\u00b2/m]", "ylabelname2" : "$a_{s,\u03BE,top}$ [mm\u00b2/m]"},
-    "as_eta_bot" : {"aaa" : [2], "bbb" : [0], "xmax" : 701, "ymax" : 10000, "ylabelname" : "$a_{s,y,bot}$ [mm\u00b2/m]", "ylabelname2" : "$a_{s,\u03B7,bot}$ [mm\u00b2/m]"},
-    "as_eta_top" : {"aaa" : [2], "bbb" : [1], "xmax" : 701, "ymax" : 10000, "ylabelname" : "$a_{s,y,top}$ [mm\u00b2/m]", "ylabelname2" : "$a_{s,\u03B7,top}$ [mm\u00b2/m]"},
-    "as_z" :  {"aaa" : [3], "bbb" : None, "xmax" : 701, "ymax" : 1000, "ylabelname" : "$a_{s,z}$ [mm\u00b2/m]"},
+    "as_xi_bot" : {"aaa" : [1], "bbb" : [0], "xmax" : 701, "ymax" : 1000, "ylabelname" : "$a_{s,x,bot}$ [mm\u00b2/m]", "ylabelname2" : "$a_{s,\u03BE,bot}$ [mm\u00b2/m]"},
+    "as_xi_top" : {"aaa" : [1], "bbb" : [1], "xmax" : 701, "ymax" : 1000, "ylabelname" : "$a_{s,x,top}$ [mm\u00b2/m]", "ylabelname2" : "$a_{s,\u03BE,top}$ [mm\u00b2/m]"},
+    "as_eta_bot" : {"aaa" : [2], "bbb" : [0], "xmax" : 701, "ymax" : 1000, "ylabelname" : "$a_{s,y,bot}$ [mm\u00b2/m]", "ylabelname2" : "$a_{s,\u03B7,bot}$ [mm\u00b2/m]"},
+    "as_eta_top" : {"aaa" : [2], "bbb" : [1], "xmax" : 701, "ymax" : 1000, "ylabelname" : "$a_{s,y,top}$ [mm\u00b2/m]", "ylabelname2" : "$a_{s,\u03B7,top}$ [mm\u00b2/m]"},
+    "as_z" :  {"aaa" : [3], "bbb" : None, "xmax" : 701, "ymax" : 6000, "ylabelname" : "$a_{s,z}$ [mm\u00b2/m\u00b2]"},
     "Fall_bot" : {"aaa" : [4], "bbb" : [0], "xmax" : 701, "ymax" : 4.2, "ylabelname" : "$Fall_{bot }$ [-]"},
     "Fall_top" : {"aaa" : [4], "bbb" : [1], "xmax" : 701, "ymax" : 4.2, "ylabelname" : "$Fall_{top }$ [-]"},
     "CC_bot" : {"aaa" : [5], "bbb" : [0], "xmax" : 701, "ymax" : 2.2, "ylabelname" : "$CC_{bot }$ [-]"},
@@ -96,15 +96,15 @@ res_dic = {
 #------------------------------------------------------------------------------------------------------------------------------------------
 # plottet viele charts
 
-name = "mx"
+name = "vx"
 code = "sia"
-x_label  = "$m_x$ [kNm/m]"
+x_label  = "$v_x$ [kN/m]"
 
 print("start")
 
-#variabeln = ["nx", "ny", "nxy", "vx", "vy", "my", "mxy",  "h", "fck", "theta", "alpha", "spezial"]
-#variabeln =  ["nx", "spezial"]
-variabeln =  ["alpha"]
+variabeln = ["nx", "ny", "nxy", "my", "vy", "mx", "mxy",  "h", "fck", "theta", "alpha", "spezial"]
+#variabeln =  [ "spezial"]
+#variabeln =  ["alpha"]
 
 for variabel in variabeln:
     print("var = "+ variabel)
@@ -112,6 +112,7 @@ for variabel in variabeln:
     ny = [0, 0, 0, 0, 0]
     nxy = [0, 0, 0, 0, 0]
 
+    mx = [0, 0, 0, 0, 0]
     my = [0, 0, 0, 0, 0]
     mxy = [0, 0, 0, 0, 0]
 
@@ -127,7 +128,7 @@ for variabel in variabeln:
     
     if variabel == "spezial":
         
-        legende = ["Mindestbewehrung: True", "Druckzoneniteration: True",  "Beides: False",] #nx
+        legende = ["Schubnachweis: vereinfacht", "Schubnachweis: sia",  "Mindestbewehrung: True",] #nx
 
     elif variabel == "nx":
         nx = [0, -2000, -1000, 1000, 2000]
@@ -146,12 +147,16 @@ for variabel in variabeln:
         legende = ["$v_x$ = -2000 kN/m", "$v_x$ = -1000 kN/m",  "$v_x$ =  1000 kN/m", "$v_x$ =  2000 kN/m", "$v_x$ =  0 kN/m",] #vx
     
     elif variabel == "vy":
-        vy = [0, -2000, -1000, 1000, 2000]
-        legende = ["$v_y$ = -2000 kN/m", "$v_y$ = -1000 kN/m",  "$v_y$ =  1000 kN/m", "$v_y$ =  2000 kN/m", "$v_y$ =  0 kN/m",] #vy
+        vy = [0, 10, 30, 60, 100]
+        legende = ["$v_y$ = 10 kN/m", "$v_y$ = 30 kN/m",  "$v_y$ =  60 kN/m", "$v_y$ =  100 kN/m", "$v_y$ =  0 kN/m",] #vy
+
+    elif variabel == "mx":
+        mx = [0, -100*1000, -50*1000, 50*1000, 100*1000]
+        legende = ["$m_{x }$ = -100 kNm/m", "$m_{x }$ = -50 kNm/m",  "$m_{x }$ =  50 kNm/m", "$m_{x }$ =  100 kNm/m", "$m_{x }$ =  0 kNm/m",] 
 
     elif variabel == "my":
         my = [0, -100*1000, -50*1000, 50*1000, 100*1000]
-        legende = ["$m_{y }$ = -100 kNm/m", "$m_{y }$ = -50 kNm/m",  "$m_{y }$ =  50 kNm/m", "$m_{y }$ =  100 kNm/m", "$m_{y }$ =  0 kNm/m",] 
+        legende = ["$m_{y }$ = -100 kNm/m", "$m_{y }$ = -50 kNm/m",  "$m_{y }$ =  50 kNm/m", "$m_{y }$ =  100 kNm/m", "$m_{y }$ =  0 kNm/m",]
 
     elif variabel == "mxy":
         mxy = [0, -50*1000, -25*1000, 25*1000, 50*1000]
@@ -174,9 +179,9 @@ for variabel in variabeln:
         legende = ["\u03B1 = -30°", "\u03B1 = -15°",  "\u03B1 = 10°", "\u03B1 = 20°", "\u03B1 = 0°", ] #alpha
     
     schubnachweis = "vereinfacht"
-    sets = [[False, False, schubnachweis],[False, True, schubnachweis],[True, False, schubnachweis]]
-    setname = ["_ffv", "_ftv", "_tfv"]
-    settext = ["Mindestbewehrung: Aus - Druckzoneniteration: Aus - Schubnachweis: "+'"'+ schubnachweis +'"' , "Mindestbewehrung: Aus - Druckzoneniteration: Ein - Schubnachweis: "+'"'+ schubnachweis +'"', "Mindestbewehrung: Ein - Druckzoneniteration: Aus - Schubnachweis: "+'"'+ schubnachweis +'"']
+    sets = [[False, False, schubnachweis],[False, True, "sia"],]
+    setname = ["_ffv", "_ffs",]
+    settext = ["Mindestbewehrung: Aus - Druckzoneniteration: Aus - Schubnachweis: "+'"'+ schubnachweis +'"' , "Mindestbewehrung: Aus - Druckzoneniteration: Aus - Schubnachweis: 'sia'", "Mindestbewehrung: Ein - Druckzoneniteration: Aus - Schubnachweis: "+'"'+ schubnachweis +'"']
     j = 0
     for se in sets:
 
@@ -193,7 +198,7 @@ for variabel in variabeln:
     
         for resultat in resultate:
             print('\t'+ '\t' + resultat)
-            x = list(numpy.arange(-700, 700, 1))
+            x = list(numpy.arange(-500, 500, 5))
 
 
             for xx in x:
@@ -204,22 +209,22 @@ for variabel in variabeln:
                     printausnahme = True   
 
                 zahl = 0 
-                inp1 = [1,xx*1000,my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),nx[zahl],ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code,  [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
+                inp1 = [1,mx[zahl],my[zahl],mxy[zahl],(xx),vy[zahl],(((xx)**2.0+vy[zahl]**2.0)**0.5),nx[zahl],ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code,  [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
 
                 if variabel == "spezial":
-                    se = [True, False, schubnachweis]  
+                    se = [True, True, schubnachweis]  
 
                 zahl+=1                     
-                inp2 = [2,xx*1000,my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),nx[zahl],ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
+                inp2 = [2,mx[zahl],my[zahl],mxy[zahl],(xx),vy[zahl],(((xx)**2.0+vy[zahl]**2.0)**0.5),nx[zahl],ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
                 zahl+=1  
-                inp3 = [3,xx*1000,my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),nx[zahl],ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
+                inp3 = [3,mx[zahl],my[zahl],mxy[zahl],(xx),vy[zahl],(((xx)**2.0+vy[zahl]**2.0)**0.5),nx[zahl],ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
 
                 if variabel == "spezial":
-                    se = [False, True, schubnachweis]    
+                    se = [False, False, "sia"]    
                 zahl+=1  
-                inp4 = [4,xx*1000,my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),nx[zahl],ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
+                inp4 = [4,mx[zahl],my[zahl],mxy[zahl],(xx),vy[zahl],(((xx)**2.0+vy[zahl]**2.0)**0.5),nx[zahl],ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
                 zahl+=1  
-                inp5 = [5,xx*1000,my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),nx[zahl],ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
+                inp5 = [5,mx[zahl],my[zahl],mxy[zahl],(xx),vy[zahl],(((xx)**2.0+vy[zahl]**2.0)**0.5),nx[zahl],ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
     
                 inp = [inp1,inp2,inp3,inp4,inp5]
     
@@ -242,9 +247,8 @@ for variabel in variabeln:
                 bbb = res_dic[resultat]["bbb"][0]
     
             ymax = res_dic[resultat]["ymax"]
-            xmax = res_dic[resultat]["xmax"]
-
-            xmin = x[0]-1
+            xmax = 500
+            xmin = -500
             ymin = 0
             print(xmin)
     

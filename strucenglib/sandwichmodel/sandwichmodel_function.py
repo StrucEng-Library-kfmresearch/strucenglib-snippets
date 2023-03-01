@@ -1,6 +1,6 @@
-import mechanische_Hilfsfunktionen as mechH
-import mathematische_Hilfsfunktionen as mH
-import genormte_Funktionen as norm
+from strucenglib.sandwichmodel import mechanische_Hilfsfunktionen as mechH
+from strucenglib.sandwichmodel import mathematische_Hilfsfunktionen as mH
+from strucenglib.sandwichmodel import genormte_Funktionen as norm
 
 #----------------------------------------------------------------------------------------------------------------------------------
 #Implementiertes Sandwichmodel

@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-import sandwichmodel_function as SM
+from strucenglib.sandwichmodel import sandwichmodel_function as SM
 import numpy
 
 greek_alphabet = {
@@ -102,9 +102,9 @@ x_label  = "$n_x$ [kN/m]"
 
 print("start")
 
-#variabeln = ["vx", "ny", "nxy", "my", "vy", "mx", "mxy",  "h", "fck", "theta", "alpha", "spezial"]
+variabeln = ["nx", "ny", "nxy", "my", "vy", "mx", "mxy",  "h", "fck", "theta", "alpha", "spezial"]
 #variabeln =  ["nx", "spezial"]
-variabeln =  ["spezial"]
+#variabeln =  ["alpha"]
 
 for variabel in variabeln:
     print("var = "+ variabel)
@@ -127,8 +127,8 @@ for variabel in variabeln:
     
     
     if variabel == "spezial":
-        vx = [200, 200, 200, 200, 200]
-        legende = ["Schubnachweis: 'sia'", "Schubnachweis: 'vereinfacht'",  "Beide: $v_x$ = 200 kN/m",] #nx
+        
+        legende = ["Mindestbewehrung: True", "Druckzoneniteration: True",  "Beides: False",] #nx
 
     elif variabel == "nx":
         nx = [0, -2000, -1000, 1000, 2000]
@@ -143,8 +143,8 @@ for variabel in variabeln:
         legende = ["$n_{xy }$ = -600 kN/m", "$n_{xy }$ = -300 kN/m",  "$n_{xy }$ =  300 kN/m", "$n_{xy }$ =  600 kN/m", "$n_{xy }$ =  0 kN/m",] #ny
     
     elif variabel == "vx":
-        vx = [0, 100, 200, 300, 400]
-        legende = ["$v_x$ = 100 kN/m", "$v_x$ = 200 kN/m",  "$v_x$ =  300 kN/m", "$v_x$ =  400 kN/m", "$v_x$ =  0 kN/m",] #vx
+        vx = [0, -2000, -1000, 1000, 2000]
+        legende = ["$v_x$ = -2000 kN/m", "$v_x$ = -1000 kN/m",  "$v_x$ =  1000 kN/m", "$v_x$ =  2000 kN/m", "$v_x$ =  0 kN/m",] #vx
     
     elif variabel == "vy":
         vy = [0, -2000, -1000, 1000, 2000]
@@ -178,10 +178,10 @@ for variabel in variabeln:
         alpha = [0, -30, -15, 10, 20]
         legende = ["\u03B1 = -30°", "\u03B1 = -15°",  "\u03B1 = 10°", "\u03B1 = 20°", "\u03B1 = 0°", ] #alpha
     
-    schubnachweis = "sia"
-    sets = [[False, False, "sia"],[False, False, "vereinfacht"],[True, False, schubnachweis]]
-    setname = ["_ffs_neu", "_ffv_neu", "_tfs_FALSCH"]
-    settext = ["Mindestbewehrung: Aus - Druckzoneniteration: Aus - Schubnachweis: 'sia' " , "Mindestbewehrung: Aus - Druckzoneniteration: Aus - Schubnachweis: 'vereinfacht'", "FALSCH"]
+    schubnachweis = "vereinfacht"
+    sets = [[False, False, schubnachweis],[False, True, schubnachweis],[True, False, schubnachweis]]
+    setname = ["_ffv", "_ftv", "_tfv"]
+    settext = ["Mindestbewehrung: Aus - Druckzoneniteration: Aus - Schubnachweis: "+'"'+ schubnachweis +'"' , "Mindestbewehrung: Aus - Druckzoneniteration: Ein - Schubnachweis: "+'"'+ schubnachweis +'"', "Mindestbewehrung: Ein - Druckzoneniteration: Aus - Schubnachweis: "+'"'+ schubnachweis +'"']
     j = 0
     for se in sets:
 
@@ -198,7 +198,7 @@ for variabel in variabeln:
     
         for resultat in resultate:
             print('\t'+ '\t' + resultat)
-            x = list(numpy.arange(-4000, 0, 50))
+            x = list(numpy.arange(-700, 700, 1))
 
 
             for xx in x:
@@ -209,22 +209,22 @@ for variabel in variabeln:
                     printausnahme = True   
 
                 zahl = 0 
-                inp1 = [1,mx[zahl],my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),(xx),ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code,  [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
+                inp1 = [1,mx[zahl],my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),(xx*3),ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code,  [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
 
                 if variabel == "spezial":
-                    se = [False, False, "sia"]  
+                    se = [True, False, schubnachweis]  
 
                 zahl+=1                     
-                inp2 = [2,mx[zahl],my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),(xx),ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
+                inp2 = [2,mx[zahl],my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),(xx*3),ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
                 zahl+=1  
-                inp3 = [3,mx[zahl],my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),(xx),ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
+                inp3 = [3,mx[zahl],my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),(xx*3),ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
 
                 if variabel == "spezial":
-                    se = [False, False, "vereinfacht"]    
+                    se = [False, True, schubnachweis]    
                 zahl+=1  
-                inp4 = [4,mx[zahl],my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),(xx),ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
+                inp4 = [4,mx[zahl],my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),(xx*3),ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
                 zahl+=1  
-                inp5 = [5,mx[zahl],my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),(xx),ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
+                inp5 = [5,mx[zahl],my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),(xx*3),ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
     
                 inp = [inp1,inp2,inp3,inp4,inp5]
     
@@ -247,9 +247,9 @@ for variabel in variabeln:
                 bbb = res_dic[resultat]["bbb"][0]
     
             ymax = res_dic[resultat]["ymax"]
-            xmax = 0
+            xmax = res_dic[resultat]["xmax"]
 
-            xmin = -4000
+            xmin = x[0]-1
             ymin = 0
             print(xmin)
     
@@ -380,7 +380,7 @@ for variabel in variabeln:
             if printausnahme == False:
                 plt.plot(x,plot5, color = 'darkred', linewidth = 1.5, linestyle="-" , Label="psi=0")
     
-            #plt.plot(x,plot1, color = 'black', linewidth = 2.5, linestyle="-" , Label="psi=0")
+            plt.plot(x,plot1, color = 'black', linewidth = 2.5, linestyle="-" , Label="psi=0")
     
             plt.legend(legende, loc = 'best')
             
@@ -389,7 +389,7 @@ for variabel in variabeln:
                 
             ax.set_xlim(xmin, xmax)
             ax.set_ylim(ymin, ymax)
-            ax.spines['left'].set_position(('data',xmin+1))
+            ax.spines['left'].set_position(('data',xmin))
             ax.spines['bottom'].set_position(('data',0.))
             ax.spines['top'].set_visible(False)
             ax.spines['right'].set_visible(False)
@@ -416,8 +416,8 @@ for variabel in variabeln:
 
 
             # schwarze linie
-            #plt.plot(x,plot1, color = 'black', linewidth = 2.5, linestyle="-" , Label="psi=0")
-            #plt.plot(x,plotcc1, color = 'black', linewidth = 2.5, linestyle="--" , Label="psi=1")
+            plt.plot(x,plot1, color = 'black', linewidth = 2.5, linestyle="-" , Label="psi=0")
+            plt.plot(x,plotcc1, color = 'black', linewidth = 2.5, linestyle="--" , Label="psi=1")
             
             printausnahme = False
 

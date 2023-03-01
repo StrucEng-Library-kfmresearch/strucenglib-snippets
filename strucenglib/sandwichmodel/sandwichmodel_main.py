@@ -39,7 +39,7 @@ def Hauptfunktion(structure = "mdl", data = {}, step = "step_loads", Mindestbewe
     import time
     import inputer
     import outputer
-    import sandwichmodel_function as SM
+    from strucenglib.sandwichmodel import sandwichmodel_function as SM
     import statistics
     import rhino_functions as rf
 

@@ -1,6 +1,6 @@
 
 import statistics
-import mathematische_Hilfsfunktionen as mH
+from strucenglib.sandwichmodel import mathematische_Hilfsfunktionen as mH
 
 def inputer(structure, data, k, step, Mindestbewehrung, Druckzoneniteration, Schubnachweis, code):
 

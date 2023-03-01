@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-import sandwichmodel_function as SM
+from strucenglib.sandwichmodel import sandwichmodel_function as SM
 import numpy
 
 greek_alphabet = {
@@ -72,11 +72,11 @@ def cleaner(plotcc, plot):
 
 
 res_dic = {
-    "as_xi_bot" : {"aaa" : [1], "bbb" : [0], "xmax" : 701, "ymax" : 10000, "ylabelname" : "$a_{s,x,bot}$ [mm\u00b2/m]", "ylabelname2" : "$a_{s,\u03BE,bot}$ [mm\u00b2/m]"},
-    "as_xi_top" : {"aaa" : [1], "bbb" : [1], "xmax" : 701, "ymax" : 10000, "ylabelname" : "$a_{s,x,top}$ [mm\u00b2/m]", "ylabelname2" : "$a_{s,\u03BE,top}$ [mm\u00b2/m]"},
-    "as_eta_bot" : {"aaa" : [2], "bbb" : [0], "xmax" : 701, "ymax" : 10000, "ylabelname" : "$a_{s,y,bot}$ [mm\u00b2/m]", "ylabelname2" : "$a_{s,\u03B7,bot}$ [mm\u00b2/m]"},
-    "as_eta_top" : {"aaa" : [2], "bbb" : [1], "xmax" : 701, "ymax" : 10000, "ylabelname" : "$a_{s,y,top}$ [mm\u00b2/m]", "ylabelname2" : "$a_{s,\u03B7,top}$ [mm\u00b2/m]"},
-    "as_z" :  {"aaa" : [3], "bbb" : None, "xmax" : 701, "ymax" : 1000, "ylabelname" : "$a_{s,z}$ [mm\u00b2/m]"},
+    "as_xi_bot" : {"aaa" : [1], "bbb" : [0], "xmax" : 701, "ymax" : 1000, "ylabelname" : "$a_{s,x,bot}$ [mm\u00b2/m]", "ylabelname2" : "$a_{s,\u03BE,bot}$ [mm\u00b2/m]"},
+    "as_xi_top" : {"aaa" : [1], "bbb" : [1], "xmax" : 701, "ymax" : 1000, "ylabelname" : "$a_{s,x,top}$ [mm\u00b2/m]", "ylabelname2" : "$a_{s,\u03BE,top}$ [mm\u00b2/m]"},
+    "as_eta_bot" : {"aaa" : [2], "bbb" : [0], "xmax" : 701, "ymax" : 1000, "ylabelname" : "$a_{s,y,bot}$ [mm\u00b2/m]", "ylabelname2" : "$a_{s,\u03B7,bot}$ [mm\u00b2/m]"},
+    "as_eta_top" : {"aaa" : [2], "bbb" : [1], "xmax" : 701, "ymax" : 1000, "ylabelname" : "$a_{s,y,top}$ [mm\u00b2/m]", "ylabelname2" : "$a_{s,\u03B7,top}$ [mm\u00b2/m]"},
+    "as_z" :  {"aaa" : [3], "bbb" : None, "xmax" : 701, "ymax" : 6000, "ylabelname" : "$a_{s,z}$ [mm\u00b2/m\u00b2]"},
     "Fall_bot" : {"aaa" : [4], "bbb" : [0], "xmax" : 701, "ymax" : 4.2, "ylabelname" : "$Fall_{bot }$ [-]"},
     "Fall_top" : {"aaa" : [4], "bbb" : [1], "xmax" : 701, "ymax" : 4.2, "ylabelname" : "$Fall_{top }$ [-]"},
     "CC_bot" : {"aaa" : [5], "bbb" : [0], "xmax" : 701, "ymax" : 2.2, "ylabelname" : "$CC_{bot }$ [-]"},
@@ -96,15 +96,15 @@ res_dic = {
 #------------------------------------------------------------------------------------------------------------------------------------------
 # plottet viele charts
 
-name = "nx"
+name = "vx"
 code = "sia"
-x_label  = "$n_x$ [kN/m]"
+x_label  = "$v_x$ [kN/m]"
 
 print("start")
 
-#variabeln = ["vx", "ny", "nxy", "my", "vy", "mx", "mxy",  "h", "fck", "theta", "alpha", "spezial"]
-#variabeln =  ["nx", "spezial"]
-variabeln =  ["vx"]
+variabeln = ["nx", "ny", "nxy", "my", "vy", "mx", "mxy",  "h", "fck", "theta", "alpha", "spezial"]
+variabeln =  [ "spezial"]
+#variabeln =  ["alpha"]
 
 for variabel in variabeln:
     print("var = "+ variabel)
@@ -128,7 +128,7 @@ for variabel in variabeln:
     
     if variabel == "spezial":
         
-        legende = ["Mindestbewehrung: True", "Druckzoneniteration: True",  "Beides: False",] #nx
+        legende = ["Schubnachweis: sia", "Schubnachweis: vereinfacht",] #nx
 
     elif variabel == "nx":
         nx = [0, -2000, -1000, 1000, 2000]
@@ -143,12 +143,12 @@ for variabel in variabeln:
         legende = ["$n_{xy }$ = -600 kN/m", "$n_{xy }$ = -300 kN/m",  "$n_{xy }$ =  300 kN/m", "$n_{xy }$ =  600 kN/m", "$n_{xy }$ =  0 kN/m",] #ny
     
     elif variabel == "vx":
-        vx = [0, 100, 200, 300, 400]
-        legende = ["$v_x$ = 100 kN/m", "$v_x$ = 200 kN/m",  "$v_x$ =  300 kN/m", "$v_x$ =  400 kN/m", "$v_x$ =  0 kN/m",] #vx
+        vx = [0, -2000, -1000, 1000, 2000]
+        legende = ["$v_x$ = -2000 kN/m", "$v_x$ = -1000 kN/m",  "$v_x$ =  1000 kN/m", "$v_x$ =  2000 kN/m", "$v_x$ =  0 kN/m",] #vx
     
     elif variabel == "vy":
-        vy = [0, -2000, -1000, 1000, 2000]
-        legende = ["$v_y$ = -2000 kN/m", "$v_y$ = -1000 kN/m",  "$v_y$ =  1000 kN/m", "$v_y$ =  2000 kN/m", "$v_y$ =  0 kN/m",] #vy
+        vy = [0, 10, 30, 60, 100]
+        legende = ["$v_y$ = 10 kN/m", "$v_y$ = 30 kN/m",  "$v_y$ =  60 kN/m", "$v_y$ =  100 kN/m", "$v_y$ =  0 kN/m",] #vy
 
     elif variabel == "mx":
         mx = [0, -100*1000, -50*1000, 50*1000, 100*1000]
@@ -178,10 +178,10 @@ for variabel in variabeln:
         alpha = [0, -30, -15, 10, 20]
         legende = ["\u03B1 = -30°", "\u03B1 = -15°",  "\u03B1 = 10°", "\u03B1 = 20°", "\u03B1 = 0°", ] #alpha
     
-    schubnachweis = "sia"
-    sets = [[False, False, "sia"],[False, False, "vereinfacht"],[True, False, schubnachweis]]
-    setname = ["_ffs_neu", "_ffv_neu", "_tfs_FALSCH"]
-    settext = ["Mindestbewehrung: Aus - Druckzoneniteration: Aus - Schubnachweis: 'sia' " , "Mindestbewehrung: Aus - Druckzoneniteration: Aus - Schubnachweis: 'vereinfacht'", "FALSCH"]
+    schubnachweis = "vereinfacht"
+    sets = [[False, False, schubnachweis],[False, True, "sia"],]
+    setname = ["_ffv", "_ffs",]
+    settext = ["Mindestbewehrung: Aus - Druckzoneniteration: Aus - Schubnachweis: "+'"'+ schubnachweis +'"' , "Mindestbewehrung: Aus - Druckzoneniteration: Aus - Schubnachweis: 'sia'", "Mindestbewehrung: Ein - Druckzoneniteration: Aus - Schubnachweis: "+'"'+ schubnachweis +'"']
     j = 0
     for se in sets:
 
@@ -198,7 +198,7 @@ for variabel in variabeln:
     
         for resultat in resultate:
             print('\t'+ '\t' + resultat)
-            x = list(numpy.arange(-4000, 0, 50))
+            x = list(numpy.arange(-500, 500, 5))
 
 
             for xx in x:
@@ -209,22 +209,22 @@ for variabel in variabeln:
                     printausnahme = True   
 
                 zahl = 0 
-                inp1 = [1,mx[zahl],my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),(xx),ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code,  [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
+                inp1 = [1,mx[zahl],my[zahl],mxy[zahl],(xx),vy[zahl],(((xx)**2.0+vy[zahl]**2.0)**0.5),nx[zahl],ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code,  [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
 
                 if variabel == "spezial":
-                    se = [True, False, schubnachweis]  
+                    se = [True, True, schubnachweis]  
 
                 zahl+=1                     
-                inp2 = [2,mx[zahl],my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),(xx),ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
+                inp2 = [2,mx[zahl],my[zahl],mxy[zahl],(xx),vy[zahl],(((xx)**2.0+vy[zahl]**2.0)**0.5),nx[zahl],ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
                 zahl+=1  
-                inp3 = [3,mx[zahl],my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),(xx),ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
+                inp3 = [3,mx[zahl],my[zahl],mxy[zahl],(xx),vy[zahl],(((xx)**2.0+vy[zahl]**2.0)**0.5),nx[zahl],ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
 
                 if variabel == "spezial":
-                    se = [False, True, schubnachweis]    
+                    se = [False, False, "sia"]    
                 zahl+=1  
-                inp4 = [4,mx[zahl],my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),(xx),ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
+                inp4 = [4,mx[zahl],my[zahl],mxy[zahl],(xx),vy[zahl],(((xx)**2.0+vy[zahl]**2.0)**0.5),nx[zahl],ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
                 zahl+=1  
-                inp5 = [5,mx[zahl],my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),(xx),ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
+                inp5 = [5,mx[zahl],my[zahl],mxy[zahl],(xx),vy[zahl],(((xx)**2.0+vy[zahl]**2.0)**0.5),nx[zahl],ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
     
                 inp = [inp1,inp2,inp3,inp4,inp5]
     
@@ -247,9 +247,9 @@ for variabel in variabeln:
                 bbb = res_dic[resultat]["bbb"][0]
     
             ymax = res_dic[resultat]["ymax"]
-            xmax = 0
+            xmax = 500
 
-            xmin = -4000
+            xmin = -500
             ymin = 0
             print(xmin)
     
@@ -373,9 +373,9 @@ for variabel in variabeln:
             #plt.ylabel("$a_{s,\u03BE,bot}$ [mm\u00b2/m]") #as_xi
             plt.ylabel(y_label) #as_z
 
-            if printausnahme == False:
-                plt.plot(x,plot2, color = 'darkblue', linewidth = 1.5, linestyle="-" , Label="psi=0")
-            plt.plot(x,plot3, color = 'dodgerblue', linewidth = 1.5, linestyle="-" , Label="psi=0")
+            #if printausnahme == False:
+            #    plt.plot(x,plot2, color = 'darkblue', linewidth = 1.5, linestyle="-" , Label="psi=0")
+            #plt.plot(x,plot3, color = 'dodgerblue', linewidth = 1.5, linestyle="-" , Label="psi=0")
             plt.plot(x,plot4, color = 'darkorange', linewidth = 1.5, linestyle="-" , Label="psi=0")
             if printausnahme == False:
                 plt.plot(x,plot5, color = 'darkred', linewidth = 1.5, linestyle="-" , Label="psi=0")
@@ -389,7 +389,7 @@ for variabel in variabeln:
                 
             ax.set_xlim(xmin, xmax)
             ax.set_ylim(ymin, ymax)
-            ax.spines['left'].set_position(('data',xmin+1))
+            ax.spines['left'].set_position(('data',xmin))
             ax.spines['bottom'].set_position(('data',0.))
             ax.spines['top'].set_visible(False)
             ax.spines['right'].set_visible(False)

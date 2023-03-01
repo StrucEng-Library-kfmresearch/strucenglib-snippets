@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-import sandwichmodel_function as SM
+from strucenglib.sandwichmodel import sandwichmodel_function as SM
 import numpy
 
 greek_alphabet = {

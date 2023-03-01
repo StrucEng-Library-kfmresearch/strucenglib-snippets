@@ -2,7 +2,7 @@
 import rhinoscriptsyntax as rs
 from compas_fea.structure import Structure
 from compas_fea.cad import rhino
-from StrucEng_Lib.prepost_functions import add_loc_coor
+from strucenglib.prepost_functions import add_loc_coor
 import Rhino
 import scriptcontext
 import System.Guid, System.Drawing.Color

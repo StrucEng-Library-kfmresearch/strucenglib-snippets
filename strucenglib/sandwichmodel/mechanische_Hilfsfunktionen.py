@@ -1,4 +1,4 @@
-import mathematische_Hilfsfunktionen as mH
+from strucenglib.sandwichmodel import mathematische_Hilfsfunktionen as mH
 #----------------------------------------------------------------------------------------------------------------------------------
 #mechansiche Hilfsfunktionen
 #----------------------------------------------------------------------------------------------------------------------------------

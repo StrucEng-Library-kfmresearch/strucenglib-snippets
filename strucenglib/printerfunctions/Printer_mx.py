@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-import sandwichmodel_function as SM
+from strucenglib.sandwichmodel import sandwichmodel_function as SM
 import numpy
 
 greek_alphabet = {
@@ -96,15 +96,15 @@ res_dic = {
 #------------------------------------------------------------------------------------------------------------------------------------------
 # plottet viele charts
 
-name = "nx"
+name = "mx"
 code = "sia"
-x_label  = "$n_x$ [kN/m]"
+x_label  = "$m_x$ [kNm/m]"
 
 print("start")
 
-variabeln = ["nx", "ny", "nxy", "my", "vy", "mx", "mxy",  "h", "fck", "theta", "alpha", "spezial"]
+#variabeln = ["nx", "ny", "nxy", "vx", "vy", "my", "mxy",  "h", "fck", "theta", "alpha", "spezial"]
 #variabeln =  ["nx", "spezial"]
-#variabeln =  ["alpha"]
+variabeln =  ["alpha"]
 
 for variabel in variabeln:
     print("var = "+ variabel)
@@ -112,7 +112,6 @@ for variabel in variabeln:
     ny = [0, 0, 0, 0, 0]
     nxy = [0, 0, 0, 0, 0]
 
-    mx = [0, 0, 0, 0, 0]
     my = [0, 0, 0, 0, 0]
     mxy = [0, 0, 0, 0, 0]
 
@@ -150,13 +149,9 @@ for variabel in variabeln:
         vy = [0, -2000, -1000, 1000, 2000]
         legende = ["$v_y$ = -2000 kN/m", "$v_y$ = -1000 kN/m",  "$v_y$ =  1000 kN/m", "$v_y$ =  2000 kN/m", "$v_y$ =  0 kN/m",] #vy
 
-    elif variabel == "mx":
-        mx = [0, -100*1000, -50*1000, 50*1000, 100*1000]
-        legende = ["$m_{x }$ = -100 kNm/m", "$m_{x }$ = -50 kNm/m",  "$m_{x }$ =  50 kNm/m", "$m_{x }$ =  100 kNm/m", "$m_{x }$ =  0 kNm/m",] 
-
     elif variabel == "my":
         my = [0, -100*1000, -50*1000, 50*1000, 100*1000]
-        legende = ["$m_{y }$ = -100 kNm/m", "$m_{y }$ = -50 kNm/m",  "$m_{y }$ =  50 kNm/m", "$m_{y }$ =  100 kNm/m", "$m_{y }$ =  0 kNm/m",]
+        legende = ["$m_{y }$ = -100 kNm/m", "$m_{y }$ = -50 kNm/m",  "$m_{y }$ =  50 kNm/m", "$m_{y }$ =  100 kNm/m", "$m_{y }$ =  0 kNm/m",] 
 
     elif variabel == "mxy":
         mxy = [0, -50*1000, -25*1000, 25*1000, 50*1000]
@@ -209,22 +204,22 @@ for variabel in variabeln:
                     printausnahme = True   
 
                 zahl = 0 
-                inp1 = [1,mx[zahl],my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),(xx*3),ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code,  [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
+                inp1 = [1,xx*1000,my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),nx[zahl],ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code,  [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
 
                 if variabel == "spezial":
                     se = [True, False, schubnachweis]  
 
                 zahl+=1                     
-                inp2 = [2,mx[zahl],my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),(xx*3),ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
+                inp2 = [2,xx*1000,my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),nx[zahl],ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
                 zahl+=1  
-                inp3 = [3,mx[zahl],my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),(xx*3),ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
+                inp3 = [3,xx*1000,my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),nx[zahl],ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
 
                 if variabel == "spezial":
                     se = [False, True, schubnachweis]    
                 zahl+=1  
-                inp4 = [4,mx[zahl],my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),(xx*3),ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
+                inp4 = [4,xx*1000,my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),nx[zahl],ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
                 zahl+=1  
-                inp5 = [5,mx[zahl],my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),(xx*3),ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
+                inp5 = [5,xx*1000,my[zahl],mxy[zahl],vx[zahl],vy[zahl],((vx[zahl]**2.0+vy[zahl]**2.0)**0.5),nx[zahl],ny[zahl],nxy[zahl],h[zahl],40,40,fck[zahl],theta[zahl],435, alpha[zahl],alpha[zahl],beta[zahl],beta[zahl], se[0], se[1], se[2], code, [1,0,0], [1,0,0],[0,1,0],[0,0,1]]
     
                 inp = [inp1,inp2,inp3,inp4,inp5]
     
