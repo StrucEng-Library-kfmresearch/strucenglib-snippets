@@ -1,4 +1,5 @@
-import setuptools
+from setuptools import setup, find_packages
+
 
 setuptools.setup(
     name='strucenglib_snippets',
@@ -6,5 +7,5 @@ setuptools.setup(
     author="StrucEngLib Authors",
     description="",
     url="https://github.com/StrucEng-Library-kfmresearch/strucenglib-snippets",
-    packages=['strucenglib']
+    packages=find_packages()
  )
