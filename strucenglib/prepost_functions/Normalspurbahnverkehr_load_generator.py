@@ -15,11 +15,10 @@ from compas_fea.structure import AreaLoad
 
 def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s=None, beta=None, q_Gl=4.8, b_Bs=2500, h_Strich=None, Q_k=225*1000, y_A=200):
     
-    # Allgemeine Berechnunge/Definitionen
-    #-------------------------------------------------------
-    #-------------------------------------------------------
+    # Basic definitions
     #-------------------------------------------------------
 
+    # Schreiben des Warning files zum fullen bei anfänglichen Warnungen
     now = datetime.now()
     dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
     file = open('WARNINGS_in_Normalspurbahnverkehr_load_generator.txt','a')
@@ -29,18 +28,15 @@ def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s
 
     # Winkeldefinition
     beta_rad=math.radians(beta)
-    alfa_rec=beta_rad        
-    plane = rs.WorldXYPlane()
 
     # Aufbau Liste fur Layer Namen
     Lasten_aus_Normalspurverkehr=[]
 
-    # Generierung der Mittelachse aus s und beta falls Gleis Layer nicht schon vorhanden
-    #-------------------------------------------------------
-    #-------------------------------------------------------
+
+    # Generierung der Mittelachse aus s und beta 
     #-------------------------------------------------------
 
-    # Create layername
+    # Create layername fur die Mittelachse
     Gleis_Mittelachse=name+'_Mittelachse'
 
     # Definition eines neuen Layers
@@ -63,19 +59,18 @@ def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s
     # Hinzufugen der Linie in Layer als Polyline
     rs.AddCurve([(point_start_x,point_start_y,0),(point_end_x,point_end_y,0)])
        
+    # Selektieren der Mittelachse   
     selectcurve = rs.ObjectsByLayer(Gleis_Mittelachse)
     
-    # Calculate End and Startpoints
+    # Calculate End and Startpoints der Mittelachse
     point_start = rs.CurveStartPoint(selectcurve)
     point_end = rs.CurveEndPoint(selectcurve)
     
       
     # Lastgenerator fur Eigengewichte Gleise/Schwellen
     #-------------------------------------------------------
-    #-------------------------------------------------------
-    #------------------------------------------------------- 
 
-    # Create layername with load area
+    # Create layername
     Gleis_Eigengewichte_Schiene=name+'_EIGENGEWICHTE_SCHIENE_Lasteinzugsflache'
 
     # Definition eines neues Layers fur alle belasteten Elementmittelpunkte 
@@ -88,15 +83,13 @@ def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s
     rs.CurrentLayer(Gleis_Eigengewichte_Schiene)
 
     # Geometrische Berechnung der Lastflachen
-    # ---------------------------------------------------------------------------------
     # Berechnung b_Gl
     b_Gl=(b_Bs/2+h_Strich/4+h_Pl/2)*2
 
     # Berechnung b_strich_Gl
     b_Strich_Gl=b_Gl/math.cos(abs(beta_rad))
 
-    # Berechnung der vier Eckpunkte der Lastflache
-    # ---------------------------------------------------------------------------------
+    # Berechnung der vier Eckpunkte der Lastflachen
     # x Koordinanten
     P_A_x=(point_start[0]-b_Strich_Gl/2)
     P_B_x=(point_start[0]+b_Strich_Gl/2)
@@ -116,7 +109,6 @@ def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s
     P_D_z=(point_end[2])
 
     # Berechnung der vier Eckpunkte der Lastflache und Kurvne in Rhino Layer ploten
-    # ---------------------------------------------------------------------------------
     rs.CurrentLayer(Gleis_Eigengewichte_Schiene)
     rs.AddPolyline([(P_A_x,P_A_y,P_A_z),(P_B_x,P_B_y,P_B_z),(P_C_x,P_C_y,P_C_z),(P_D_x,P_D_y,P_D_z),(P_A_x,P_A_y,P_A_z)])
 
@@ -124,7 +116,6 @@ def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s
     q_k_Gl=q_Gl/b_Gl
 
     # Berechnung der belasteten Elemente (Gibt Nummern der belastete Elemente raus)
-    # ---------------------------------------------------------------------------------
     loaded_element_numbers=area_load_generator_elements(mdl,Gleis_Eigengewichte_Schiene) # Calculate Element numbers within the area load curve
     
     # Hinzufugen der belasteten Elemente
@@ -136,16 +127,10 @@ def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s
 
     # Lastgenerator fur Bahnlasten
     #-------------------------------------------------------
-    #-------------------------------------------------------
-    #------------------------------------------------------- 
   
-    # Step 1: Allgemeine Definitionen
-    #--------------------------------------------------------------------------        
-        
     # Berechnung der x_A Koordinante (Lage der Einzellast) aus y_A
     x_A=math.tan(beta_rad)*y_A+s 
        
-    
     # Schleife uber neg und pos richtung ausgehend von x_A, y_A
     # d.h. es werden in neg. und pos Richtung weitrere Lastblocke gemass Abstand Lastmodell angeordnet
     for LB_VZ in xrange(1,3): # zweimal durchlaufen - einmal pos. und einmal neg. Richtung
@@ -170,8 +155,7 @@ def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s
             else:
                 lauf_LB=lauf_LB-1
 
-            # Step 2: Mittelkoordinanten des Lastpunktes
-            #--------------------------------------------------------------------------   
+            # Mittelkoordinanten des Lastpunktes
 
             # Create layername with load area
             Bahnlasten_Einzellasten=name+'_BAHNLASTEN_Einzellasten'+'_Lastblock_'+str(lauf_LB)
@@ -195,21 +179,19 @@ def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s
 
             rs.AddPoint((x_point,y_point))
 
-            # Step 3: Lastpolygone bzw. Lastausbreitung berechnen
-            #--------------------------------------------------------------------------   
+            
+            # Lastpolygone bzw. Lastausbreitung berechnen 
 
-            # Koordianten der Eckpunkte der Lastflache bestimmen (siehe Doku)
-
-            # Punkt A_strich        
+            # Koordinaten Punkt A_strich        
             x_P_A_strich=-b_Bl/2
             y_P_A_strich=l_Bl/2
-            # Punkt B_strich
+            # Koordinaten Punkt B_strich
             x_P_B_strich=-b_Bl/2
             y_P_B_strich=-l_Bl/2
-            # Punkt C_strich
+            # Koordinaten Punkt C_strich
             x_P_C_strich=b_Bl/2
             y_P_C_strich=-l_Bl/2
-            # Punkt D_strich
+            # Koordinaten Punkt D_strich
             x_P_D_strich=b_Bl/2
             y_P_D_strich=l_Bl/2                
 
@@ -252,9 +234,8 @@ def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s
             points=[(x_def_A,y_def_A,0),(x_def_B,y_def_B,0),(x_def_C,y_def_C,0),(x_def_D,y_def_D,0),(x_def_A,y_def_A,0)]
             rs.AddPolyline(points)
 
-            # Step 4: Kontrolle ob Lastpolygon mindestes ein Punkt der Punkte A,B,C,D innerhalb der Fahrbahnplatte liegt
-            #--------------------------------------------------------------------------   
-            
+            # Kontrolle ob Lastpolygon mindestes ein Punkt der Punkte A,B,C,D innerhalb der Fahrbahnplatte liegt
+                
             # Falls alle Eckpunkte (A,B,C,D) der Lasteinzugsflache ausserhalb der Platte liegen -> Loop L_i abbrechen
             if y_def_A <= point_start_y or y_def_A >= point_end_y: # Ausserhalb der Platte
                 check_lage_A=1
@@ -287,8 +268,7 @@ def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s
                 pass
                 
 
-            # Step 5: Kontrolle ob Lastpolygone Elemente beinhaltet
-            #--------------------------------------------------------------------------   
+            # Kontrolle ob Lastpolygone Elemente beinhaltet
 
             # Berechnung der Elementnummern welche im oben definieren Polygon liegen
             loaded_element_numbers=area_load_generator_elements(mdl,Bahnlasten_Lasteinzug) 
