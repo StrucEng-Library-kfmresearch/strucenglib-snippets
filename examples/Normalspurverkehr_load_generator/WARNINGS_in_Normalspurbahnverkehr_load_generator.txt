@@ -1,0 +1,7 @@
+Warnings im Pythonfile Normalspurbahnverkehr_load_generator,22/03/2023 11:04:53
+-------------------------------------------------------------------------------
+Warning: Load block 1 inside plate, but does not contain any element -> choose smaller mesh
+Warning: Load block 2 inside plate, but does not contain any element -> choose smaller mesh
+Warning: Load block 3 inside plate, but does not contain any element -> choose smaller mesh
+Warnings im Pythonfile Normalspurbahnverkehr_load_generator,22/03/2023 11:07:54
+-------------------------------------------------------------------------------
