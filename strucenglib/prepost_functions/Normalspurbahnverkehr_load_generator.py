@@ -152,9 +152,9 @@ def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s
 
         # Liste mit absolunten Abstanden L_i zum Punkt x_A, y_A
         if LB_VZ==1:  # in positive Richtung (y wird grosser)
-            L_i_list=[0,3000]#,3000+1800,3000+1800+4500,3000+1800+4500+1800,3000+1800+4500+1800+3000,3000+1800+4500+1800+3000+1800,3000+1800+4500+1800+3000+1800+4500,3000+1800+4500+1800+3000+1800+4500+1800]            
+            L_i_list=[0,3000,3000+1800,3000+1800+4500,3000+1800+4500+1800,3000+1800+4500+1800+3000,3000+1800+4500+1800+3000+1800,3000+1800+4500+1800+3000+1800+4500,3000+1800+4500+1800+3000+1800+4500+1800]            
         else: # in negative Richtung (y wird kleiner)
-            L_i_list=[-1800]#,-1800-4500,-1800-4500-1800,-1800-4500-1800-3000,-1800-4500-1800-3000-1800,-1800-4500-1800-3000-1800-4500,-1800-4500-1800-3000-1800-4500-1800]
+            L_i_list=[-1800,-1800-4500,-1800-4500-1800,-1800-4500-1800-3000,-1800-4500-1800-3000-1800,-1800-4500-1800-3000-1800-4500,-1800-4500-1800-3000-1800-4500-1800]
             
         # Lastausbreitung in Langsrichtung und Querrichtung
         l_Bl=(h_Strich/4+h_Pl/2)*2
@@ -332,4 +332,4 @@ def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s
                     pass
                 
 
-    return Lasten_aus_Normalspurverkehr
+    return Lasten_aus_Normalspurverkehr  #  Beinhaltet alle Namen der Layer mit den Lasten
