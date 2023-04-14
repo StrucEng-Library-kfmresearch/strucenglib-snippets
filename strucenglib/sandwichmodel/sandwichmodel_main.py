@@ -76,9 +76,9 @@ def Hauptfunktion(structure = "mdl", data = {}, lstep = None, Mindestbewehrung =
         while k < kmax:
             # Berechnung SM nur fuer Shell Elemente (d.h. ele_type=1 -> Shell; ele_type=0 -> MPC oder andere Elemente)
             ele_type = structure.results[step]['element']['ele_type'][k].values()
-
-            if ele_type[0] == 1.0:            
             
+            if ele_type[0] == 1.0:            
+                
                 # Input der Daten fuer Element k # inp = [i,mx,my,mxy,vx,vy,v0,nx,ny,nxy,h,d_strich_bot,d_strich_top,fc_k,theta_grad_kern,fs_d, alpha_bot, alpha_top, beta_bot, beta_top, Mindestbewehrung, Druckzoneniteration, Schubnachweis, xyz, ex,ey,ez]
                 inp = inputer.inputer(structure,data,k,step, Mindestbewehrung, Druckzoneniteration, Schubnachweis, code)
 

@@ -13,7 +13,9 @@ def area_load_generator_elements(mdl, layer):
     
     # Basic definitions
     #-------------------------------------------------------
-       
+    # Tolerance for the plane check  
+    R_tol=2 
+
     # Layer with curve which define the loaded area
     load_layer=layer 
     
@@ -56,7 +58,6 @@ def area_load_generator_elements(mdl, layer):
     rec=rs.ObjectsByLayer(load_layer) 
     xyz_coor_loaded_centroid_points=[]
     
-    
     # Check ob Koordianten innerhalb der Polyline (belasteten Area)
     # ---------------------------------------------------------------------------------
    
@@ -68,17 +69,21 @@ def area_load_generator_elements(mdl, layer):
         if insidept==0: # The point is NOT inside the closed surve
             pass
         else: # The point IS inside the closed surve
-            
-            # Bestimmung Koordinaten des Punktes und Abspeichern im Layer fur alle belastetne Elemente 
+
+            # Bestimmung Koordinaten des Punktes und 
             coor=rs.PointCoordinates(i)
             coorx=coor[0]
             coory=coor[1]
-            coorz=coor[2]          
+            coorz=coor[2]   
             
-            rs.CurrentLayer(load_layer_ele_centroids_loaded)
-            rs.AddPoint( (coorx,coory,coorz) ) 
-            xyz_coor_loaded_centroid_points.append([coorx,coory,coorz])
-
+            # Check if the z-Axis of the pont is zero (if not do no include in the set) 
+            if coorz >= 0-R_tol and coorz < 0+R_tol:
+                # Abspeichern im Layer fur alle belastetne Elemente 
+                rs.CurrentLayer(load_layer_ele_centroids_loaded)
+                rs.AddPoint( (coorx,coory,coorz) ) 
+                xyz_coor_loaded_centroid_points.append([coorx,coory,coorz])
+            else:
+                pass
 
     # Bestimmung der Nummern der Elemente welche belastet sind
     loaded_element_numbers=[]
