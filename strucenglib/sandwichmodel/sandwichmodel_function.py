@@ -6,7 +6,7 @@ import genormte_Funktionen as norm
 #Implementiertes Sandwichmodel
 #----------------------------------------------------------------------------------------------------------------------------------
 
-def Sandwichmodel(inp,k_NS_V):
+def Sandwichmodel(inp): #,k_NS_V):
     """
     ----------------------------------------
     Parameters
@@ -114,42 +114,42 @@ def Sandwichmodel(inp,k_NS_V):
         #Querkraftbewehrung,  Schubnachweis
         
         # Schubnachweis nur falls innerhalb des Nachweisschnitte_V
-        if i+1 in k_NS_V.selection: # i lauft ab 0... und k_NS_V ab 1...
+        #if i+1 in k_NS_V.selection: # i lauft ab 0... und k_NS_V ab 1...
                  
-            if Schubnachweis == 'vereinfacht':            
-                if (h>=400 or v0/dv>tau_nom) and v0!=0:                 
-                    rho_z = v0/(fs_d*dv*mH.cot(theta_core))           #[-]
-                    as_z = rho_z*1000*1000#[mm2/m2]                                 #[mm^2/m2] 
-                    shearcrack = 1                                              #Beton gerissen, Schubbewehrung erforderlich
-                else:     
-                    rho_z = 0                                                    #[-]
-                    as_z = 0                                                     #[mm^2/m2]
-                    shearcrack = 0                                               #Beton ungerissen, keine Schubbewehrung erforderlich
+        if Schubnachweis == 'vereinfacht':            
+            if (h>=400 or v0/dv>tau_nom) and v0!=0:                 
+                rho_z = v0/(fs_d*dv*mH.cot(theta_core))           #[-]
+                as_z = rho_z*1000*1000#[mm2/m2]                                 #[mm^2/m2] 
+                shearcrack = 1                                              #Beton gerissen, Schubbewehrung erforderlich
+            else:     
+                rho_z = 0                                                    #[-]
+                as_z = 0                                                     #[mm^2/m2]
+                shearcrack = 0                                               #Beton ungerissen, keine Schubbewehrung erforderlich
 
-                m_shear_c = v0/(tau_nom*dv)                                         # Ausnutzungsgrad des Betons bezueglich Querkraft
+            m_shear_c = v0/(tau_nom*dv)                                         # Ausnutzungsgrad des Betons bezueglich Querkraft
             
-            elif Schubnachweis == 'sia':
+        elif Schubnachweis == 'sia':
 
-                d = min(h-d_strich_bot, h-d_strich_top)#? oder dv
-
-                if v0 > norm.vrd(fc_k, fs_d, d, 'sia'):
-                    z = 0.9*d #sia 262 4.3.3.4.2 oder dv?
-                    rho_z = v0/(z*fs_d*mH.cot(theta_core))
-                    as_z = rho_z*1000*1000#[mm2/m2] 
-                    shearcrack = 1
-                else:     
-                    rho_z = 0                                                    #[-]
-                    as_z = 0                                                     #[mm^2/m2]
-                    shearcrack = 0
+            d = min(h-d_strich_bot, h-d_strich_top)#? oder dv
+    
+            if v0 > norm.vrd(fc_k, fs_d, d, 'sia'):
+                z = 0.9*d #sia 262 4.3.3.4.2 oder dv?
+                rho_z = v0/(z*fs_d*mH.cot(theta_core))
+                as_z = rho_z*1000*1000#[mm2/m2] 
+                shearcrack = 1
+            else:     
+                rho_z = 0                                                    #[-]
+                as_z = 0                                                     #[mm^2/m2]
+                shearcrack = 0
                 
-                m_shear_c = v0/norm.vrd(fc_k, fs_d, d, 'sia')                     # Ausnutzungsgrad des Betons bezueglich Querkraft
-            else: 
-                raise ValueError("Schubnachweis is not defined")
-        else:
-            rho_z = 0                                                    #[-]
-            as_z = 0                                                     #[mm^2/m2]
-            shearcrack = 0                
-            m_shear_c = 0               # Ausnutzungsgrad des Betons bezueglich Querkraft
+            m_shear_c = v0/norm.vrd(fc_k, fs_d, d, 'sia')                     # Ausnutzungsgrad des Betons bezueglich Querkraft
+        else: 
+            raise ValueError("Schubnachweis is not defined")
+        #else:
+            #rho_z = 0                                                    #[-]
+            #as_z = 0                                                     #[mm^2/m2]
+            #shearcrack = 0                
+            #m_shear_c = 0               # Ausnutzungsgrad des Betons bezueglich Querkraft
             
 
         # Membrankraefte Schubanteil
@@ -256,6 +256,16 @@ def Sandwichmodel(inp,k_NS_V):
     as_eta[1]=round(max(as_eta[1],rho_min*2*d_strich_top*1000))
     m_c_total = max(m_shear_c, m_cc[0], m_cc[1])
 
+
+    # Traglastanalyse
+     #if m_cc[0] <= 1 and m_cc[1] <= 1  :
+     
+      #   stop_traglastanalyse=0 # Weiter Traglasterhohung moglich
+     #else:
+      #   stop_traglastanalyse=1 # keine weitere Traglasterhohung moglich
+
+
+
     return [i, as_xi, as_eta, as_z, fall, cc, t, k, psi, m_shear_c, m_cc, m_c_total, [xyz, ex, ey, ez, e_xi_bot, e_xi_top, e_eta_bot, e_eta_top], inp]
 
 
@@ -339,4 +349,5 @@ sc_3	                float	        [N/mm2]	            Maximale Betondruckspannu
 fc	                    float	        [N/mm2]	            Effektive Betondruckfestigkeit
 rho_min	                float	        [-]	                Minimaler relativer Laengsbewehrungsgehalt
 rho_z_min	            float	        [-]	                Minimaler relativer Schubbewehrungsgehalt
+stop_Traglastanalyse	float	        [-]	                0=Traglaststeigerung moglich, 1=Traglaststeigerung nicht mehr moglich
 """

@@ -18,7 +18,7 @@ def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s
     # Basic definitions
     #-------------------------------------------------------
 
-    # Schreiben des Warning files zum fullen bei anfänglichen Warnungen
+    # Schreiben des Warning files zum fullen bei anfanglichen Warnungen
     now = datetime.now()
     dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
     file = open('WARNINGS_in_Normalspurbahnverkehr_load_generator.txt','a')

@@ -3,7 +3,7 @@ import statistics
 import mathematische_Hilfsfunktionen as mH
 
 def inputer(structure, data, k, step, Mindestbewehrung, Druckzoneniteration, Schubnachweis, code):
-
+    
     prop_name = structure.elements[k].element_property #name der property
     
     # SCHNITTKRAEFTE

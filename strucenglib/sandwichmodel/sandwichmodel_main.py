@@ -1,4 +1,4 @@
-def Hauptfunktion(structure = "mdl", data = {}, step = "step_loads", Mindestbewehrung = True, Druckzoneniteration = True, Schubnachweis = 'vereinfacht',code = "sia", axes_scale = 100, plot_local_axes = True, plot_reinf = True):
+def Hauptfunktion(structure = "mdl", data = {}, lstep = None, Mindestbewehrung = True, Druckzoneniteration = True, Schubnachweis = 'vereinfacht',code = "sia", axes_scale = 100, plot_local_axes = True, plot_reinf = True):
     """
     Parameters
     ----------
@@ -8,8 +8,8 @@ def Hauptfunktion(structure = "mdl", data = {}, step = "step_loads", Mindestbewe
     data : dict
         additionalproperties
 
-    step : str
-        step of calculation
+    lstep : str
+        step (time) of calculation
 
     Mindestbewehrung : bool
         Mindestbewehrung beruecksichtigen?
@@ -47,7 +47,7 @@ def Hauptfunktion(structure = "mdl", data = {}, step = "step_loads", Mindestbewe
 
 
 
-  
+
     
     print('')
     print('')
@@ -55,51 +55,51 @@ def Hauptfunktion(structure = "mdl", data = {}, step = "step_loads", Mindestbewe
     print('--------------------------------------------------------')
     print('Sandwichmodel analysis is running ... please wait ... ' )
     tic = time.time() #timer start
-    #leeres Resultat dict.
-    result_data = {str(step) : {"element" : {"as_xi_bot" : {}, "as_xi_top" : {}, "as_eta_bot" : {}, "as_eta_top" : {},"CC_bot" : {}, "CC_top" : {}, "Fall_bot" : {}, "Fall_top" : {}, "t_bot" : {}, "t_top" : {}, "k_bot" : {}, "k_top" : {},"psi_bot" : {}, "psi_top" : {}, "as_z" : {}, "m_shear_c" : {}, "m_cc_bot" : {}, "m_cc_top" : {}, "m_c_total" : {}, "xyz" : {}, "ex" : {}, "ey" : {}, "ez" : {}, "e_xi_bot" : {}, "e_xi_top" : {}, "e_eta_bot" : {}, "e_eta_top" : {}, }}}
     kmax = structure.element_count() # Anzahl Elemente, Startwert bei 1 nicht bei 0!
-    k = 0    
-
-    # Element bzw. Element set fur Nachweisschnitt V bestimmen
-    k_NS_V=structure.sets['NS_Schnitt_V']
-
-    print(k_NS_V)    
-
-
-    while k < kmax:
-        # Berechnung SM nur fuer Shell Elemente (d.h. ele_type=1 -> Shell; ele_type=0 -> MPC oder andere Elemente)
-        ele_type = structure.results[step]['element']['ele_type'][k].values()
-
-        if ele_type[0] == 1.0:            
-           
-            # Input der Daten fuer Element k # inp = [i,mx,my,mxy,vx,vy,v0,nx,ny,nxy,h,d_strich_bot,d_strich_top,fc_k,theta_grad_kern,fs_d, alpha_bot, alpha_top, beta_bot, beta_top, Mindestbewehrung, Druckzoneniteration, Schubnachweis, xyz, ex,ey,ez]
-            inp = inputer.inputer(structure,data,k,step, Mindestbewehrung, Druckzoneniteration, Schubnachweis, code)
-            
-            # Anwendung des Sandwichmodels auf Element k  # result_element = [i, as_xi, as_eta, as_z, fall, cc, t, k, psi, m_shear_c, m_cc, [xyz, ex, ey, ez, e_xi_bot, e_xi_top, e_eta_bot, e_eta_top], inp]
-            result_element = SM.Sandwichmodel(inp,k_NS_V)
-            
-            # Speichert Resultate von Sandwichmodel fuer Element k (result_element) im gesamt Resultatverzeichnis (result_data)
-            result_data = outputer.outputer(result_data, result_element, step, ele_type, k)
-            
-            # Plottet Achsen und Bewehrungsrichtungen auf Element k
-            rf.plot_axes_BB(result_element, k, axes_scale, plot_local_axes, plot_reinf)
-        else:
-            # Speichert Resultate von Sandwichmodel fuer nicht Shell elemente
-            result_data = outputer.outputer(result_data, result_element, step, ele_type, k)
-
-        k+=1
+       
     
+   
+    
+    for single_lstep in lstep:
+        k = 0 
+        step=single_lstep
+
+        #leeres Resultat dict.
+        result_data = {str(step) : {"element" : {"as_xi_bot" : {}, "as_xi_top" : {}, "as_eta_bot" : {}, "as_eta_top" : {},"CC_bot" : {}, "CC_top" : {}, "Fall_bot" : {}, "Fall_top" : {}, "t_bot" : {}, "t_top" : {}, "k_bot" : {}, "k_top" : {},"psi_bot" : {}, "psi_top" : {}, "as_z" : {}, "m_shear_c" : {}, "m_cc_bot" : {}, "m_cc_top" : {}, "m_c_total" : {}, "xyz" : {}, "ex" : {}, "ey" : {}, "ez" : {}, "e_xi_bot" : {}, "e_xi_top" : {}, "e_eta_bot" : {}, "e_eta_top" : {}, }}}
+        
+
+        # Element bzw. Element set fur Nachweisschnitt V bestimmen
+        #k_NS_V=structure.sets['NS_Schnitt_V']
+        
+        while k < kmax:
+            # Berechnung SM nur fuer Shell Elemente (d.h. ele_type=1 -> Shell; ele_type=0 -> MPC oder andere Elemente)
+            ele_type = structure.results[step]['element']['ele_type'][k].values()
+
+            if ele_type[0] == 1.0:            
+            
+                # Input der Daten fuer Element k # inp = [i,mx,my,mxy,vx,vy,v0,nx,ny,nxy,h,d_strich_bot,d_strich_top,fc_k,theta_grad_kern,fs_d, alpha_bot, alpha_top, beta_bot, beta_top, Mindestbewehrung, Druckzoneniteration, Schubnachweis, xyz, ex,ey,ez]
+                inp = inputer.inputer(structure,data,k,step, Mindestbewehrung, Druckzoneniteration, Schubnachweis, code)
+
+                # Anwendung des Sandwichmodels auf Element k  # result_element = [i, as_xi, as_eta, as_z, fall, cc, t, k, psi, m_shear_c, m_cc, [xyz, ex, ey, ez, e_xi_bot, e_xi_top, e_eta_bot, e_eta_top], inp]
+                result_element = SM.Sandwichmodel(inp) #,k_NS_V)
+                
+                # Speichert Resultate von Sandwichmodel fuer Element k (result_element) im gesamt Resultatverzeichnis (result_data)
+                result_data = outputer.outputer(result_data, result_element, step, ele_type, k)
+                
+                # Plottet Achsen und Bewehrungsrichtungen auf Element k TODO: PLOT IN PREPROCESSING NEHMEN
+                # rf.plot_axes_BB(result_element, k, axes_scale, plot_local_axes, plot_reinf)
+            else:
+                # Speichert Resultate von Sandwichmodel fuer nicht Shell elemente
+                result_data = outputer.outputer(result_data, result_element, step, ele_type, k)
+
+            k+=1
+        
+        # Speichert result_data in die structure.result dict von Compas FEA. damit die Compas FEA Funktion rhino.plot_data() genutzt werden kann
+        print(step)
+        structure.results[step]['element'].update(result_data[step]['element'])
+
     toc = time.time()-tic #timer end
     print('Sandwichmodel analysis successfull finished in {0:.3f} s'.format(toc))
-    
-
-    tic = time.time() #timer start
-
-    # Speichert result_data in die structure.result dict von Compas FEA. damit die Compas FEA Funktion rhino.plot_data() genutzt werden kann
-    structure.results[step]['element'].update(result_data[step]['element'])
-
-    toc = time.time()-tic #timer end
-    print('Saving Sandwichmodel results to the structure object successful in {0:.3f} s'.format(toc))
 
     return
 
