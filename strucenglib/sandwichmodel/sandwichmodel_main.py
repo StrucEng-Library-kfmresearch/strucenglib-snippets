@@ -1,3 +1,5 @@
+# Author(s): Marius  Weber (ETHZ, HSLU T&A)
+
 def Hauptfunktion(structure = "mdl", data = {}, lstep = None, Mindestbewehrung = True, Druckzoneniteration = True, Schubnachweis = 'vereinfacht',code = "sia", axes_scale = 100, plot_local_axes = True, plot_reinf = True):
     """
     Parameters

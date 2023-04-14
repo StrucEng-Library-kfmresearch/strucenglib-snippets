@@ -1,3 +1,5 @@
+# Author(s): Marius  Weber (ETHZ, HSLU T&A)
+
 import matplotlib.pyplot as plt
 from strucenglib.sandwichmodel import sandwichmodel_function as SM
 import numpy

@@ -1,3 +1,4 @@
+# Author(s): Marius  Weber (ETHZ, HSLU T&A)
 
 import math   
 import rhinoscriptsyntax as rs

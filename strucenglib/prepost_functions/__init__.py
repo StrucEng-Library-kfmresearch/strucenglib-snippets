@@ -1,3 +1,5 @@
+# Author(s): Marius  Weber (ETHZ, HSLU T&A)
+
 from strucenglib.prepost_functions.calc_loc_coor import * 
 from strucenglib.prepost_functions.plot_loc_axes import * 
 from strucenglib.prepost_functions.plot_nr_elem import * 

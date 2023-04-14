@@ -1,3 +1,5 @@
+# Author(s): Marius  Weber (ETHZ, HSLU T&A)
+
 import mechanische_Hilfsfunktionen as mechH
 import mathematische_Hilfsfunktionen as mH
 import genormte_Funktionen as norm

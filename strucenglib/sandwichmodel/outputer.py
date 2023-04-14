@@ -1,3 +1,5 @@
+# Author(s): Marius  Weber (ETHZ, HSLU T&A)
+
 def outputer(result_data, result_element,step,ele_type,k):
 # updatet result_data dictionary (OUTPUTER)
     if ele_type[0] == 1.0:

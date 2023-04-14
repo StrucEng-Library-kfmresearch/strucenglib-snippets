@@ -1,3 +1,4 @@
+# Author(s): Marius  Weber (ETHZ, HSLU T&A)
 
 import statistics
 import mathematische_Hilfsfunktionen as mH

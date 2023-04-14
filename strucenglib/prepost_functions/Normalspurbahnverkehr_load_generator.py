@@ -1,4 +1,5 @@
- 
+ # Author(s): Marius  Weber (ETHZ, HSLU T&A)
+
 import os 
 from datetime import datetime
 import rhinoscriptsyntax as rs

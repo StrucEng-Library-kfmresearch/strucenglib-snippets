@@ -1,4 +1,5 @@
- 
+# Author(s): Marius  Weber (ETHZ, HSLU T&A)
+
 import rhinoscriptsyntax as rs
 from compas_fea.structure import Structure
 from compas_fea.cad import rhino

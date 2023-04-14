@@ -1,3 +1,4 @@
+# Author(s): Marius  Weber (ETHZ, HSLU T&A)
 
 import rhinoscriptsyntax as rs
 from compas.geometry import add_vectors

@@ -1,4 +1,6 @@
 
+# Author(s): Marius  Weber (ETHZ, HSLU T&A)
+
 from compas_fea.structure import Structure
 from strucenglib.prepost_functions import plot_loc_axes
 from strucenglib.prepost_functions import add_loc_coor
