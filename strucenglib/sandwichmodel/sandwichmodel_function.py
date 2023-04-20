@@ -8,7 +8,7 @@ import genormte_Funktionen as norm
 #Implementiertes Sandwichmodel
 #----------------------------------------------------------------------------------------------------------------------------------
 
-def Sandwichmodel(inp,selection_V,selection_V_check,k_save): #,k_NS_V):
+def Sandwichmodel(inp,selection_V_all,selection_V_check,k_save): #,k_NS_V):
     """
     ----------------------------------------
     Parameters
@@ -123,7 +123,7 @@ def Sandwichmodel(inp,selection_V,selection_V_check,k_save): #,k_NS_V):
         # Schubnachweis und Querkraftbewehrung nur falls innerhalb des Nachweisschnitte_V oder kein Nachweisschnitt vorhande      
 
         if selection_V_check==True:
-            is_ele_Present = k_save in set(selection_V) # return true if current element is in selection_V
+            is_ele_Present = k_save in set(selection_V_all) # return true if current element is in selection_V_all
         else:
             is_ele_Present = True
 
@@ -197,8 +197,7 @@ def Sandwichmodel(inp,selection_V,selection_V_check,k_save): #,k_NS_V):
             s_eta = s_y_stern/mH.sin(psi[ii]) 
             s_xieta = s_xy_stern-s_y_stern*mH.cot(psi[ii])
             
-            #Fallunterschiedung mit k=start
-             
+            #Fallunterschiedung mit k=start             
             f_xi = round((s_xi/mH.sin(psi[ii])+k[ii]*abs(s_xieta/mH.sin(psi[ii])))/fs_d,5)
             f_eta = round((s_eta/mH.sin(psi[ii])+1/k[ii]*abs(s_xieta/mH.sin(psi[ii])))/fs_d,5)
                  
