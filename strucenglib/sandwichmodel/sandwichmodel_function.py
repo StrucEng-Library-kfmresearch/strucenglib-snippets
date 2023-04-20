@@ -8,7 +8,7 @@ import genormte_Funktionen as norm
 #Implementiertes Sandwichmodel
 #----------------------------------------------------------------------------------------------------------------------------------
 
-def Sandwichmodel(inp): #,k_NS_V):
+def Sandwichmodel(inp,selection_V): #,k_NS_V):
     """
     ----------------------------------------
     Parameters
@@ -80,7 +80,13 @@ def Sandwichmodel(inp): #,k_NS_V):
         definiert ob die Betonbemessungswerte nach sia ('sia') oder Eurocode ('EC') berechnet werden sollen
     
     """
-     
+    
+    #if selection_V == 0:
+    #    print(selection_V)
+        
+
+
+
     [i,mx,my,mxy,vx,vy,v0,nx,ny,nxy,h,d_strich_bot,d_strich_top,fc_k,theta_grad_kern,fs_d, alpha_bot, alpha_top, beta_bot, beta_top, Mindestbewehrung, Druckzoneniteration, Schubnachweis, code, xyz, ex,ey,ez]=inp
     #code = ini.code
     theta_core=mH.angle_check(theta_grad_kern)

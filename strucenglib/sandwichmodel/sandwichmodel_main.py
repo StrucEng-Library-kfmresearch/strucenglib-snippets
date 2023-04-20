@@ -71,9 +71,25 @@ def Hauptfunktion(structure = "mdl", data = {}, lstep = None, Mindestbewehrung =
         
 
         # Element bzw. Element set fur Nachweisschnitt V bestimmen
-        #k_NS_V=structure.sets['NS_Schnitt_V']
         
-        while k < kmax:
+
+        sets = structure.sets
+   
+        for key in sorted(structure.sets):               
+            element_set = structure.sets[key]
+            
+            
+            if element_set.type == 'Nachweisschnitt_V':
+                selection_V = [i + 1 for i in sorted(element_set.selection)]   
+            else:
+                selection_V=0
+            #    self.blank_line()
+            #    self.blank_line()
+
+
+
+        while k < kmax: # Start bei Null 
+            
             # Berechnung SM nur fuer Shell Elemente (d.h. ele_type=1 -> Shell; ele_type=0 -> MPC oder andere Elemente)
             ele_type = structure.results[step]['element']['ele_type'][k].values()
             
@@ -83,7 +99,7 @@ def Hauptfunktion(structure = "mdl", data = {}, lstep = None, Mindestbewehrung =
                 inp = inputer.inputer(structure,data,k,step, Mindestbewehrung, Druckzoneniteration, Schubnachweis, code)
 
                 # Anwendung des Sandwichmodels auf Element k  # result_element = [i, as_xi, as_eta, as_z, fall, cc, t, k, psi, m_shear_c, m_cc, [xyz, ex, ey, ez, e_xi_bot, e_xi_top, e_eta_bot, e_eta_top], inp]
-                result_element = SM.Sandwichmodel(inp) #,k_NS_V)
+                result_element = SM.Sandwichmodel(inp,selection_V) #,k_NS_V)
                 
                 # Speichert Resultate von Sandwichmodel fuer Element k (result_element) im gesamt Resultatverzeichnis (result_data)
                 result_data = outputer.outputer(result_data, result_element, step, ele_type, k)

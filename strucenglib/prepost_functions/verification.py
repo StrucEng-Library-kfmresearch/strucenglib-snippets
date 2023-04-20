@@ -9,9 +9,8 @@ import Rhino
 import scriptcontext
 import System.Guid, System.Drawing.Color
 
-def Nachweisschnitt_V(mdl, layer):
+def verification(mdl, layer, check=None):
     
-
     # Basic definitions
     #-------------------------------------------------------
        
@@ -90,7 +89,11 @@ def Nachweisschnitt_V(mdl, layer):
 
     
     # add elements to the structure using add_set
-    mdl.add_set(name='NS_Schnitt_V', type='element', selection=NS_element_numbers)  # add an element set 'elset_shell'
+    if check == 'V':
+        name_type='Nachweisschnitt_'+check
+        mdl.add_set(name=NS_layer_V, type=name_type, selection=NS_element_numbers)  # add an element set 'elset_shell'
+    else:
+        pass
 
     return NS_element_numbers
                 
