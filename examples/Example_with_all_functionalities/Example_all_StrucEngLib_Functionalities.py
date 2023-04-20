@@ -41,6 +41,7 @@ from strucenglib.prepost_functions import plot_nr_elem
 from strucenglib.prepost_functions import plot_nr_nodes
 from strucenglib.prepost_functions import area_load_generator_elements
 from strucenglib.prepost_functions import Normalspurbahnverkehr_load_generator
+from strucenglib.prepost_functions import verification
 from strucenglib.sandwichmodel import sandwichmodel_main as SMM
 
 
@@ -49,7 +50,7 @@ from strucenglib.sandwichmodel import sandwichmodel_main as SMM
 # ------------------------------------------------------------------------------
 
 # Initialisieren
-name = 'Example_all_StrucEngLib_Functionalities'
+name = 'Nachweisschnitt'
 path = 'C:\Temp\\'
 mdl = Structure(name=name, path=path)
 
@@ -95,9 +96,9 @@ mdl.add(MPCSection(name='sec_mpc'))
 mdl.add(Properties(name='elset_mpc_element_prop', material='elset_mpc_element_mat', section='sec_mpc', elset='elset_mpc'))
 
 # Grafical plots 
-#plot_loc_axes(mdl, axes_scale=50) # Plot Local coordinates 
-#plot_nr_elem(mdl) # Plot Element Numbers
-#plot_nr_nodes(mdl)  # Plot Node Numbers
+plot_loc_axes(mdl, axes_scale=50) # Plot Local coordinates 
+plot_nr_elem(mdl) # Plot Element Numbers
+plot_nr_nodes(mdl)  # Plot Node Numbers
 
 # Constrains (Displacements)
 mdl.add([GeneralDisplacement(name='nset_pinned_set_disp',  x=0, y=0, z=0, xx=0, yy=0, zz=0, nodes='nset_pinned'),])
@@ -127,6 +128,10 @@ GeneralStep(name='step_4',  loads=return_values_Gleis_1 ,   nlgeom=False),
 ])
 mdl.steps_order = [ 'step_1', 'step_2', 'step_3' , 'step_4'  ]  
 
+# Nachweisschnitte (Querkraft)
+verification(mdl,layer='verification_V_deck', check='V')
+
+
 
 # Run analyses
 # ------------------------------------------------------------------------------
@@ -141,19 +146,19 @@ SMM.Hauptfunktion(structure = mdl, data = data, lstep = ['step_2','step_3','step
 # ------------------------------------------------------------------------------
 
 # Plot linear elastic results
-# rhino.plot_data(mdl, lstep='step_3', field='ux', cbar_size=1, source='linel')
-# rhino.plot_data(mdl, lstep='step_2', field='uy', cbar_size=1, source='linel')
+rhino.plot_data(mdl, lstep='step_3', field='ux', cbar_size=1, source='linel')
+rhino.plot_data(mdl, lstep='step_2', field='uy', cbar_size=1, source='linel')
 rhino.plot_data(mdl, lstep='step_2', field='uz', cbar_size=1, source='linel')
 rhino.plot_data(mdl, lstep='step_3', field='uz', cbar_size=1, source='linel')
 rhino.plot_data(mdl, lstep='step_4', field='uz', cbar_size=1, source='linel')
-# rhino.plot_data(mdl, lstep='step_2', field='sf1', cbar_size=1, source='linel')
-# rhino.plot_data(mdl, lstep='step_2', field='sf2', cbar_size=1, source='linel')
-# rhino.plot_data(mdl, lstep='step_2', field='sf3', cbar_size=1, source='linel')
-# rhino.plot_data(mdl, lstep='step_2', field='sf4', cbar_size=1, source='linel')
-# rhino.plot_data(mdl, lstep='step_2', field='sf5', cbar_size=1, source='linel')
-# rhino.plot_data(mdl, lstep='step_2', field='sm1', cbar_size=1, source='linel')
-# rhino.plot_data(mdl, lstep='step_2', field='sm2', cbar_size=1, source='linel')
-# rhino.plot_data(mdl, lstep='step_2', field='sm3', cbar_size=1, source='linel')
+rhino.plot_data(mdl, lstep='step_2', field='sf1', cbar_size=1, source='linel')
+rhino.plot_data(mdl, lstep='step_2', field='sf2', cbar_size=1, source='linel')
+rhino.plot_data(mdl, lstep='step_2', field='sf3', cbar_size=1, source='linel')
+rhino.plot_data(mdl, lstep='step_2', field='sf4', cbar_size=1, source='linel')
+rhino.plot_data(mdl, lstep='step_2', field='sf5', cbar_size=1, source='linel')
+rhino.plot_data(mdl, lstep='step_2', field='sm1', cbar_size=1, source='linel')
+rhino.plot_data(mdl, lstep='step_2', field='sm2', cbar_size=1, source='linel')
+rhino.plot_data(mdl, lstep='step_2', field='sm3', cbar_size=1, source='linel')
 
 
 # Plot Sandwichmodel
@@ -169,18 +174,18 @@ rhino.plot_data(mdl, lstep='step_4', field='as_xi_top', cbar_size=1, source='SMM
 rhino.plot_data(mdl, lstep='step_2', field='as_eta_top', cbar_size=1, source='SMM')
 rhino.plot_data(mdl, lstep='step_3', field='as_eta_top', cbar_size=1, source='SMM')
 rhino.plot_data(mdl, lstep='step_4', field='as_eta_top', cbar_size=1, source='SMM')
-# rhino.plot_data(mdl, lstep='step_2', field='as_z', cbar_size=1, source='SMM')
-# rhino.plot_data(mdl, lstep='step_2', field='CC_bot', cbar_size=1, source='SMM')
-# rhino.plot_data(mdl, lstep='step_2', field='CC_top', cbar_size=1, source='SMM')
-# rhino.plot_data(mdl, lstep='step_2', field='k_bot', cbar_size=1, source='SMM')
-# rhino.plot_data(mdl, lstep='step_2', field='k_top', cbar_size=1, source='SMM')
-# rhino.plot_data(mdl, lstep='step_2', field='t_bot', cbar_size=1, source='SMM')
-# rhino.plot_data(mdl, lstep='step_2', field='t_top', cbar_size=1, source='SMM')
-# rhino.plot_data(mdl, lstep='step_2', field='psi_bot', cbar_size=1, source='SMM')
-# rhino.plot_data(mdl, lstep='step_2', field='psi_top', cbar_size=1, source='SMM')
-# rhino.plot_data(mdl, lstep='step_2', field='Fall_bot', cbar_size=1, source='SMM')
-# rhino.plot_data(mdl, lstep='step_2', field='Fall_top', cbar_size=1, source='SMM')
-# rhino.plot_data(mdl, lstep='step_2', field='m_cc_bot', cbar_size=1, source='SMM')
-# rhino.plot_data(mdl, lstep='step_2', field='m_cc_top', cbar_size=1, source='SMM')
-# rhino.plot_data(mdl, lstep='step_2', field='m_shear_c', cbar_size=1, source='SMM')
-# rhino.plot_data(mdl, lstep='step_2', field='m_c_total', cbar_size=1, source='SMM')
+rhino.plot_data(mdl, lstep='step_2', field='as_z', cbar_size=1, source='SMM')
+rhino.plot_data(mdl, lstep='step_2', field='CC_bot', cbar_size=1, source='SMM')
+rhino.plot_data(mdl, lstep='step_2', field='CC_top', cbar_size=1, source='SMM')
+rhino.plot_data(mdl, lstep='step_2', field='k_bot', cbar_size=1, source='SMM')
+rhino.plot_data(mdl, lstep='step_2', field='k_top', cbar_size=1, source='SMM')
+rhino.plot_data(mdl, lstep='step_2', field='t_bot', cbar_size=1, source='SMM')
+rhino.plot_data(mdl, lstep='step_2', field='t_top', cbar_size=1, source='SMM')
+rhino.plot_data(mdl, lstep='step_2', field='psi_bot', cbar_size=1, source='SMM')
+rhino.plot_data(mdl, lstep='step_2', field='psi_top', cbar_size=1, source='SMM')
+rhino.plot_data(mdl, lstep='step_2', field='Fall_bot', cbar_size=1, source='SMM')
+rhino.plot_data(mdl, lstep='step_2', field='Fall_top', cbar_size=1, source='SMM')
+rhino.plot_data(mdl, lstep='step_2', field='m_cc_bot', cbar_size=1, source='SMM')
+rhino.plot_data(mdl, lstep='step_2', field='m_cc_top', cbar_size=1, source='SMM')
+rhino.plot_data(mdl, lstep='step_2', field='m_shear_c', cbar_size=1, source='SMM')
+rhino.plot_data(mdl, lstep='step_2', field='m_c_total', cbar_size=1, source='SMM')

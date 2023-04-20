@@ -38,7 +38,8 @@ def verification(mdl, layer, check=None):
         scriptcontext.doc.Layers.Add(NS_layer_ele_centroids_temp, System.Drawing.Color.Green)
 
     # Bestimmung der Elementmittelpunkte
-    for element_num, element in mdl.elements.items():
+    for element_num, element in mdl.elements.items(): # fangt bei elemntnummer 0 an
+        
         xyz=mdl.element_centroid(element=element_num)  # return the centroid of element
         elemen_num_backend=element_num+1 # return element number
         rs.CurrentLayer(NS_layer_ele_centroids_temp)
@@ -77,7 +78,7 @@ def verification(mdl, layer, check=None):
     # Bestimmung der Nummern der Elemente welche belastet sind
     NS_element_numbers=[]
     for element_num, element in mdl.elements.items():
-        print(element_num)
+        
         xyz=mdl.element_centroid(element=element_num)  # return the centroid of element        
         if [xyz[0],xyz[1],xyz[2]] in xyz_coor_NS_centroid_points:
             NS_element_numbers.append(element_num+1)

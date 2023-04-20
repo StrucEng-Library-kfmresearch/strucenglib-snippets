@@ -8,7 +8,7 @@ import genormte_Funktionen as norm
 #Implementiertes Sandwichmodel
 #----------------------------------------------------------------------------------------------------------------------------------
 
-def Sandwichmodel(inp,selection_V): #,k_NS_V):
+def Sandwichmodel(inp,selection_V,selection_V_check,k_save): #,k_NS_V):
     """
     ----------------------------------------
     Parameters
@@ -116,49 +116,59 @@ def Sandwichmodel(inp,selection_V): #,k_NS_V):
     e_eta_bot = mH.e_xi(ex,ey,ez, beta_bot)
     e_eta_top = mH.e_xi(ex,ey,ez, beta_top)
     
+    
  
     while cc[0] == 1 or cc[1] == 1:
         
-        #Querkraftbewehrung,  Schubnachweis
-        
-        # Schubnachweis nur falls innerhalb des Nachweisschnitte_V
-        #if i+1 in k_NS_V.selection: # i lauft ab 0... und k_NS_V ab 1...
-                 
-        if Schubnachweis == 'vereinfacht':            
-            if (h>=400 or v0/dv>tau_nom) and v0!=0:                 
-                rho_z = v0/(fs_d*dv*mH.cot(theta_core))           #[-]
-                as_z = rho_z*1000*1000#[mm2/m2]                                 #[mm^2/m2] 
-                shearcrack = 1                                              #Beton gerissen, Schubbewehrung erforderlich
-            else:     
-                rho_z = 0                                                    #[-]
-                as_z = 0                                                     #[mm^2/m2]
-                shearcrack = 0                                               #Beton ungerissen, keine Schubbewehrung erforderlich
+        # Schubnachweis und Querkraftbewehrung nur falls innerhalb des Nachweisschnitte_V oder kein Nachweisschnitt vorhande      
 
-            m_shear_c = v0/(tau_nom*dv)                                         # Ausnutzungsgrad des Betons bezueglich Querkraft
-            
-        elif Schubnachweis == 'sia':
+        if selection_V_check==True:
+            is_ele_Present = k_save in set(selection_V) # return true if current element is in selection_V
+        else:
+            is_ele_Present = True
 
-            d = min(h-d_strich_bot, h-d_strich_top)#? oder dv
-    
-            if v0 > norm.vrd(fc_k, fs_d, d, 'sia'):
-                z = 0.9*d #sia 262 4.3.3.4.2 oder dv?
-                rho_z = v0/(z*fs_d*mH.cot(theta_core))
-                as_z = rho_z*1000*1000#[mm2/m2] 
-                shearcrack = 1
-            else:     
-                rho_z = 0                                                    #[-]
-                as_z = 0                                                     #[mm^2/m2]
-                shearcrack = 0
+        if is_ele_Present == True:   # fuhre den Nachweis          
+                                        
+            if Schubnachweis == 'vereinfacht':            
+                if (h>=400 or v0/dv>tau_nom) and v0!=0:                 
+                    rho_z = v0/(fs_d*dv*mH.cot(theta_core))           #[-]
+                    as_z = rho_z*1000*1000#[mm2/m2]                                 #[mm^2/m2] 
+                    shearcrack = 1                                              #Beton gerissen, Schubbewehrung erforderlich
+                else:     
+                    rho_z = 0                                                    #[-]
+                    as_z = 0                                                     #[mm^2/m2]
+                    shearcrack = 0                                               #Beton ungerissen, keine Schubbewehrung erforderlich
+
+                m_shear_c = v0/(tau_nom*dv)                                         # Ausnutzungsgrad des Betons bezueglich Querkraft
                 
-            m_shear_c = v0/norm.vrd(fc_k, fs_d, d, 'sia')                     # Ausnutzungsgrad des Betons bezueglich Querkraft
-        else: 
-            raise ValueError("Schubnachweis is not defined")
-        #else:
-            #rho_z = 0                                                    #[-]
-            #as_z = 0                                                     #[mm^2/m2]
-            #shearcrack = 0                
-            #m_shear_c = 0               # Ausnutzungsgrad des Betons bezueglich Querkraft
-            
+            elif Schubnachweis == 'sia':
+
+                d = min(h-d_strich_bot, h-d_strich_top)#? oder dv
+        
+                if v0 > norm.vrd(fc_k, fs_d, d, 'sia'):
+                    z = 0.9*d #sia 262 4.3.3.4.2 oder dv?
+                    rho_z = v0/(z*fs_d*mH.cot(theta_core))
+                    as_z = rho_z*1000*1000#[mm2/m2] 
+                    shearcrack = 1
+                else:     
+                    rho_z = 0                                                    #[-]
+                    as_z = 0                                                     #[mm^2/m2]
+                    shearcrack = 0
+                    
+                m_shear_c = v0/norm.vrd(fc_k, fs_d, d, 'sia')                     # Ausnutzungsgrad des Betons bezueglich Querkraft
+            else: 
+                raise ValueError("Schubnachweis is not defined")
+            #else:
+                #rho_z = 0                                                    #[-]
+                #as_z = 0                                                     #[mm^2/m2]
+                #shearcrack = 0                
+                #m_shear_c = 0               # Ausnutzungsgrad des Betons bezueglich Querkraft
+        
+        else: # fuhre den Nachweis nicht   
+            rho_z = 0                                                    #[-]
+            as_z = 0                                                     #[mm^2/m2]
+            shearcrack = 0                                               #Beton ungerissen, keine Schubbewehrung erforderlich
+            m_shear_c = v0/(tau_nom*dv)   
 
         # Membrankraefte Schubanteil
         if shearcrack == 1:

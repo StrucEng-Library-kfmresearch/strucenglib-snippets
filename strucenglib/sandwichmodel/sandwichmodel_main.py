@@ -71,35 +71,35 @@ def Hauptfunktion(structure = "mdl", data = {}, lstep = None, Mindestbewehrung =
         
 
         # Element bzw. Element set fur Nachweisschnitt V bestimmen
-        
-
         sets = structure.sets
    
         for key in sorted(structure.sets):               
+            
             element_set = structure.sets[key]
             
             
             if element_set.type == 'Nachweisschnitt_V':
-                selection_V = [i + 1 for i in sorted(element_set.selection)]   
+                selection_V = [i-1  for i in sorted(element_set.selection)]     # minus 1 da fur while k kleiner kmax wieder mit pythonhspezifischer Nummerierung, das heisst erstes Element gloeich Nummer 0
+                selection_V_check=True
             else:
-                selection_V=0
+                selection_V_check=False # das heisst wenn kein Nachweisschnitt definiert wurde, dann wird der schubnachweis fur alle elemente gefuhrt
             #    self.blank_line()
             #    self.blank_line()
 
-
+            
 
         while k < kmax: # Start bei Null 
             
             # Berechnung SM nur fuer Shell Elemente (d.h. ele_type=1 -> Shell; ele_type=0 -> MPC oder andere Elemente)
             ele_type = structure.results[step]['element']['ele_type'][k].values()
-            
+            k_save=k
             if ele_type[0] == 1.0:            
                 
                 # Input der Daten fuer Element k # inp = [i,mx,my,mxy,vx,vy,v0,nx,ny,nxy,h,d_strich_bot,d_strich_top,fc_k,theta_grad_kern,fs_d, alpha_bot, alpha_top, beta_bot, beta_top, Mindestbewehrung, Druckzoneniteration, Schubnachweis, xyz, ex,ey,ez]
                 inp = inputer.inputer(structure,data,k,step, Mindestbewehrung, Druckzoneniteration, Schubnachweis, code)
 
                 # Anwendung des Sandwichmodels auf Element k  # result_element = [i, as_xi, as_eta, as_z, fall, cc, t, k, psi, m_shear_c, m_cc, [xyz, ex, ey, ez, e_xi_bot, e_xi_top, e_eta_bot, e_eta_top], inp]
-                result_element = SM.Sandwichmodel(inp,selection_V) #,k_NS_V)
+                result_element = SM.Sandwichmodel(inp,selection_V,selection_V_check,k_save) #,k_NS_V)
                 
                 # Speichert Resultate von Sandwichmodel fuer Element k (result_element) im gesamt Resultatverzeichnis (result_data)
                 result_data = outputer.outputer(result_data, result_element, step, ele_type, k)
@@ -113,7 +113,7 @@ def Hauptfunktion(structure = "mdl", data = {}, lstep = None, Mindestbewehrung =
             k+=1
         
         # Speichert result_data in die structure.result dict von Compas FEA. damit die Compas FEA Funktion rhino.plot_data() genutzt werden kann
-        print(step)
+        
         structure.results[step]['element'].update(result_data[step]['element'])
 
     toc = time.time()-tic #timer end
