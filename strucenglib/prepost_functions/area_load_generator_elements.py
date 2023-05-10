@@ -14,7 +14,7 @@ def area_load_generator_elements(mdl, layer):
     # Basic definitions
     #-------------------------------------------------------
     # Tolerance for the plane check  
-    R_tol=2 
+    R_tol=5 
 
     # Layer with curve which define the loaded area
     load_layer=layer 
@@ -24,6 +24,57 @@ def area_load_generator_elements(mdl, layer):
 
     # Create layername for savin only the centroids of the loaded elements
     load_layer_ele_centroids_loaded=load_layer+'_Elementmittelpunkte_belastet'
+
+
+    # Aufstellung der Grundlagen fur die Ebenengleichung
+    # ---------------------------------------------------------------------------------
+    # Extract Point coor from the curve in load_layer
+    x_coor_all=[]
+    y_coor_all=[]
+    z_coor_all=[]
+
+    curve=rs.ObjectsByLayer(load_layer)
+    if rs.IsCurve(curve):
+        points=rs.CurvePoints(curve)
+    
+    # Determine three points of the curve
+    for i in range(0,3):
+        
+        x_coor=points[i][0]
+        y_coor=points[i][1]
+        z_coor=points[i][2]
+        x_coor_all.append(x_coor)
+        y_coor_all.append(y_coor)
+        z_coor_all.append(z_coor)
+    
+    # Define the three points A=x_A,y_A,z_A; B=x_B,y_B,z_B; C=x_C,y_C,z_C
+    x_A=x_coor_all[0]
+    y_A=y_coor_all[0]
+    z_A=z_coor_all[0]
+    
+    x_B=x_coor_all[1]
+    y_B=y_coor_all[1]
+    z_B=z_coor_all[1]
+
+    x_C=x_coor_all[2]
+    y_C=y_coor_all[2]
+    z_C=z_coor_all[2]
+
+    # Vectors AB=[AB_x, AB_y, AB_z] and AC=[AC_x, AC_y, AC_z]
+    AB_x=x_B-x_A
+    AB_y=y_B-y_A
+    AB_z=z_B-z_A
+
+    AC_x=x_C-x_A
+    AC_y=y_C-y_A
+    AC_z=z_C-z_A 
+
+
+    # Normalvektor via corrsproduct (N=AB x AC)
+    N_x=AB_y*AC_z-AB_z*AC_y
+    N_y=AB_z*AC_x-AB_x*AC_z
+    N_z=AB_x*AC_y-AB_y*AC_x
+    AN=x_A*N_x + y_A*N_y + z_A*N_z
 
 
     # Create new layers 
@@ -76,14 +127,28 @@ def area_load_generator_elements(mdl, layer):
             coory=coor[1]
             coorz=coor[2]   
             
-            # Check if the z-Axis of the pont is zero (if not do no include in the set) 
-            if coorz >= 0-R_tol and coorz < 0+R_tol:
+            # Check if point is inside curve-plane (mit Ebenegleichung)
+
+            # Koordiantenform (XN= AN ----> N_x*coorx + N_y*coor_y + N_z*coor_z = x_A*N_x + y_A*N_y + z_A*N_z)
+            XN=N_x*coorx+N_y*coory+N_z*coorz 
+
+            if XN >= AN-R_tol and XN < AN+R_tol: 
                 # Abspeichern im Layer fur alle belastetne Elemente 
                 rs.CurrentLayer(load_layer_ele_centroids_loaded)
                 rs.AddPoint( (coorx,coory,coorz) ) 
                 xyz_coor_loaded_centroid_points.append([coorx,coory,coorz])
             else:
                 pass
+
+            
+            # Check if the z-Axis of the pont is zero (if not do no include in the set) 
+            #if coorz >= 0-R_tol and coorz < 0+R_tol:
+                # Abspeichern im Layer fur alle belastetne Elemente 
+            #    rs.CurrentLayer(load_layer_ele_centroids_loaded)
+            #    rs.AddPoint( (coorx,coory,coorz) ) 
+            #    xyz_coor_loaded_centroid_points.append([coorx,coory,coorz])
+            #else:
+            #    pass
 
     # Bestimmung der Nummern der Elemente welche belastet sind
     loaded_element_numbers=[]

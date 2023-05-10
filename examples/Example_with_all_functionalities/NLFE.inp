@@ -1,0 +1,2462 @@
+!------------------------------------------------------------------
+! Heading
+!------------------------------------------------------------------
+!
+finish
+/clear
+/prep7
+
+!
+!
+!
+!------------------------------------------------------------------
+! Nodes
+!------------------------------------------------------------------
+!
+n,1, 0.000, 0.000, 0.000
+n,2, 0.000, 5400.000, 0.000
+n,3, 9720.000, 0.000, 0.000
+n,4, 9720.000, 5400.000, 0.000
+n,5, 747.692, 0.000, 0.000
+n,6, 747.692, 771.429, 0.000
+n,7, 0.000, 771.429, 0.000
+n,8, 0.000, 4628.572, 0.000
+n,9, 747.692, 4628.572, 0.000
+n,10, 747.692, 5400.000, 0.000
+n,11, 9720.000, 771.427, 0.000
+n,12, 8972.307, 771.427, 0.000
+n,13, 8972.307, 0.000, 0.000
+n,14, 8972.309, 5400.000, 0.000
+n,15, 8972.309, 4628.570, 0.000
+n,16, 9720.000, 4628.570, 0.000
+n,17, 8972.309, 3857.140, 0.000
+n,18, 9720.000, 3857.140, 0.000
+n,19, 8972.308, 3085.711, 0.000
+n,20, 9720.000, 3085.711, 0.000
+n,21, 8972.307, 2314.283, 0.000
+n,22, 9720.000, 2314.282, 0.000
+n,23, 8972.307, 1542.855, 0.000
+n,24, 9720.000, 1542.855, 0.000
+n,25, 8224.615, 2314.283, 0.000
+n,26, 8224.614, 1542.855, 0.000
+n,27, 8224.614, 771.428, 0.000
+n,28, 8224.614, 0.000, 0.000
+n,29, 7476.921, 1542.856, 0.000
+n,30, 7476.921, 771.428, 0.000
+n,31, 7476.920, 0.000, 0.000
+n,32, 6729.228, 771.428, 0.000
+n,33, 6729.228, 0.000, 0.000
+n,34, 5981.536, 771.428, 0.000
+n,35, 5981.536, 0.000, 0.000
+n,36, 5233.843, 771.429, 0.000
+n,37, 5233.843, 0.000, 0.000
+n,38, 4486.151, 771.429, 0.000
+n,39, 4486.151, 0.000, 0.000
+n,40, 3738.459, 771.429, 0.000
+n,41, 3738.459, 0.000, 0.000
+n,42, 2990.768, 771.429, 0.000
+n,43, 2990.767, 0.000, 0.000
+n,44, 2243.076, 771.429, 0.000
+n,45, 2243.076, 0.000, 0.000
+n,46, 1495.385, 771.429, 0.000
+n,47, 1495.384, 0.000, 0.000
+n,48, 2243.077, 1542.859, 0.000
+n,49, 1495.385, 1542.858, 0.000
+n,50, 747.693, 1542.858, 0.000
+n,51, 1495.385, 2314.287, 0.000
+n,52, 747.692, 2314.286, 0.000
+n,53, 0.000, 2314.286, 0.000
+n,54, 0.000, 1542.858, 0.000
+n,55, 747.692, 3085.715, 0.000
+n,56, 0.000, 3085.715, 0.000
+n,57, 747.692, 3857.143, 0.000
+n,58, 0.000, 3857.143, 0.000
+n,59, 1495.385, 3085.716, 0.000
+n,60, 1495.384, 3857.144, 0.000
+n,61, 1495.385, 4628.572, 0.000
+n,62, 2243.078, 3857.145, 0.000
+n,63, 2243.078, 4628.572, 0.000
+n,64, 2243.078, 5400.000, 0.000
+n,65, 1495.385, 5400.000, 0.000
+n,66, 2990.771, 4628.572, 0.000
+n,67, 2990.771, 5400.000, 0.000
+n,68, 3738.464, 4628.572, 0.000
+n,69, 3738.464, 5400.000, 0.000
+n,70, 4486.157, 4628.572, 0.000
+n,71, 4486.157, 5400.000, 0.000
+n,72, 5233.849, 4628.572, 0.000
+n,73, 5233.849, 5400.000, 0.000
+n,74, 5981.541, 4628.571, 0.000
+n,75, 5981.542, 5400.000, 0.000
+n,76, 6729.233, 4628.571, 0.000
+n,77, 6729.234, 5400.000, 0.000
+n,78, 7476.925, 4628.571, 0.000
+n,79, 7476.926, 5400.000, 0.000
+n,80, 8224.617, 4628.571, 0.000
+n,81, 8224.617, 5400.000, 0.000
+n,82, 8224.617, 3857.141, 0.000
+n,83, 7476.925, 3857.141, 0.000
+n,84, 7476.924, 3085.712, 0.000
+n,85, 8224.616, 3085.712, 0.000
+n,86, 6729.233, 3857.141, 0.000
+n,87, 6729.232, 3085.712, 0.000
+n,88, 6729.229, 2314.284, 0.000
+n,89, 7476.923, 2314.283, 0.000
+n,90, 5981.541, 3857.142, 0.000
+n,91, 5981.540, 3085.713, 0.000
+n,92, 5981.537, 2314.285, 0.000
+n,93, 5981.536, 1542.857, 0.000
+n,94, 6729.228, 1542.856, 0.000
+n,95, 5233.847, 3085.714, 0.000
+n,96, 5233.845, 2314.286, 0.000
+n,97, 5233.844, 1542.857, 0.000
+n,98, 4486.153, 2314.286, 0.000
+n,99, 4486.151, 1542.858, 0.000
+n,100, 3738.460, 2314.287, 0.000
+n,101, 3738.459, 1542.858, 0.000
+n,102, 2990.769, 2314.289, 0.000
+n,103, 2990.768, 1542.859, 0.000
+n,104, 2243.077, 2314.289, 0.000
+n,105, 2990.770, 3085.717, 0.000
+n,106, 2243.077, 3085.717, 0.000
+n,107, 2990.771, 3857.145, 0.000
+n,108, 3738.463, 3085.716, 0.000
+n,109, 3738.464, 3857.144, 0.000
+n,110, 4486.155, 3085.715, 0.000
+n,111, 4486.156, 3857.143, 0.000
+n,112, 5233.849, 3857.143, 0.000
+!
+!
+!------------------------------------------------------------------
+! Node sets
+!------------------------------------------------------------------
+!
+! nset_pinned
+!------------
+!
+allsel
+!
+nsel,u,node,, 81
+nsel,u,node,, 79
+nsel,u,node,, 77
+nsel,u,node,, 75
+nsel,u,node,, 73
+nsel,u,node,, 71
+nsel,u,node,, 69
+nsel,u,node,, 67
+nsel,u,node,, 65
+nsel,u,node,, 64
+nsel,u,node,, 47
+nsel,u,node,, 45
+nsel,u,node,, 43
+nsel,u,node,, 41
+nsel,u,node,, 39
+nsel,u,node,, 37
+nsel,u,node,, 35
+nsel,u,node,, 33
+nsel,u,node,, 31
+nsel,u,node,, 28
+nsel,u,node,, 14
+nsel,u,node,, 13
+nsel,u,node,, 10
+nsel,u,node,, 5
+nsel,u,node,, 4
+nsel,u,node,, 3
+nsel,u,node,, 2
+nsel,u,node,, 1
+!
+nsel,inve
+CM, nset_pinned,node
+!
+!
+!------------------------------------------------------------------
+! Elements
+!------------------------------------------------------------------
+!
+allsel
+!
+! elset_deck_element_prop
+!------------------------
+!
+!
+secnum, 1
+!
+! ----- Start Element 1 ----- 
+et, 1, shell181
+type, 1
+en,1,1,5,6,7
+keyopt, 1, 1,0
+keyopt, 1, 3,2
+keyopt, 1, 8,2
+esel,s,elem,,1
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,11,0,1,2,3
+emodif,all,esys,11
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 2 ----- 
+et, 2, shell181
+type, 2
+en,2,2,8,9,10
+keyopt, 2, 1,0
+keyopt, 2, 3,2
+keyopt, 2, 8,2
+esel,s,elem,,2
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,12,0,1,2,3
+emodif,all,esys,12
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 3 ----- 
+et, 3, shell181
+type, 3
+en,3,3,11,12,13
+keyopt, 3, 1,0
+keyopt, 3, 3,2
+keyopt, 3, 8,2
+esel,s,elem,,3
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,13,0,1,2,3
+emodif,all,esys,13
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 4 ----- 
+et, 4, shell181
+type, 4
+en,4,4,14,15,16
+keyopt, 4, 1,0
+keyopt, 4, 3,2
+keyopt, 4, 8,2
+esel,s,elem,,4
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,14,0,1,2,3
+emodif,all,esys,14
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 5 ----- 
+et, 5, shell181
+type, 5
+en,5,16,15,17,18
+keyopt, 5, 1,0
+keyopt, 5, 3,2
+keyopt, 5, 8,2
+esel,s,elem,,5
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,15,0,1,2,3
+emodif,all,esys,15
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 6 ----- 
+et, 6, shell181
+type, 6
+en,6,18,17,19,20
+keyopt, 6, 1,0
+keyopt, 6, 3,2
+keyopt, 6, 8,2
+esel,s,elem,,6
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,16,0,1,2,3
+emodif,all,esys,16
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 7 ----- 
+et, 7, shell181
+type, 7
+en,7,20,19,21,22
+keyopt, 7, 1,0
+keyopt, 7, 3,2
+keyopt, 7, 8,2
+esel,s,elem,,7
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,17,0,1,2,3
+emodif,all,esys,17
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 8 ----- 
+et, 8, shell181
+type, 8
+en,8,22,21,23,24
+keyopt, 8, 1,0
+keyopt, 8, 3,2
+keyopt, 8, 8,2
+esel,s,elem,,8
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,18,0,1,2,3
+emodif,all,esys,18
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 9 ----- 
+et, 9, shell181
+type, 9
+en,9,24,23,12,11
+keyopt, 9, 1,0
+keyopt, 9, 3,2
+keyopt, 9, 8,2
+esel,s,elem,,9
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,19,0,1,2,3
+emodif,all,esys,19
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 10 ----- 
+et, 10, shell181
+type, 10
+en,10,23,21,25,26
+keyopt, 10, 1,0
+keyopt, 10, 3,2
+keyopt, 10, 8,2
+esel,s,elem,,10
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,20,0,1,2,3
+emodif,all,esys,20
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 11 ----- 
+et, 11, shell181
+type, 11
+en,11,23,26,27,12
+keyopt, 11, 1,0
+keyopt, 11, 3,2
+keyopt, 11, 8,2
+esel,s,elem,,11
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,21,0,1,2,3
+emodif,all,esys,21
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 12 ----- 
+et, 12, shell181
+type, 12
+en,12,27,28,13,12
+keyopt, 12, 1,0
+keyopt, 12, 3,2
+keyopt, 12, 8,2
+esel,s,elem,,12
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,22,0,1,2,3
+emodif,all,esys,22
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 13 ----- 
+et, 13, shell181
+type, 13
+en,13,27,26,29,30
+keyopt, 13, 1,0
+keyopt, 13, 3,2
+keyopt, 13, 8,2
+esel,s,elem,,13
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,23,0,1,2,3
+emodif,all,esys,23
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 14 ----- 
+et, 14, shell181
+type, 14
+en,14,27,30,31,28
+keyopt, 14, 1,0
+keyopt, 14, 3,2
+keyopt, 14, 8,2
+esel,s,elem,,14
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,24,0,1,2,3
+emodif,all,esys,24
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 15 ----- 
+et, 15, shell181
+type, 15
+en,15,31,30,32,33
+keyopt, 15, 1,0
+keyopt, 15, 3,2
+keyopt, 15, 8,2
+esel,s,elem,,15
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,25,0,1,2,3
+emodif,all,esys,25
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 16 ----- 
+et, 16, shell181
+type, 16
+en,16,33,32,34,35
+keyopt, 16, 1,0
+keyopt, 16, 3,2
+keyopt, 16, 8,2
+esel,s,elem,,16
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,26,0,1,2,3
+emodif,all,esys,26
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 17 ----- 
+et, 17, shell181
+type, 17
+en,17,35,34,36,37
+keyopt, 17, 1,0
+keyopt, 17, 3,2
+keyopt, 17, 8,2
+esel,s,elem,,17
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,27,0,1,2,3
+emodif,all,esys,27
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 18 ----- 
+et, 18, shell181
+type, 18
+en,18,37,36,38,39
+keyopt, 18, 1,0
+keyopt, 18, 3,2
+keyopt, 18, 8,2
+esel,s,elem,,18
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,28,0,1,2,3
+emodif,all,esys,28
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 19 ----- 
+et, 19, shell181
+type, 19
+en,19,39,38,40,41
+keyopt, 19, 1,0
+keyopt, 19, 3,2
+keyopt, 19, 8,2
+esel,s,elem,,19
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,29,0,1,2,3
+emodif,all,esys,29
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 20 ----- 
+et, 20, shell181
+type, 20
+en,20,41,40,42,43
+keyopt, 20, 1,0
+keyopt, 20, 3,2
+keyopt, 20, 8,2
+esel,s,elem,,20
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,30,0,1,2,3
+emodif,all,esys,30
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 21 ----- 
+et, 21, shell181
+type, 21
+en,21,43,42,44,45
+keyopt, 21, 1,0
+keyopt, 21, 3,2
+keyopt, 21, 8,2
+esel,s,elem,,21
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,31,0,1,2,3
+emodif,all,esys,31
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 22 ----- 
+et, 22, shell181
+type, 22
+en,22,45,44,46,47
+keyopt, 22, 1,0
+keyopt, 22, 3,2
+keyopt, 22, 8,2
+esel,s,elem,,22
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,32,0,1,2,3
+emodif,all,esys,32
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 23 ----- 
+et, 23, shell181
+type, 23
+en,23,47,46,6,5
+keyopt, 23, 1,0
+keyopt, 23, 3,2
+keyopt, 23, 8,2
+esel,s,elem,,23
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,33,0,1,2,3
+emodif,all,esys,33
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 24 ----- 
+et, 24, shell181
+type, 24
+en,24,46,44,48,49
+keyopt, 24, 1,0
+keyopt, 24, 3,2
+keyopt, 24, 8,2
+esel,s,elem,,24
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,34,0,1,2,3
+emodif,all,esys,34
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 25 ----- 
+et, 25, shell181
+type, 25
+en,25,46,49,50,6
+keyopt, 25, 1,0
+keyopt, 25, 3,2
+keyopt, 25, 8,2
+esel,s,elem,,25
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,35,0,1,2,3
+emodif,all,esys,35
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 26 ----- 
+et, 26, shell181
+type, 26
+en,26,50,49,51,52
+keyopt, 26, 1,0
+keyopt, 26, 3,2
+keyopt, 26, 8,2
+esel,s,elem,,26
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,36,0,1,2,3
+emodif,all,esys,36
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 27 ----- 
+et, 27, shell181
+type, 27
+en,27,50,52,53,54
+keyopt, 27, 1,0
+keyopt, 27, 3,2
+keyopt, 27, 8,2
+esel,s,elem,,27
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,37,0,1,2,3
+emodif,all,esys,37
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 28 ----- 
+et, 28, shell181
+type, 28
+en,28,50,54,7,6
+keyopt, 28, 1,0
+keyopt, 28, 3,2
+keyopt, 28, 8,2
+esel,s,elem,,28
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,38,0,1,2,3
+emodif,all,esys,38
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 29 ----- 
+et, 29, shell181
+type, 29
+en,29,53,52,55,56
+keyopt, 29, 1,0
+keyopt, 29, 3,2
+keyopt, 29, 8,2
+esel,s,elem,,29
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,39,0,1,2,3
+emodif,all,esys,39
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 30 ----- 
+et, 30, shell181
+type, 30
+en,30,56,55,57,58
+keyopt, 30, 1,0
+keyopt, 30, 3,2
+keyopt, 30, 8,2
+esel,s,elem,,30
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,40,0,1,2,3
+emodif,all,esys,40
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 31 ----- 
+et, 31, shell181
+type, 31
+en,31,58,57,9,8
+keyopt, 31, 1,0
+keyopt, 31, 3,2
+keyopt, 31, 8,2
+esel,s,elem,,31
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,41,0,1,2,3
+emodif,all,esys,41
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 32 ----- 
+et, 32, shell181
+type, 32
+en,32,57,55,59,60
+keyopt, 32, 1,0
+keyopt, 32, 3,2
+keyopt, 32, 8,2
+esel,s,elem,,32
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,42,0,1,2,3
+emodif,all,esys,42
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 33 ----- 
+et, 33, shell181
+type, 33
+en,33,57,60,61,9
+keyopt, 33, 1,0
+keyopt, 33, 3,2
+keyopt, 33, 8,2
+esel,s,elem,,33
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,43,0,1,2,3
+emodif,all,esys,43
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 34 ----- 
+et, 34, shell181
+type, 34
+en,34,61,60,62,63
+keyopt, 34, 1,0
+keyopt, 34, 3,2
+keyopt, 34, 8,2
+esel,s,elem,,34
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,44,0,1,2,3
+emodif,all,esys,44
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 35 ----- 
+et, 35, shell181
+type, 35
+en,35,61,63,64,65
+keyopt, 35, 1,0
+keyopt, 35, 3,2
+keyopt, 35, 8,2
+esel,s,elem,,35
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,45,0,1,2,3
+emodif,all,esys,45
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 36 ----- 
+et, 36, shell181
+type, 36
+en,36,61,65,10,9
+keyopt, 36, 1,0
+keyopt, 36, 3,2
+keyopt, 36, 8,2
+esel,s,elem,,36
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,46,0,1,2,3
+emodif,all,esys,46
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 37 ----- 
+et, 37, shell181
+type, 37
+en,37,64,63,66,67
+keyopt, 37, 1,0
+keyopt, 37, 3,2
+keyopt, 37, 8,2
+esel,s,elem,,37
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,47,0,1,2,3
+emodif,all,esys,47
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 38 ----- 
+et, 38, shell181
+type, 38
+en,38,67,66,68,69
+keyopt, 38, 1,0
+keyopt, 38, 3,2
+keyopt, 38, 8,2
+esel,s,elem,,38
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,48,0,1,2,3
+emodif,all,esys,48
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 39 ----- 
+et, 39, shell181
+type, 39
+en,39,69,68,70,71
+keyopt, 39, 1,0
+keyopt, 39, 3,2
+keyopt, 39, 8,2
+esel,s,elem,,39
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,49,0,1,2,3
+emodif,all,esys,49
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 40 ----- 
+et, 40, shell181
+type, 40
+en,40,71,70,72,73
+keyopt, 40, 1,0
+keyopt, 40, 3,2
+keyopt, 40, 8,2
+esel,s,elem,,40
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,50,0,1,2,3
+emodif,all,esys,50
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 41 ----- 
+et, 41, shell181
+type, 41
+en,41,73,72,74,75
+keyopt, 41, 1,0
+keyopt, 41, 3,2
+keyopt, 41, 8,2
+esel,s,elem,,41
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,51,0,1,2,3
+emodif,all,esys,51
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 42 ----- 
+et, 42, shell181
+type, 42
+en,42,75,74,76,77
+keyopt, 42, 1,0
+keyopt, 42, 3,2
+keyopt, 42, 8,2
+esel,s,elem,,42
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,52,0,1,2,3
+emodif,all,esys,52
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 43 ----- 
+et, 43, shell181
+type, 43
+en,43,77,76,78,79
+keyopt, 43, 1,0
+keyopt, 43, 3,2
+keyopt, 43, 8,2
+esel,s,elem,,43
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,53,0,1,2,3
+emodif,all,esys,53
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 44 ----- 
+et, 44, shell181
+type, 44
+en,44,79,78,80,81
+keyopt, 44, 1,0
+keyopt, 44, 3,2
+keyopt, 44, 8,2
+esel,s,elem,,44
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,54,0,1,2,3
+emodif,all,esys,54
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 45 ----- 
+et, 45, shell181
+type, 45
+en,45,81,80,15,14
+keyopt, 45, 1,0
+keyopt, 45, 3,2
+keyopt, 45, 8,2
+esel,s,elem,,45
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,55,0,1,2,3
+emodif,all,esys,55
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 46 ----- 
+et, 46, shell181
+type, 46
+en,46,80,82,17,15
+keyopt, 46, 1,0
+keyopt, 46, 3,2
+keyopt, 46, 8,2
+esel,s,elem,,46
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,56,0,1,2,3
+emodif,all,esys,56
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 47 ----- 
+et, 47, shell181
+type, 47
+en,47,80,78,83,82
+keyopt, 47, 1,0
+keyopt, 47, 3,2
+keyopt, 47, 8,2
+esel,s,elem,,47
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,57,0,1,2,3
+emodif,all,esys,57
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 48 ----- 
+et, 48, shell181
+type, 48
+en,48,83,84,85,82
+keyopt, 48, 1,0
+keyopt, 48, 3,2
+keyopt, 48, 8,2
+esel,s,elem,,48
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,58,0,1,2,3
+emodif,all,esys,58
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 49 ----- 
+et, 49, shell181
+type, 49
+en,49,83,78,76,86
+keyopt, 49, 1,0
+keyopt, 49, 3,2
+keyopt, 49, 8,2
+esel,s,elem,,49
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,59,0,1,2,3
+emodif,all,esys,59
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 50 ----- 
+et, 50, shell181
+type, 50
+en,50,83,86,87,84
+keyopt, 50, 1,0
+keyopt, 50, 3,2
+keyopt, 50, 8,2
+esel,s,elem,,50
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,60,0,1,2,3
+emodif,all,esys,60
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 51 ----- 
+et, 51, shell181
+type, 51
+en,51,87,88,89,84
+keyopt, 51, 1,0
+keyopt, 51, 3,2
+keyopt, 51, 8,2
+esel,s,elem,,51
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,61,0,1,2,3
+emodif,all,esys,61
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 52 ----- 
+et, 52, shell181
+type, 52
+en,52,87,86,90,91
+keyopt, 52, 1,0
+keyopt, 52, 3,2
+keyopt, 52, 8,2
+esel,s,elem,,52
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,62,0,1,2,3
+emodif,all,esys,62
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 53 ----- 
+et, 53, shell181
+type, 53
+en,53,87,91,92,88
+keyopt, 53, 1,0
+keyopt, 53, 3,2
+keyopt, 53, 8,2
+esel,s,elem,,53
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,63,0,1,2,3
+emodif,all,esys,63
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 54 ----- 
+et, 54, shell181
+type, 54
+en,54,92,93,94,88
+keyopt, 54, 1,0
+keyopt, 54, 3,2
+keyopt, 54, 8,2
+esel,s,elem,,54
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,64,0,1,2,3
+emodif,all,esys,64
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 55 ----- 
+et, 55, shell181
+type, 55
+en,55,92,91,95,96
+keyopt, 55, 1,0
+keyopt, 55, 3,2
+keyopt, 55, 8,2
+esel,s,elem,,55
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,65,0,1,2,3
+emodif,all,esys,65
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 56 ----- 
+et, 56, shell181
+type, 56
+en,56,92,96,97,93
+keyopt, 56, 1,0
+keyopt, 56, 3,2
+keyopt, 56, 8,2
+esel,s,elem,,56
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,66,0,1,2,3
+emodif,all,esys,66
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 57 ----- 
+et, 57, shell181
+type, 57
+en,57,97,36,34,93
+keyopt, 57, 1,0
+keyopt, 57, 3,2
+keyopt, 57, 8,2
+esel,s,elem,,57
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,67,0,1,2,3
+emodif,all,esys,67
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 58 ----- 
+et, 58, shell181
+type, 58
+en,58,97,96,98,99
+keyopt, 58, 1,0
+keyopt, 58, 3,2
+keyopt, 58, 8,2
+esel,s,elem,,58
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,68,0,1,2,3
+emodif,all,esys,68
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 59 ----- 
+et, 59, shell181
+type, 59
+en,59,97,99,38,36
+keyopt, 59, 1,0
+keyopt, 59, 3,2
+keyopt, 59, 8,2
+esel,s,elem,,59
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,69,0,1,2,3
+emodif,all,esys,69
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 60 ----- 
+et, 60, shell181
+type, 60
+en,60,99,98,100,101
+keyopt, 60, 1,0
+keyopt, 60, 3,2
+keyopt, 60, 8,2
+esel,s,elem,,60
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,70,0,1,2,3
+emodif,all,esys,70
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 61 ----- 
+et, 61, shell181
+type, 61
+en,61,99,101,40,38
+keyopt, 61, 1,0
+keyopt, 61, 3,2
+keyopt, 61, 8,2
+esel,s,elem,,61
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,71,0,1,2,3
+emodif,all,esys,71
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 62 ----- 
+et, 62, shell181
+type, 62
+en,62,101,100,102,103
+keyopt, 62, 1,0
+keyopt, 62, 3,2
+keyopt, 62, 8,2
+esel,s,elem,,62
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,72,0,1,2,3
+emodif,all,esys,72
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 63 ----- 
+et, 63, shell181
+type, 63
+en,63,101,103,42,40
+keyopt, 63, 1,0
+keyopt, 63, 3,2
+keyopt, 63, 8,2
+esel,s,elem,,63
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,73,0,1,2,3
+emodif,all,esys,73
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 64 ----- 
+et, 64, shell181
+type, 64
+en,64,103,102,104,48
+keyopt, 64, 1,0
+keyopt, 64, 3,2
+keyopt, 64, 8,2
+esel,s,elem,,64
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,74,0,1,2,3
+emodif,all,esys,74
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 65 ----- 
+et, 65, shell181
+type, 65
+en,65,103,48,44,42
+keyopt, 65, 1,0
+keyopt, 65, 3,2
+keyopt, 65, 8,2
+esel,s,elem,,65
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,75,0,1,2,3
+emodif,all,esys,75
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 66 ----- 
+et, 66, shell181
+type, 66
+en,66,104,102,105,106
+keyopt, 66, 1,0
+keyopt, 66, 3,2
+keyopt, 66, 8,2
+esel,s,elem,,66
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,76,0,1,2,3
+emodif,all,esys,76
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 67 ----- 
+et, 67, shell181
+type, 67
+en,67,104,106,59,51
+keyopt, 67, 1,0
+keyopt, 67, 3,2
+keyopt, 67, 8,2
+esel,s,elem,,67
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,77,0,1,2,3
+emodif,all,esys,77
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 68 ----- 
+et, 68, shell181
+type, 68
+en,68,104,51,49,48
+keyopt, 68, 1,0
+keyopt, 68, 3,2
+keyopt, 68, 8,2
+esel,s,elem,,68
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,78,0,1,2,3
+emodif,all,esys,78
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 69 ----- 
+et, 69, shell181
+type, 69
+en,69,106,105,107,62
+keyopt, 69, 1,0
+keyopt, 69, 3,2
+keyopt, 69, 8,2
+esel,s,elem,,69
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,79,0,1,2,3
+emodif,all,esys,79
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 70 ----- 
+et, 70, shell181
+type, 70
+en,70,106,62,60,59
+keyopt, 70, 1,0
+keyopt, 70, 3,2
+keyopt, 70, 8,2
+esel,s,elem,,70
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,80,0,1,2,3
+emodif,all,esys,80
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 71 ----- 
+et, 71, shell181
+type, 71
+en,71,107,105,108,109
+keyopt, 71, 1,0
+keyopt, 71, 3,2
+keyopt, 71, 8,2
+esel,s,elem,,71
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,81,0,1,2,3
+emodif,all,esys,81
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 72 ----- 
+et, 72, shell181
+type, 72
+en,72,107,109,68,66
+keyopt, 72, 1,0
+keyopt, 72, 3,2
+keyopt, 72, 8,2
+esel,s,elem,,72
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,82,0,1,2,3
+emodif,all,esys,82
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 73 ----- 
+et, 73, shell181
+type, 73
+en,73,107,66,63,62
+keyopt, 73, 1,0
+keyopt, 73, 3,2
+keyopt, 73, 8,2
+esel,s,elem,,73
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,83,0,1,2,3
+emodif,all,esys,83
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 74 ----- 
+et, 74, shell181
+type, 74
+en,74,109,108,110,111
+keyopt, 74, 1,0
+keyopt, 74, 3,2
+keyopt, 74, 8,2
+esel,s,elem,,74
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,84,0,1,2,3
+emodif,all,esys,84
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 75 ----- 
+et, 75, shell181
+type, 75
+en,75,109,111,70,68
+keyopt, 75, 1,0
+keyopt, 75, 3,2
+keyopt, 75, 8,2
+esel,s,elem,,75
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,85,0,1,2,3
+emodif,all,esys,85
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 76 ----- 
+et, 76, shell181
+type, 76
+en,76,111,110,95,112
+keyopt, 76, 1,0
+keyopt, 76, 3,2
+keyopt, 76, 8,2
+esel,s,elem,,76
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,86,0,1,2,3
+emodif,all,esys,86
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 77 ----- 
+et, 77, shell181
+type, 77
+en,77,111,112,72,70
+keyopt, 77, 1,0
+keyopt, 77, 3,2
+keyopt, 77, 8,2
+esel,s,elem,,77
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,87,0,1,2,3
+emodif,all,esys,87
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 78 ----- 
+et, 78, shell181
+type, 78
+en,78,112,95,91,90
+keyopt, 78, 1,0
+keyopt, 78, 3,2
+keyopt, 78, 8,2
+esel,s,elem,,78
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,88,0,1,2,3
+emodif,all,esys,88
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 79 ----- 
+et, 79, shell181
+type, 79
+en,79,112,90,74,72
+keyopt, 79, 1,0
+keyopt, 79, 3,2
+keyopt, 79, 8,2
+esel,s,elem,,79
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,89,0,1,2,3
+emodif,all,esys,89
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 80 ----- 
+et, 80, shell181
+type, 80
+en,80,110,98,96,95
+keyopt, 80, 1,0
+keyopt, 80, 3,2
+keyopt, 80, 8,2
+esel,s,elem,,80
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,90,0,1,2,3
+emodif,all,esys,90
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 81 ----- 
+et, 81, shell181
+type, 81
+en,81,110,108,100,98
+keyopt, 81, 1,0
+keyopt, 81, 3,2
+keyopt, 81, 8,2
+esel,s,elem,,81
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,91,0,1,2,3
+emodif,all,esys,91
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 82 ----- 
+et, 82, shell181
+type, 82
+en,82,108,105,102,100
+keyopt, 82, 1,0
+keyopt, 82, 3,2
+keyopt, 82, 8,2
+esel,s,elem,,82
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,92,0,1,2,3
+emodif,all,esys,92
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 83 ----- 
+et, 83, shell181
+type, 83
+en,83,94,32,30,29
+keyopt, 83, 1,0
+keyopt, 83, 3,2
+keyopt, 83, 8,2
+esel,s,elem,,83
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,93,0,1,2,3
+emodif,all,esys,93
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 84 ----- 
+et, 84, shell181
+type, 84
+en,84,94,29,89,88
+keyopt, 84, 1,0
+keyopt, 84, 3,2
+keyopt, 84, 8,2
+esel,s,elem,,84
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,94,0,1,2,3
+emodif,all,esys,94
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 85 ----- 
+et, 85, shell181
+type, 85
+en,85,94,93,34,32
+keyopt, 85, 1,0
+keyopt, 85, 3,2
+keyopt, 85, 8,2
+esel,s,elem,,85
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,95,0,1,2,3
+emodif,all,esys,95
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 86 ----- 
+et, 86, shell181
+type, 86
+en,86,90,86,76,74
+keyopt, 86, 1,0
+keyopt, 86, 3,2
+keyopt, 86, 8,2
+esel,s,elem,,86
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,96,0,1,2,3
+emodif,all,esys,96
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 87 ----- 
+et, 87, shell181
+type, 87
+en,87,89,29,26,25
+keyopt, 87, 1,0
+keyopt, 87, 3,2
+keyopt, 87, 8,2
+esel,s,elem,,87
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,97,0,1,2,3
+emodif,all,esys,97
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 88 ----- 
+et, 88, shell181
+type, 88
+en,88,89,25,85,84
+keyopt, 88, 1,0
+keyopt, 88, 3,2
+keyopt, 88, 8,2
+esel,s,elem,,88
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,98,0,1,2,3
+emodif,all,esys,98
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 89 ----- 
+et, 89, shell181
+type, 89
+en,89,85,25,21,19
+keyopt, 89, 1,0
+keyopt, 89, 3,2
+keyopt, 89, 8,2
+esel,s,elem,,89
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,99,0,1,2,3
+emodif,all,esys,99
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 90 ----- 
+et, 90, shell181
+type, 90
+en,90,85,19,17,82
+keyopt, 90, 1,0
+keyopt, 90, 3,2
+keyopt, 90, 8,2
+esel,s,elem,,90
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,100,0,1,2,3
+emodif,all,esys,100
+kdele,1,3,1
+allsel
+csys,0
+! ----- Start Element 91 ----- 
+et, 91, shell181
+type, 91
+en,91,59,55,52,51
+keyopt, 91, 1,0
+keyopt, 91, 3,2
+keyopt, 91, 8,2
+esel,s,elem,,91
+k,1,0,0,2980
+k,2,1,0,2980
+k,3,0.0,2981.0,2980.0
+cskp,101,0,1,2,3
+emodif,all,esys,101
+kdele,1,3,1
+allsel
+csys,0
+!
+!
+!------------------------------------------------------------------
+! Element sets
+!------------------------------------------------------------------
+!
+! elset_deck
+!-----------
+!
+allsel
+!
+esel,u,elem,, 1
+esel,u,elem,, 2
+esel,u,elem,, 3
+esel,u,elem,, 4
+esel,u,elem,, 5
+esel,u,elem,, 6
+esel,u,elem,, 7
+esel,u,elem,, 8
+esel,u,elem,, 9
+esel,u,elem,, 10
+esel,u,elem,, 11
+esel,u,elem,, 12
+esel,u,elem,, 13
+esel,u,elem,, 14
+esel,u,elem,, 15
+esel,u,elem,, 16
+esel,u,elem,, 17
+esel,u,elem,, 18
+esel,u,elem,, 19
+esel,u,elem,, 20
+esel,u,elem,, 21
+esel,u,elem,, 22
+esel,u,elem,, 23
+esel,u,elem,, 24
+esel,u,elem,, 25
+esel,u,elem,, 26
+esel,u,elem,, 27
+esel,u,elem,, 28
+esel,u,elem,, 29
+esel,u,elem,, 30
+esel,u,elem,, 31
+esel,u,elem,, 32
+esel,u,elem,, 33
+esel,u,elem,, 34
+esel,u,elem,, 35
+esel,u,elem,, 36
+esel,u,elem,, 37
+esel,u,elem,, 38
+esel,u,elem,, 39
+esel,u,elem,, 40
+esel,u,elem,, 41
+esel,u,elem,, 42
+esel,u,elem,, 43
+esel,u,elem,, 44
+esel,u,elem,, 45
+esel,u,elem,, 46
+esel,u,elem,, 47
+esel,u,elem,, 48
+esel,u,elem,, 49
+esel,u,elem,, 50
+esel,u,elem,, 51
+esel,u,elem,, 52
+esel,u,elem,, 53
+esel,u,elem,, 54
+esel,u,elem,, 55
+esel,u,elem,, 56
+esel,u,elem,, 57
+esel,u,elem,, 58
+esel,u,elem,, 59
+esel,u,elem,, 60
+esel,u,elem,, 61
+esel,u,elem,, 62
+esel,u,elem,, 63
+esel,u,elem,, 64
+esel,u,elem,, 65
+esel,u,elem,, 66
+esel,u,elem,, 67
+esel,u,elem,, 68
+esel,u,elem,, 69
+esel,u,elem,, 70
+esel,u,elem,, 71
+esel,u,elem,, 72
+esel,u,elem,, 73
+esel,u,elem,, 74
+esel,u,elem,, 75
+esel,u,elem,, 76
+esel,u,elem,, 77
+esel,u,elem,, 78
+esel,u,elem,, 79
+esel,u,elem,, 80
+esel,u,elem,, 81
+esel,u,elem,, 82
+esel,u,elem,, 83
+esel,u,elem,, 84
+esel,u,elem,, 85
+esel,u,elem,, 86
+esel,u,elem,, 87
+esel,u,elem,, 88
+esel,u,elem,, 89
+esel,u,elem,, 90
+esel,u,elem,, 91
+!
+esel,inve
+CM, elset_deck,elem
+!
+!
+! verification_V_deck
+!--------------------
+!
+!
+!
+!------------------------------------------------------------------
+! Materials
+!------------------------------------------------------------------
+!
+! elset_deck_element_mat
+!-----------------------
+!
+!
+tb,user,1,1,76
+tbtemp,0
+tbdata,1,2,1
+tbdata,3,20,100,30,30
+tbdata,7,1,2,5,20,90
+tbdata,12,500,650,0.5,0.02,200000
+tbdata,17,-1,-1,-1
+tbdata,20,1,2,5,20,0
+tbdata,25,500,650,0.5,0.02,200000
+tbdata,30,-1,-1,-1
+tbdata,33,1,2,5,20,0
+tbdata,38,500,650,0.5,0.02,200000
+tbdata,43,-1,-1,-1
+tbdata,46,1,2,5,20,90
+tbdata,51,500,650,0.5,0.02,200000
+tbdata,56,-1,-1,-1
+tbdata,59,-1,20,0.2,-0.002
+tbdata,63,10000,2,1,0
+tbdata,67,0.67,1,1,2,0
+tbdata,72,45,0,1,500
+tbdata,76,-1
+tb,state,1,,72
+mp,dens,1,2.5e-06
+!
+allsel
+cmsel,s, elset_deck, elem
+mpchg,1,all
+!
+sectype,1 , shell
+seccontrols,942506.116873,942506.116873,0,,1,1,1
+!
+*do,j,1,20
+secdata,5.0,1,0,,,j
+secoffset,mid
+*enddo
+!
+!
+!
+!------------------------------------------------------------------
+! Boundary conditions
+!------------------------------------------------------------------
+!
+! nset_pinned_set_disp
+!---------------------
+!
+nsel,s,,,nset_pinned
+!
+d,all,ux,0
+d,all,uy,0
+d,all,uz,0
+d,all,rotx,0
+d,all,roty,0
+d,all,rotz,0
+!
+allsel
+!
+!
+!
+!------------------------------------------------------------------
+! Steps
+!------------------------------------------------------------------
+!
+! step_2
+!-------
+!
+! load_gravity
+!-------------
+!
+!
+acel,0.0, 0.0, 9.81
+!
+/solu
+cnvtol,F,,0.9
+cnvtol,U,,0.9
+cnvtol,M,-1,3
+autots,1
+nsubst,1,1,1
+time, 1
+Nropt,Full,,on
+NLGEOM,off
+!
+!
+!
+!
+! Output
+!-------
+!
+outres,erase
+outres,nsol,last
+outres,rsol,last
+outres,esol,last
+!
+solve
+!
+!
+! step_3
+!-------
+!
+! area_load
+!----------
+!
+allsel
+esel,s,elem,,7
+sfcum,pres,add,,,
+sfe,all,1,pres,1,-0.1
+allsel
+!
+allsel
+esel,s,elem,,29
+sfcum,pres,add,,,
+sfe,all,1,pres,1,-0.1
+allsel
+!
+allsel
+esel,s,elem,,51
+sfcum,pres,add,,,
+sfe,all,1,pres,1,-0.1
+allsel
+!
+allsel
+esel,s,elem,,53
+sfcum,pres,add,,,
+sfe,all,1,pres,1,-0.1
+allsel
+!
+allsel
+esel,s,elem,,55
+sfcum,pres,add,,,
+sfe,all,1,pres,1,-0.1
+allsel
+!
+allsel
+esel,s,elem,,66
+sfcum,pres,add,,,
+sfe,all,1,pres,1,-0.1
+allsel
+!
+allsel
+esel,s,elem,,67
+sfcum,pres,add,,,
+sfe,all,1,pres,1,-0.1
+allsel
+!
+allsel
+esel,s,elem,,80
+sfcum,pres,add,,,
+sfe,all,1,pres,1,-0.1
+allsel
+!
+allsel
+esel,s,elem,,81
+sfcum,pres,add,,,
+sfe,all,1,pres,1,-0.1
+allsel
+!
+allsel
+esel,s,elem,,82
+sfcum,pres,add,,,
+sfe,all,1,pres,1,-0.1
+allsel
+!
+allsel
+esel,s,elem,,88
+sfcum,pres,add,,,
+sfe,all,1,pres,1,-0.1
+allsel
+!
+allsel
+esel,s,elem,,89
+sfcum,pres,add,,,
+sfe,all,1,pres,1,-0.1
+allsel
+!
+allsel
+esel,s,elem,,91
+sfcum,pres,add,,,
+sfe,all,1,pres,1,-0.1
+allsel
+!
+/solu
+cnvtol,F,,0.9
+cnvtol,U,,0.9
+cnvtol,M,-1,3
+autots,1
+nsubst,1,1,1
+time, 2
+Nropt,Full,,on
+NLGEOM,off
+!
+!
+!
+!
+! Output
+!-------
+!
+outres,erase
+outres,nsol,last
+outres,rsol,last
+outres,esol,last
+!
+solve
+!
+!
+!------------------------------------------------------------------
+! Results
+!------------------------------------------------------------------
+!
+/post1
+set,1,last
+!
+! Write Displacements
+!
+nsel, all
+*get,numNodes,node,,count
+*set,dispX,
+*dim,dispX,array,numNodes,1
+*set,dispY,
+*dim,dispY,array,numNodes,1
+*set,dispZ,
+*dim,dispZ,array,numNodes,1
+*dim,nds_d, ,numNodes
+*VGET, dispX, node, all, u, X,,,2
+*VGET, dispY, node, all, u, Y,,,2
+*VGET, dispZ, node, all, u, Z,,,2
+!
+*vfill,nds_d(1),ramp,1,1
+*cfopen,C:\Temp\NLFE_output/step_2_displacements,txt
+*vwrite, nds_d(1) , ','  , dispX(1) , ',' , dispY(1) , ',' ,dispZ(1)
+(          F100000.0,       A,       ES,           A,          ES,          A,      ES)
+*cfclose 
+
+!
+!
+*DIM,elem_infos,ARRAY,91,2
+elem_infos(1,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(1,2)=1 ! Elementnumber
+elem_infos(2,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(2,2)=2 ! Elementnumber
+elem_infos(3,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(3,2)=3 ! Elementnumber
+elem_infos(4,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(4,2)=4 ! Elementnumber
+elem_infos(5,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(5,2)=5 ! Elementnumber
+elem_infos(6,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(6,2)=6 ! Elementnumber
+elem_infos(7,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(7,2)=7 ! Elementnumber
+elem_infos(8,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(8,2)=8 ! Elementnumber
+elem_infos(9,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(9,2)=9 ! Elementnumber
+elem_infos(10,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(10,2)=10 ! Elementnumber
+elem_infos(11,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(11,2)=11 ! Elementnumber
+elem_infos(12,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(12,2)=12 ! Elementnumber
+elem_infos(13,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(13,2)=13 ! Elementnumber
+elem_infos(14,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(14,2)=14 ! Elementnumber
+elem_infos(15,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(15,2)=15 ! Elementnumber
+elem_infos(16,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(16,2)=16 ! Elementnumber
+elem_infos(17,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(17,2)=17 ! Elementnumber
+elem_infos(18,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(18,2)=18 ! Elementnumber
+elem_infos(19,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(19,2)=19 ! Elementnumber
+elem_infos(20,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(20,2)=20 ! Elementnumber
+elem_infos(21,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(21,2)=21 ! Elementnumber
+elem_infos(22,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(22,2)=22 ! Elementnumber
+elem_infos(23,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(23,2)=23 ! Elementnumber
+elem_infos(24,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(24,2)=24 ! Elementnumber
+elem_infos(25,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(25,2)=25 ! Elementnumber
+elem_infos(26,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(26,2)=26 ! Elementnumber
+elem_infos(27,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(27,2)=27 ! Elementnumber
+elem_infos(28,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(28,2)=28 ! Elementnumber
+elem_infos(29,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(29,2)=29 ! Elementnumber
+elem_infos(30,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(30,2)=30 ! Elementnumber
+elem_infos(31,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(31,2)=31 ! Elementnumber
+elem_infos(32,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(32,2)=32 ! Elementnumber
+elem_infos(33,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(33,2)=33 ! Elementnumber
+elem_infos(34,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(34,2)=34 ! Elementnumber
+elem_infos(35,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(35,2)=35 ! Elementnumber
+elem_infos(36,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(36,2)=36 ! Elementnumber
+elem_infos(37,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(37,2)=37 ! Elementnumber
+elem_infos(38,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(38,2)=38 ! Elementnumber
+elem_infos(39,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(39,2)=39 ! Elementnumber
+elem_infos(40,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(40,2)=40 ! Elementnumber
+elem_infos(41,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(41,2)=41 ! Elementnumber
+elem_infos(42,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(42,2)=42 ! Elementnumber
+elem_infos(43,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(43,2)=43 ! Elementnumber
+elem_infos(44,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(44,2)=44 ! Elementnumber
+elem_infos(45,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(45,2)=45 ! Elementnumber
+elem_infos(46,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(46,2)=46 ! Elementnumber
+elem_infos(47,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(47,2)=47 ! Elementnumber
+elem_infos(48,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(48,2)=48 ! Elementnumber
+elem_infos(49,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(49,2)=49 ! Elementnumber
+elem_infos(50,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(50,2)=50 ! Elementnumber
+elem_infos(51,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(51,2)=51 ! Elementnumber
+elem_infos(52,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(52,2)=52 ! Elementnumber
+elem_infos(53,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(53,2)=53 ! Elementnumber
+elem_infos(54,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(54,2)=54 ! Elementnumber
+elem_infos(55,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(55,2)=55 ! Elementnumber
+elem_infos(56,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(56,2)=56 ! Elementnumber
+elem_infos(57,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(57,2)=57 ! Elementnumber
+elem_infos(58,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(58,2)=58 ! Elementnumber
+elem_infos(59,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(59,2)=59 ! Elementnumber
+elem_infos(60,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(60,2)=60 ! Elementnumber
+elem_infos(61,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(61,2)=61 ! Elementnumber
+elem_infos(62,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(62,2)=62 ! Elementnumber
+elem_infos(63,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(63,2)=63 ! Elementnumber
+elem_infos(64,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(64,2)=64 ! Elementnumber
+elem_infos(65,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(65,2)=65 ! Elementnumber
+elem_infos(66,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(66,2)=66 ! Elementnumber
+elem_infos(67,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(67,2)=67 ! Elementnumber
+elem_infos(68,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(68,2)=68 ! Elementnumber
+elem_infos(69,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(69,2)=69 ! Elementnumber
+elem_infos(70,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(70,2)=70 ! Elementnumber
+elem_infos(71,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(71,2)=71 ! Elementnumber
+elem_infos(72,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(72,2)=72 ! Elementnumber
+elem_infos(73,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(73,2)=73 ! Elementnumber
+elem_infos(74,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(74,2)=74 ! Elementnumber
+elem_infos(75,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(75,2)=75 ! Elementnumber
+elem_infos(76,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(76,2)=76 ! Elementnumber
+elem_infos(77,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(77,2)=77 ! Elementnumber
+elem_infos(78,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(78,2)=78 ! Elementnumber
+elem_infos(79,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(79,2)=79 ! Elementnumber
+elem_infos(80,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(80,2)=80 ! Elementnumber
+elem_infos(81,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(81,2)=81 ! Elementnumber
+elem_infos(82,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(82,2)=82 ! Elementnumber
+elem_infos(83,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(83,2)=83 ! Elementnumber
+elem_infos(84,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(84,2)=84 ! Elementnumber
+elem_infos(85,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(85,2)=85 ! Elementnumber
+elem_infos(86,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(86,2)=86 ! Elementnumber
+elem_infos(87,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(87,2)=87 ! Elementnumber
+elem_infos(88,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(88,2)=88 ! Elementnumber
+elem_infos(89,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(89,2)=89 ! Elementnumber
+elem_infos(90,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(90,2)=90 ! Elementnumber
+elem_infos(91,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(91,2)=91 ! Elementnumber
+!
+! Write Shell forces and moments
+!
+allsel
+ETABLE, , SMISC, 1 
+ETABLE, , SMISC, 2 
+ETABLE, , SMISC, 3 
+ETABLE, , SMISC, 4 
+ETABLE, , SMISC, 5 
+ETABLE, , SMISC, 6 
+ETABLE, , SMISC, 7 
+ETABLE, , SMISC, 8 
+*get, nelem, elem,, count 
+*dim, enum, array, nelem, 1 
+*dim, eforces, array, nelem, 9  
+*vget, enum, ELEM, , ELIST 
+*do,i,1,nelem 
+*if,elem_infos(i,1),EQ,1,THEN  
+*get, eforces(i, 1), ETAB, 1, ELEM, enum(i) 
+*get, eforces(i, 2), ETAB, 2, ELEM, enum(i) 
+*get, eforces(i, 3), ETAB, 3, ELEM, enum(i) 
+*get, eforces(i, 4), ETAB, 7, ELEM, enum(i) 
+*get, eforces(i, 5), ETAB, 8, ELEM, enum(i) 
+*get, eforces(i, 6), ETAB, 4, ELEM, enum(i) 
+*get, eforces(i, 7), ETAB, 5, ELEM, enum(i) 
+*get, eforces(i, 8), ETAB, 6, ELEM, enum(i) 
+eforces(i, 9)=elem_infos(i,1)
+*else
+*endif
+*Enddo 
+*cfopen,C:\Temp\NLFE_output/step_2_shell_forces_moments,txt 
+*do,i,1,nelem 
+*CFWRITE, shell_forces_moments, enum(i,1), eforces(i,1), eforces(i,2),eforces(i,3), eforces(i,4), eforces(i,5), eforces(i,6), eforces(i,7), eforces(i,8), eforces(i,9)   
+*Enddo 
+ESEL, ALL 
+ETABLE, ERAS 
+! 
+set,2,last
+!
+! Write Displacements
+!
+nsel, all
+*get,numNodes,node,,count
+*set,dispX,
+*dim,dispX,array,numNodes,1
+*set,dispY,
+*dim,dispY,array,numNodes,1
+*set,dispZ,
+*dim,dispZ,array,numNodes,1
+*dim,nds_d, ,numNodes
+*VGET, dispX, node, all, u, X,,,2
+*VGET, dispY, node, all, u, Y,,,2
+*VGET, dispZ, node, all, u, Z,,,2
+!
+*vfill,nds_d(1),ramp,1,1
+*cfopen,C:\Temp\NLFE_output/step_3_displacements,txt
+*vwrite, nds_d(1) , ','  , dispX(1) , ',' , dispY(1) , ',' ,dispZ(1)
+(          F100000.0,       A,       ES,           A,          ES,          A,      ES)
+*cfclose 
+
+!
+!
+*DIM,elem_infos,ARRAY,91,2
+elem_infos(1,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(1,2)=1 ! Elementnumber
+elem_infos(2,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(2,2)=2 ! Elementnumber
+elem_infos(3,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(3,2)=3 ! Elementnumber
+elem_infos(4,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(4,2)=4 ! Elementnumber
+elem_infos(5,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(5,2)=5 ! Elementnumber
+elem_infos(6,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(6,2)=6 ! Elementnumber
+elem_infos(7,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(7,2)=7 ! Elementnumber
+elem_infos(8,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(8,2)=8 ! Elementnumber
+elem_infos(9,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(9,2)=9 ! Elementnumber
+elem_infos(10,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(10,2)=10 ! Elementnumber
+elem_infos(11,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(11,2)=11 ! Elementnumber
+elem_infos(12,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(12,2)=12 ! Elementnumber
+elem_infos(13,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(13,2)=13 ! Elementnumber
+elem_infos(14,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(14,2)=14 ! Elementnumber
+elem_infos(15,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(15,2)=15 ! Elementnumber
+elem_infos(16,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(16,2)=16 ! Elementnumber
+elem_infos(17,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(17,2)=17 ! Elementnumber
+elem_infos(18,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(18,2)=18 ! Elementnumber
+elem_infos(19,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(19,2)=19 ! Elementnumber
+elem_infos(20,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(20,2)=20 ! Elementnumber
+elem_infos(21,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(21,2)=21 ! Elementnumber
+elem_infos(22,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(22,2)=22 ! Elementnumber
+elem_infos(23,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(23,2)=23 ! Elementnumber
+elem_infos(24,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(24,2)=24 ! Elementnumber
+elem_infos(25,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(25,2)=25 ! Elementnumber
+elem_infos(26,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(26,2)=26 ! Elementnumber
+elem_infos(27,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(27,2)=27 ! Elementnumber
+elem_infos(28,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(28,2)=28 ! Elementnumber
+elem_infos(29,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(29,2)=29 ! Elementnumber
+elem_infos(30,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(30,2)=30 ! Elementnumber
+elem_infos(31,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(31,2)=31 ! Elementnumber
+elem_infos(32,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(32,2)=32 ! Elementnumber
+elem_infos(33,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(33,2)=33 ! Elementnumber
+elem_infos(34,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(34,2)=34 ! Elementnumber
+elem_infos(35,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(35,2)=35 ! Elementnumber
+elem_infos(36,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(36,2)=36 ! Elementnumber
+elem_infos(37,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(37,2)=37 ! Elementnumber
+elem_infos(38,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(38,2)=38 ! Elementnumber
+elem_infos(39,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(39,2)=39 ! Elementnumber
+elem_infos(40,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(40,2)=40 ! Elementnumber
+elem_infos(41,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(41,2)=41 ! Elementnumber
+elem_infos(42,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(42,2)=42 ! Elementnumber
+elem_infos(43,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(43,2)=43 ! Elementnumber
+elem_infos(44,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(44,2)=44 ! Elementnumber
+elem_infos(45,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(45,2)=45 ! Elementnumber
+elem_infos(46,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(46,2)=46 ! Elementnumber
+elem_infos(47,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(47,2)=47 ! Elementnumber
+elem_infos(48,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(48,2)=48 ! Elementnumber
+elem_infos(49,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(49,2)=49 ! Elementnumber
+elem_infos(50,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(50,2)=50 ! Elementnumber
+elem_infos(51,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(51,2)=51 ! Elementnumber
+elem_infos(52,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(52,2)=52 ! Elementnumber
+elem_infos(53,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(53,2)=53 ! Elementnumber
+elem_infos(54,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(54,2)=54 ! Elementnumber
+elem_infos(55,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(55,2)=55 ! Elementnumber
+elem_infos(56,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(56,2)=56 ! Elementnumber
+elem_infos(57,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(57,2)=57 ! Elementnumber
+elem_infos(58,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(58,2)=58 ! Elementnumber
+elem_infos(59,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(59,2)=59 ! Elementnumber
+elem_infos(60,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(60,2)=60 ! Elementnumber
+elem_infos(61,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(61,2)=61 ! Elementnumber
+elem_infos(62,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(62,2)=62 ! Elementnumber
+elem_infos(63,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(63,2)=63 ! Elementnumber
+elem_infos(64,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(64,2)=64 ! Elementnumber
+elem_infos(65,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(65,2)=65 ! Elementnumber
+elem_infos(66,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(66,2)=66 ! Elementnumber
+elem_infos(67,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(67,2)=67 ! Elementnumber
+elem_infos(68,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(68,2)=68 ! Elementnumber
+elem_infos(69,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(69,2)=69 ! Elementnumber
+elem_infos(70,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(70,2)=70 ! Elementnumber
+elem_infos(71,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(71,2)=71 ! Elementnumber
+elem_infos(72,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(72,2)=72 ! Elementnumber
+elem_infos(73,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(73,2)=73 ! Elementnumber
+elem_infos(74,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(74,2)=74 ! Elementnumber
+elem_infos(75,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(75,2)=75 ! Elementnumber
+elem_infos(76,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(76,2)=76 ! Elementnumber
+elem_infos(77,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(77,2)=77 ! Elementnumber
+elem_infos(78,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(78,2)=78 ! Elementnumber
+elem_infos(79,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(79,2)=79 ! Elementnumber
+elem_infos(80,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(80,2)=80 ! Elementnumber
+elem_infos(81,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(81,2)=81 ! Elementnumber
+elem_infos(82,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(82,2)=82 ! Elementnumber
+elem_infos(83,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(83,2)=83 ! Elementnumber
+elem_infos(84,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(84,2)=84 ! Elementnumber
+elem_infos(85,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(85,2)=85 ! Elementnumber
+elem_infos(86,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(86,2)=86 ! Elementnumber
+elem_infos(87,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(87,2)=87 ! Elementnumber
+elem_infos(88,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(88,2)=88 ! Elementnumber
+elem_infos(89,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(89,2)=89 ! Elementnumber
+elem_infos(90,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(90,2)=90 ! Elementnumber
+elem_infos(91,1)=1 ! Elementyp e.g. shell=0, mpc and other =1
+elem_infos(91,2)=91 ! Elementnumber
+!
+! Write Shell forces and moments
+!
+allsel
+ETABLE, , SMISC, 1 
+ETABLE, , SMISC, 2 
+ETABLE, , SMISC, 3 
+ETABLE, , SMISC, 4 
+ETABLE, , SMISC, 5 
+ETABLE, , SMISC, 6 
+ETABLE, , SMISC, 7 
+ETABLE, , SMISC, 8 
+*get, nelem, elem,, count 
+*dim, enum, array, nelem, 1 
+*dim, eforces, array, nelem, 9  
+*vget, enum, ELEM, , ELIST 
+*do,i,1,nelem 
+*if,elem_infos(i,1),EQ,1,THEN  
+*get, eforces(i, 1), ETAB, 1, ELEM, enum(i) 
+*get, eforces(i, 2), ETAB, 2, ELEM, enum(i) 
+*get, eforces(i, 3), ETAB, 3, ELEM, enum(i) 
+*get, eforces(i, 4), ETAB, 7, ELEM, enum(i) 
+*get, eforces(i, 5), ETAB, 8, ELEM, enum(i) 
+*get, eforces(i, 6), ETAB, 4, ELEM, enum(i) 
+*get, eforces(i, 7), ETAB, 5, ELEM, enum(i) 
+*get, eforces(i, 8), ETAB, 6, ELEM, enum(i) 
+eforces(i, 9)=elem_infos(i,1)
+*else
+*endif
+*Enddo 
+*cfopen,C:\Temp\NLFE_output/step_3_shell_forces_moments,txt 
+*do,i,1,nelem 
+*CFWRITE, shell_forces_moments, enum(i,1), eforces(i,1), eforces(i,2),eforces(i,3), eforces(i,4), eforces(i,5), eforces(i,6), eforces(i,7), eforces(i,8), eforces(i,9)   
+*Enddo 
+ESEL, ALL 
+ETABLE, ERAS 
+! 
+!
+!
+*cfopen,run_ansys_check,txt 
+!
+!
