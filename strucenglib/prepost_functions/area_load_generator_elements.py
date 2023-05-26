@@ -128,7 +128,7 @@ def area_load_generator_elements(mdl, layer):
             coorz=coor[2]   
             
             # Check if point is inside curve-plane (mit Ebenegleichung)
-
+      
             # Koordiantenform (XN= AN ----> N_x*coorx + N_y*coor_y + N_z*coor_z = x_A*N_x + y_A*N_y + z_A*N_z)
             XN=N_x*coorx+N_y*coory+N_z*coorz 
 
@@ -149,7 +149,7 @@ def area_load_generator_elements(mdl, layer):
             #    xyz_coor_loaded_centroid_points.append([coorx,coory,coorz])
             #else:
             #    pass
-
+   
     # Bestimmung der Nummern der Elemente welche belastet sind
     loaded_element_numbers=[]
     for element_num, element in mdl.elements.items():
