@@ -139,44 +139,20 @@ mdl.steps_order = [ 'step_1', 'step_2', 'step_3' , 'step_4'  ]
 # Run analyses
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
-mdl.analyse_and_extract(software='ansys_sel', fields=[ 'u', 'sf'], lstep = ['step_2','step_3','step_4']) 
+mdl.analyse_and_extract(software='ansys_sel', fields=[ 'u', 'sf'], lstep = ['step_4']) 
 
 # Plot Results
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
 
 # Plot Results for step_2
-rhino.plot_data(mdl, lstep='step_2', field='uz', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_2', field='sf1', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_2', field='sf2', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_2', field='sf3', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_2', field='sf4', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_2', field='sf5', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_2', field='sm1', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_2', field='sm2', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_2', field='sm2', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_2', field='sm3', cbar_size=1, source='linel')
-#
-# Plot Results for step_3
-rhino.plot_data(mdl, lstep='step_3', field='uz', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_3', field='sf1', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_3', field='sf2', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_3', field='sf3', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_3', field='sf4', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_3', field='sf5', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_3', field='sm1', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_3', field='sm2', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_3', field='sm2', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_3', field='sm3', cbar_size=1, source='linel')
-#
-# Plot Results for step_4
 rhino.plot_data(mdl, lstep='step_4', field='uz', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_4', field='sf1', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_4', field='sf2', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_4', field='sf3', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_4', field='sf4', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_4', field='sf5', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_4', field='sm1', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_4', field='sm2', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_4', field='sm2', cbar_size=1, source='linel')
-rhino.plot_data(mdl, lstep='step_4', field='sm3', cbar_size=1, source='linel')
+#rhino.plot_data(mdl, lstep='step_4', field='sf1', cbar_size=1, source='linel')
+#rhino.plot_data(mdl, lstep='step_4', field='sf2', cbar_size=1, source='linel')
+#rhino.plot_data(mdl, lstep='step_4', field='sf3', cbar_size=1, source='linel')
+#rhino.plot_data(mdl, lstep='step_4', field='sf4', cbar_size=1, source='linel')
+#rhino.plot_data(mdl, lstep='step_4', field='sf5', cbar_size=1, source='linel')
+#rhino.plot_data(mdl, lstep='step_4', field='sm1', cbar_size=1, source='linel')
+#rhino.plot_data(mdl, lstep='step_4', field='sm2', cbar_size=1, source='linel')
+#rhino.plot_data(mdl, lstep='step_4', field='sm2', cbar_size=1, source='linel')
+#rhino.plot_data(mdl, lstep='step_4', field='sm3', cbar_size=1, source='linel')
