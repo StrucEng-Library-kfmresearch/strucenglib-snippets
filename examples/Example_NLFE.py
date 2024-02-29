@@ -59,10 +59,8 @@ mdl = Structure(name=name, path=path)
 mdl = Structure(name=name, path=path)
 
 # Shell Elements
-rhino.add_nodes_elements_from_layers(mdl, mesh_type='ShellElement', layers=[ 'elset_deck', 'elset_right', 'elset_left'] ) 
+rhino.add_nodes_elements_from_layers(mdl, mesh_type='ShellElement', layers=[ 'elset_deck'] ) 
 
-# MPC Elements
-rhino.add_nodes_elements_from_layers(mdl, line_type='MPCElement', layers='elset_mpc')
 
 # Sets for constraints
 rhino.add_sets_from_layers(mdl, layers=[ 'nset_pinned' ] )
@@ -76,28 +74,12 @@ reinf_3L={'stahl':1,'zm':2,'fsy':600,'fsu':850,'esu':0.8,'esv':0.02,'Es':200000,
 reinf_4L={'stahl':1,'zm':2,'fsy':600,'fsu':850,'esu':0.8,'esv':0.02,'Es':200000,'ka':-1,'kb':-1,'kc':-1,'as':5,'dm':20,'psi':90}
 
 mdl.add(CMMUsermat(name='elset_deck_element_mat', geo=geo, concrete=concrete, reinf_1L=reinf_1L, reinf_2L=reinf_2L, reinf_3L=reinf_3L, reinf_4L=reinf_4L,)) 
-mdl.add(CMMUsermat(name='elset_right_element_mat', geo=geo, concrete=concrete, reinf_1L=reinf_1L, reinf_2L=reinf_2L, reinf_3L=reinf_3L, reinf_4L=reinf_4L,))
-mdl.add(CMMUsermat(name='elset_left_element_mat', geo=geo, concrete=concrete, reinf_1L=reinf_1L, reinf_2L=reinf_2L, reinf_3L=reinf_3L, reinf_4L=reinf_4L,))
-
-# MPC Materials
-mdl.add(MPCStiff(name='elset_mpc_element_mat'))
 
 # Shell Sections, Properties, additional Properties, set local coordiantes (The local z-axed is adjusted by using "object direction" in Rino) 
 semi_loc_coords=calc_loc_coor(layer='elset_deck', PORIG=[0,0,2980],PXAXS=[1,0,0]) 
-mdl.add(ShellSection(name='elset_deck_element_sec', t=400, semi_loc_coords=semi_loc_coords, nn=40))
+mdl.add(ShellSection(name='elset_deck_element_sec', t=400, semi_loc_coords=semi_loc_coords, nn=40, offset_mode='mid'))
 mdl.add(Properties(name='elset_deck_element_prop', material='elset_deck_element_mat', section='elset_deck_element_sec', elset='elset_deck'))
 
-semi_loc_coords=calc_loc_coor(layer='elset_right', PORIG=[0,5400,0],PXAXS=[1,0,0]) 
-mdl.add(ShellSection(name='elset_right_element_sec', t=400, semi_loc_coords=semi_loc_coords, nn=40))
-mdl.add(Properties(name='elset_right_element_prop', material='elset_right_element_mat', section='elset_right_element_sec', elset='elset_right'))
-
-semi_loc_coords=calc_loc_coor(layer='elset_left', PORIG=[0,0,0],PXAXS=[1,0,0])  
-mdl.add(ShellSection(name='elset_left_element_sec', t=400, semi_loc_coords=semi_loc_coords, nn=40))
-mdl.add(Properties(name='elset_left_element_prop', material='elset_left_element_mat', section='elset_left_element_sec', elset='elset_left'))
-
-# MPC Sections
-mdl.add(MPCSection(name='sec_mpc'))
-mdl.add(Properties(name='elset_mpc_element_prop', material='elset_mpc_element_mat', section='sec_mpc', elset='elset_mpc'))
 
 # Grafical plots 
 plot_loc_axes(mdl, axes_scale=50) # Plot Local coordinates 
@@ -124,7 +106,7 @@ loaded_element_numbers=area_load_generator_elements(mdl,layer='area_load_right')
 mdl.add(AreaLoad(name='area_load_right', elements=loaded_element_numbers,x=0,y=0,z=0.001)) 
 
 # Normalspurverkehr Load generator 
-return_values_Gleis=Normalspurbahnverkehr_load_generator(mdl,name='Gleis', l_Pl=5400, h_Pl=400, s=5000, beta=-30, q_Gl=4.8, b_Bs=2500, h_Strich=300, Q_k=225*1000, y_A=5000)
+return_values_Gleis=Normalspurbahnverkehr_load_generator(mdl,name='Gleis', l_Pl=5400, h_Pl=400, s=5000, beta=-30, q_Gl=4.8+1.7, b_Bs=2500, h_Strich=300, Q_k=225*1000, y_A=5000)
 
 
 # Steps
@@ -140,16 +122,14 @@ mdl.steps_order = [ 'step_1', 'step_2', 'step_3' , 'step_4'  ]
 # Run analyses
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
-mdl.analyse_and_extract(software='ansys_sel', fields=[ 'u', 'sf', 's' ], lstep = ['step_4']) 
+mdl.analyse_and_extract(software='ansys_sel', fields=[ 'sf' ], lstep = ['step_3']) 
 
 # Plot Results
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
 
 # Plot Results for step_2
-rhino.plot_data(mdl, lstep='step_4', field='uz', cbar_size=1, source='CMMUsermat')
-rhino.plot_principal_stresses(mdl, step='step_4', shell_layer='top', scale=10**2)
-rhino.plot_principal_stresses(mdl, step='step_4', shell_layer='bot', scale=10**2)
+rhino.plot_data(mdl, lstep='step_3', field='uz', cbar_size=1, source='CMMUsermat')
 rhino.plot_data(mdl, lstep='step_4', field='sf1', cbar_size=1, source='CMMUsermat')
 rhino.plot_data(mdl, lstep='step_4', field='sf2', cbar_size=1, source='CMMUsermat')
 rhino.plot_data(mdl, lstep='step_4', field='sf3', cbar_size=1, source='CMMUsermat')
