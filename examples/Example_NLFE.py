@@ -99,30 +99,22 @@ mdl.add(GravityLoad(name='load_gravity',  x=0.0,  y=0.0,  z=1.0, elements=[ 'els
 
 # Area Load
 loaded_element_numbers=area_load_generator_elements(mdl,layer='area_load_left') 
-mdl.add(AreaLoad(name='area_load_left', elements=loaded_element_numbers,x=0,y=0,z=0.001)) 
-
-# Area Load 2
-loaded_element_numbers=area_load_generator_elements(mdl,layer='area_load_right') 
-mdl.add(AreaLoad(name='area_load_right', elements=loaded_element_numbers,x=0,y=0,z=0.001)) 
-
-# Normalspurverkehr Load generator 
-return_values_Gleis=Normalspurbahnverkehr_load_generator(mdl,name='Gleis', l_Pl=5400, h_Pl=400, s=5000, beta=-30, q_Gl=4.8+1.7, b_Bs=2500, h_Strich=300, Q_k=225*1000, y_A=5000)
-
+mdl.add(AreaLoad(name='area_load_left', elements=loaded_element_numbers,x=0,y=0,z=0.1)) 
+ 
 
 # Steps
 mdl.add([
 GeneralStep(name='step_1',   displacements=[ 'nset_pinned_set_disp' ] ,  nlgeom=False),
 GeneralStep(name='step_2',  loads=['load_gravity'] ,   nlgeom=False, increments=1),
-GeneralStep(name='step_3',  loads=['area_load_left', 'area_load_right'] ,   nlgeom=False, increments=1),
-GeneralStep(name='step_4',  loads=return_values_Gleis ,   nlgeom=False),
+GeneralStep(name='step_3',  loads=['area_load_left'] ,   nlgeom=False, increments=1),
 ])
-mdl.steps_order = [ 'step_1', 'step_2', 'step_3' , 'step_4'  ] 
+mdl.steps_order = [ 'step_1', 'step_2', 'step_3' ] 
 
 
 # Run analyses
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
-mdl.analyse_and_extract(software='ansys_sel', fields=[ 'sf' ], lstep = ['step_3']) 
+mdl.analyse_and_extract(software='ansys_sel', fields=[ 'u', 'sf' ], lstep = ['step_3']) 
 
 # Plot Results
 # ------------------------------------------------------------------------------
@@ -130,13 +122,13 @@ mdl.analyse_and_extract(software='ansys_sel', fields=[ 'sf' ], lstep = ['step_3'
 
 # Plot Results for step_2
 rhino.plot_data(mdl, lstep='step_3', field='uz', cbar_size=1, source='CMMUsermat')
-rhino.plot_data(mdl, lstep='step_4', field='sf1', cbar_size=1, source='CMMUsermat')
-rhino.plot_data(mdl, lstep='step_4', field='sf2', cbar_size=1, source='CMMUsermat')
-rhino.plot_data(mdl, lstep='step_4', field='sf3', cbar_size=1, source='CMMUsermat')
-rhino.plot_data(mdl, lstep='step_4', field='sf4', cbar_size=1, source='CMMUsermat')
-rhino.plot_data(mdl, lstep='step_4', field='sf5', cbar_size=1, source='CMMUsermat')
-rhino.plot_data(mdl, lstep='step_4', field='sm1', cbar_size=1, source='CMMUsermat')
-rhino.plot_data(mdl, lstep='step_4', field='sm2', cbar_size=1, source='CMMUsermat')
-rhino.plot_data(mdl, lstep='step_4', field='sm2', cbar_size=1, source='CMMUsermat')
-rhino.plot_data(mdl, lstep='step_4', field='sm3', cbar_size=1, source='CMMUsermat')
+rhino.plot_data(mdl, lstep='step_3', field='sf1', cbar_size=1, source='CMMUsermat')
+#rhino.plot_data(mdl, lstep='step_4', field='sf2', cbar_size=1, source='CMMUsermat')
+#rhino.plot_data(mdl, lstep='step_4', field='sf3', cbar_size=1, source='CMMUsermat')
+#rhino.plot_data(mdl, lstep='step_4', field='sf4', cbar_size=1, source='CMMUsermat')
+#rhino.plot_data(mdl, lstep='step_4', field='sf5', cbar_size=1, source='CMMUsermat')
+#rhino.plot_data(mdl, lstep='step_4', field='sm1', cbar_size=1, source='CMMUsermat')
+#rhino.plot_data(mdl, lstep='step_4', field='sm2', cbar_size=1, source='CMMUsermat')
+#rhino.plot_data(mdl, lstep='step_4', field='sm2', cbar_size=1, source='CMMUsermat')
+#rhino.plot_data(mdl, lstep='step_4', field='sm3', cbar_size=1, source='CMMUsermat')
 #
