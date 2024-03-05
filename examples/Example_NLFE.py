@@ -114,7 +114,7 @@ mdl.steps_order = [ 'step_1', 'step_2', 'step_3' ]
 # Run analyses
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
-mdl.analyse_and_extract(software='ansys_sel', fields=[ 'u', 'sf' ], lstep = ['step_3']) 
+mdl.analyse_and_extract(software='ansys_sel', fields=[ 'u'], lstep = ['step_3'], ansys_version='22') 
 
 # Plot Results
 # ------------------------------------------------------------------------------
@@ -122,7 +122,7 @@ mdl.analyse_and_extract(software='ansys_sel', fields=[ 'u', 'sf' ], lstep = ['st
 
 # Plot Results for step_2
 rhino.plot_data(mdl, lstep='step_3', field='uz', cbar_size=1, source='CMMUsermat')
-rhino.plot_data(mdl, lstep='step_3', field='sf1', cbar_size=1, source='CMMUsermat')
+#rhino.plot_data(mdl, lstep='step_3', field='sf1', cbar_size=1, source='CMMUsermat')
 #rhino.plot_data(mdl, lstep='step_4', field='sf2', cbar_size=1, source='CMMUsermat')
 #rhino.plot_data(mdl, lstep='step_4', field='sf3', cbar_size=1, source='CMMUsermat')
 #rhino.plot_data(mdl, lstep='step_4', field='sf4', cbar_size=1, source='CMMUsermat')
