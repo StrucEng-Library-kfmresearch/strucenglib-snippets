@@ -16,58 +16,9 @@ from compas_fea.structure import AreaLoad
 
 
 
-def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s=None, beta=None, q_Gl=4.8+1.7, b_Bs=2500, 
-                                         h_Strich=None, h_GL=160, h_w=None, Q_k=225*1000, y_A=200, m=4650, gamma_G=1, gamma_Q=1, 
-                                         verbalise=False):
 
-    """  
-    Function calculating and generating the loading resulting from a railway track. It generates the dead load of the track as
-    well as the life load. The life load is applied according to SIA 269/1 11.2. The axle loads of a train is applied iteratively 
-    starting from the defined starting point y_A.
-
-    Parameters
-    ----------
-    mdl : structurObject
-        A structure object, representing the structure to be analysed
-    name : str
-        Name of the track (e.g. "Track1")
-    l_Pl : float
-        Plate length/ Span between two walls + 2*wall Thickness [mm]
-    h_Pl : float
-        deck slab thickness [mm]
-    s : float
-        Distance between origin (0,0,0) and the track in global x-direction [mm]
-    beta: float
-        Angle between global y-axis and track axis [Degree], should be in range[-90,90]
-    q_Gl : float
-        Load form concrete sleeper(Betonschwelle, normally 4.8 N/mm)) and load from the tracks themselfs (normally 1.7 N/mm) [N/mm]
-    b_Bs : float
-        Width of the concrete sleeper of one track [mm] (normally 2500 mm PAIngB Page 157)
-    h_Strich : float
-        Height between lower level of concrete sleepers of the tracks to the upper surface of the slab deck of the bridge [mm] 
-        (ca. height of gravel layer + insulation layer height)
-    h_Gl:float
-        Height of the tracks (normally arround 130 and 180 mm) [mm]
-    Q_k : float
-        axle load [N] (for D4 225*1000 N, SIA 269/1 11.2.1.1)
-    y_A : float
-        y-coordinate of the starting point for the live load generation iteration.
-    m: int
-        Distance between inner Qact (see SIA 269/1 11.2.1.1; for D4: 4650 mm) [mm]
-    gamma_G: float
-        Safety factor for dead load (default=1, SIA 269: 1.35 ) [-]
-    gamma_Q: float
-        Safety factor for live load (default=1, SIA 269: 1.45 ) [-]
-    verbalise: bool
-        If set to true it prints the caluclated load values. 
-
-    Returns
-    ----------
-    List[str]
-        A list of load names, which were generated within the function.
-    """
-
-
+def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s=None, beta=None, q_Gl=4.8+1.7, b_Bs=2500, h_Strich=None, Q_k=225*1000, y_A=200, m=4650, gamma_G=1, gamma_Q=1):
+    
     # Basic definitions
     #-------------------------------------------------------
 
