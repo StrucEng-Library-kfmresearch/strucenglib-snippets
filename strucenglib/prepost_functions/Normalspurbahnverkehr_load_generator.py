@@ -16,9 +16,58 @@ from compas_fea.structure import AreaLoad
 
 
 
+def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s=None, beta=None, q_Gl=4.8+1.7, b_Bs=2500, 
+                                         h_Strich=None, h_GL=160, h_w=None, Q_k=225*1000, y_A=200, m=4650, gamma_G=1, gamma_Q=1, 
+                                         verbalise=False):
 
-def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s=None, beta=None, q_Gl=4.8+1.7, b_Bs=2500, h_Strich=None, Q_k=225*1000, y_A=200, m=4650, gamma_G=1, gamma_Q=1):
-    
+    """  
+    Function calculating and generating the loading resulting from a railway track. It generates the dead load of the track as
+    well as the life load. The life load is applied according to SIA 269/1 11.2. The axle loads of a train is applied iteratively 
+    starting from the defined starting point y_A.
+
+    Parameters
+    ----------
+    mdl : structurObject
+        A structure object, representing the structure to be analysed
+    name : str
+        Name of the track (e.g. "Track1")
+    l_Pl : float
+        Plate length/ Span between two walls + 2*wall Thickness [mm]
+    h_Pl : float
+        deck slab thickness [mm]
+    s : float
+        Distance between origin (0,0,0) and the track in global x-direction [mm]
+    beta: float
+        Angle between global y-axis and track axis [Degree], should be in range[-90,90]
+    q_Gl : float
+        Load form concrete sleeper(Betonschwelle, normally 4.8 N/mm)) and load from the tracks themselfs (normally 1.7 N/mm) [N/mm]
+    b_Bs : float
+        Width of the concrete sleeper of one track [mm] (normally 2500 mm PAIngB Page 157)
+    h_Strich : float
+        Height between lower level of concrete sleepers of the tracks to the upper surface of the slab deck of the bridge [mm] 
+        (ca. height of gravel layer + insulation layer height)
+    h_Gl:float
+        Height of the tracks (normally arround 130 and 180 mm) [mm]
+    Q_k : float
+        axle load [N] (for D4 225*1000 N, SIA 269/1 11.2.1.1)
+    y_A : float
+        y-coordinate of the starting point for the live load generation iteration.
+    m: int
+        Distance between inner Qact (see SIA 269/1 11.2.1.1; for D4: 4650 mm) [mm]
+    gamma_G: float
+        Safety factor for dead load (default=1, SIA 269: 1.35 ) [-]
+    gamma_Q: float
+        Safety factor for live load (default=1, SIA 269: 1.45 ) [-]
+    verbalise: bool
+        If set to true it prints the caluclated load values. 
+
+    Returns
+    ----------
+    List[str]
+        A list of load names, which were generated within the function.
+    """
+
+
     # Basic definitions
     #-------------------------------------------------------
 
@@ -87,7 +136,7 @@ def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s
     rs.CurrentLayer(Gleis_Eigengewichte_Schiene)
 
     # Geometrische Berechnung der Lastflachen
-    # Berechnung b_Gl
+    # Berechnung b_Gl (Lastausbreitung in Querrichtung)
     b_Gl=(b_Bs/2+h_Strich/4+h_Pl/2)*2
 
     # Berechnung b_strich_Gl
@@ -117,13 +166,17 @@ def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s
     rs.AddPolyline([(P_A_x,P_A_y,P_A_z),(P_B_x,P_B_y,P_B_z),(P_C_x,P_C_y,P_C_z),(P_D_x,P_D_y,P_D_z),(P_A_x,P_A_y,P_A_z)])
 
     # Berechnung der verteilten Belastung q_k_Gl der Gleise
-    q_k_Gl=q_Gl/b_Gl
+    q_k_Gl=gamma_G*q_Gl/b_Gl
+
+    # verbalise
+    if verbalise:
+        print('The area load resulting from concret sleeper and the tracks: ', q_k_Gl, ' N/mm2 ;',q_k_Gl*1000, ' kN/m2' )
 
     # Berechnung der belasteten Elemente (Gibt Nummern der belastete Elemente raus)
     loaded_element_numbers=area_load_generator_elements(mdl,Gleis_Eigengewichte_Schiene) # Calculate Element numbers within the area load curve
     
     # Hinzufugen der belasteten Elemente
-    mdl.add(AreaLoad(Gleis_Eigengewichte_Schiene, elements=loaded_element_numbers,x=0,y=0,z=q_k_Gl)) # Add new element set
+    mdl.add(AreaLoad(Gleis_Eigengewichte_Schiene, elements=loaded_element_numbers,x=0,y=0,z=q_k_Gl, axes ='global')) # Add new element set
 
     # Hinzufugen des Namens des Layers der Lasteinzugsflache
     # Bemerkung: Naming _Lasteinzugsflaeche_der_Schienen_Eigengewichte' gibt es pro Schiene (d.h. pro Funktionsaufruf) nur einmal
@@ -134,6 +187,27 @@ def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s
   
     # Berechnung der x_A Koordinante (Lage der Einzellast) aus y_A
     x_A=math.tan(beta_rad)*y_A+s 
+
+    # Lastausbreitung in Langsrichtung und Querrichtung
+    l_Bl=(h_GL*2+h_Strich/4+h_Pl/2)*2 #Langsrichtung
+    b_Bl=b_Gl #Querrichtung
+
+    #Berechnung Flachenlast
+    #Fur Hoechstgeschwindigkeit bis 140 #TODO adapt for other Hoechstgewschwindigkeiten 125
+    l_phi=(1.3*(l_Pl+(h_w+h_Pl/2)*2))/3 #[mm]
+    l_phi_list=[1,2,4,6,8,10,15,20,25,30,40,50,60,70,80,100] #[m]
+    dynF_list=[1.60, 1.59, 1.57, 1.54, 1.50, 1.45, 1.35, 1.32, 1.29, 1.26, 1.23, 1.20, 1.18, 1.17, 1.16, 1.14]
+    index=max(i for i, num in enumerate(l_phi_list) if num <= l_phi/1000)
+    dynF=dynF_list[index]
+    alpha=1 # Klassifizierungsbeiwert Alpha (PAIngB S.34, =1 for evaluation of existing structures)
+    area=l_Bl*b_Bl
+    q_k_Bl=(Q_k*1.1*dynF*alpha)/area
+    q_d_Bl=gamma_Q*q_k_Bl
+
+    # verbalise
+    if verbalise:
+        print('The area load resulting from the rail traffic live load: ', q_d_Bl, ' N/mm2 ;',q_d_Bl*1000, ' kN/m2' )
+
        
     # Schleife uber neg und pos richtung ausgehend von x_A, y_A
     # d.h. es werden in neg. und pos Richtung weitrere Lastblocke gemass Abstand Lastmodell angeordnet
@@ -145,9 +219,7 @@ def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s
         else: # in negative Richtung (y wird kleiner)
             L_i_list=[-1800,-1800-m,-1800-m-1800,-1800-m-1800-3000,-1800-m-1800-3000-1800,-1800-m-1800-3000-1800-m,-1800-m-1800-3000-1800-m-1800]
             
-        # Lastausbreitung in Langsrichtung und Querrichtung
-        l_Bl=(h_Strich/4+h_Pl/2)*2
-        b_Bl=b_Gl
+
         lauf_LB=0
         List_lengh=len(L_i_list)
 
@@ -261,7 +333,7 @@ def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s
             else:
                 check_lage_D=0 
 
-            # Summe der check_lage gleich Null dann Loop L_i abbrechen sonst (else) weiterer im L_i loop
+            # Summe der check_lage gleich 4 dann Loop L_i abbrechen sonst (else) weiterer im L_i loop
             check_lage=check_lage_A+check_lage_B+check_lage_C+check_lage_D
             if check_lage == 4:
                 rs.CurrentLayer(Gleis_Mittelachse)
@@ -296,13 +368,16 @@ def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s
             else:                       
                 # Abspeichern der Namen fur die Bahnlasten_Lasteinzug                         
                 Lasten_aus_Normalspurverkehr.append(Bahnlasten_Lasteinzug)
-                # Berechnung der Flachenlast
-                selectloadedarea = rs.ObjectsByLayer(Bahnlasten_Lasteinzug)
-                area=rs.Area(selectloadedarea)
-                q_k_Bl=(Q_k/4)/area
+
+                # OLD: Berechnung der Flachenlast
+                # selectloadedarea = rs.ObjectsByLayer(Bahnlasten_Lasteinzug)
+                # area=rs.Area(selectloadedarea)
+                # print(area,'area')
+                # q_k_Bl=(Q_k/4)/area
+                # print('q_k_Bl',q_k_Bl)
 
                 # Hinzufugen der belasten Elemente zu Struktur                
-                mdl.add(AreaLoad(Bahnlasten_Lasteinzug, elements=loaded_element_numbers,x=0,y=0,z=q_k_Bl)) # Add new element set
+                mdl.add(AreaLoad(Bahnlasten_Lasteinzug, elements=loaded_element_numbers,x=0,y=0,z=q_d_Bl, axes='global')) # postive z direction is downwards
 
                 # Warnung, das alle vorgegeben lastblocke durchlaufen wurden und eventuell noch mehr auf der Platte platz hatten
                 if L_i == L_i_list[List_lengh-1]:
