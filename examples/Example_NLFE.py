@@ -36,6 +36,7 @@ from compas_fea.structure import RollerDisplacementXZ
 from compas_fea.structure import ShellSection
 from compas_fea.structure import MPCSection
 from compas_fea.structure import Structure
+
 from strucenglib.prepost_functions import calc_loc_coor
 from strucenglib.prepost_functions import plot_loc_axes
 from strucenglib.prepost_functions import plot_nr_elem
