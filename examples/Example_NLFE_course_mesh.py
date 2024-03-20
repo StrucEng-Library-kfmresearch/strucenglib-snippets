@@ -100,7 +100,7 @@ mdl.add(GravityLoad(name='load_gravity',  x=0.0,  y=0.0,  z=1.0, elements=[ 'els
 
 # Area Load
 loaded_element_numbers=area_load_generator_elements(mdl,layer='area_load_left') 
-mdl.add(AreaLoad(name='area_load_left', elements=loaded_element_numbers,x=0,y=0,z=0.1)) 
+mdl.add(AreaLoad(name='area_load_left', elements=loaded_element_numbers,x=0,y=0,z=1.0)) 
  
 
 # Steps
@@ -115,22 +115,25 @@ mdl.steps_order = [ 'step_1', 'step_2', 'step_3' ]
 # Run analyses
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
-mdl.analyse_and_extract(software='ansys_sel', fields=[ 'u', 'sf', 's' ], lstep = ['step_3'], ansys_version='22') 
+mdl.analyse_and_extract(software='ansys_sel', fields=[ 'u', 'sf', 's', 'eps'], lstep = ['step_3'], ansys_version='22') 
 
 # Plot Results
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
 
 # Plot Results for step_3
-rhino.plot_principal(mdl, step='step_3', shell_layer='top', scale=10**2)
-rhino.plot_principal(mdl, step='step_3', shell_layer='bot', scale=10**2)
-#rhino.plot_data(mdl, lstep='step_3', field='uz', cbar_size=1, source='CMMUsermat')
-#rhino.plot_data(mdl, lstep='step_3', field='sf1', cbar_size=1, source='CMMUsermat')
-#rhino.plot_data(mdl, lstep='step_3', field='sf2', cbar_size=1, source='CMMUsermat')
-#rhino.plot_data(mdl, lstep='step_3', field='sf3', cbar_size=1, source='CMMUsermat')
-#rhino.plot_data(mdl, lstep='step_3', field='sf4', cbar_size=1, source='CMMUsermat')
-#rhino.plot_data(mdl, lstep='step_3', field='sf5', cbar_size=1, source='CMMUsermat')
-#rhino.plot_data(mdl, lstep='step_3', field='sm1', cbar_size=1, source='CMMUsermat')
-#rhino.plot_data(mdl, lstep='step_3', field='sm2', cbar_size=1, source='CMMUsermat')
-#rhino.plot_data(mdl, lstep='step_3', field='sm3', cbar_size=1, source='CMMUsermat')
-#
+rhino.plot_data(mdl, lstep='step_3', field='uz', cbar_size=1, source='CMMUsermat') # Ploten der Verformungen uz (Resultate: Knoten)
+rhino.plot_data(mdl, lstep='step_3', field='ux', cbar_size=1, source='CMMUsermat') # Ploten der Verformungen ux (Resultate: Knoten)
+rhino.plot_data(mdl, lstep='step_3', field='uy', cbar_size=1, source='CMMUsermat') # Ploten der Verformungen uy (Resultate: Knoten)
+rhino.plot_data(mdl, lstep='step_3', field='sf1', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
+rhino.plot_data(mdl, lstep='step_3', field='sf2', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
+rhino.plot_data(mdl, lstep='step_3', field='sf3', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
+rhino.plot_data(mdl, lstep='step_3', field='sf4', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
+rhino.plot_data(mdl, lstep='step_3', field='sf5', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
+rhino.plot_data(mdl, lstep='step_3', field='sm1', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
+rhino.plot_data(mdl, lstep='step_3', field='sm2', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
+rhino.plot_data(mdl, lstep='step_3', field='sm3', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
+rhino.plot_principal_stresses(mdl, step='step_3', shell_layer='top', scale=10**4) # Hauptspannungen top (Resultate: Gauspunkte)
+rhino.plot_principal_stresses(mdl, step='step_3', shell_layer='bot', scale=10**4) # Hauptspannungen bot (Resultate: Gauspunkte)
+rhino.plot_principal_strains(mdl, step='step_3', shell_layer='top', scale=10**7) # Hauptverzerrungen top (Resultate: Gauspunkte)
+rhino.plot_principal_strains(mdl, step='step_3', shell_layer='bot', scale=10**7) # Hauptverzerrungen bot (Resultate: Gauspunkte)
