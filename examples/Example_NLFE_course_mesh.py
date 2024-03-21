@@ -69,10 +69,10 @@ rhino.add_sets_from_layers(mdl, layers=[ 'nset_pinned' ] )
 # Nonlinear Materials
 geo={'R_Rohr':-1, 'rho':0.0000025, 'oo':30, 'uu':30}
 concrete={'beton':2, 'fcc':50, 'vc':0, 'ecu':-0.002, 'k_E':10000, 'theta_b0':2, 'theta_b1':1, 'k_riss':0, 'Entfestigung':0, 'lambdaTS':0.67, 'srmx':1, 'srmy':1, 'Begrenzung':2, 'KritQ':0, 'winkelD':45, 'k_vr':1, 'fswy':500}
-reinf_1L={'stahl':1,'zm':2,'fsy':600,'fsu':850,'esu':0.8,'esv':0.02,'Es':200000,'ka':-1,'kb':-1,'kc':-1,'as':5,'dm':20,'psi':90}
-reinf_2L={'stahl':1,'zm':2,'fsy':600,'fsu':850,'esu':0.8,'esv':0.02,'Es':200000,'ka':-1,'kb':-1,'kc':-1,'as':5,'dm':20,'psi':0}
-reinf_3L={'stahl':1,'zm':2,'fsy':600,'fsu':850,'esu':0.8,'esv':0.02,'Es':200000,'ka':-1,'kb':-1,'kc':-1,'as':5,'dm':20,'psi':0}
-reinf_4L={'stahl':1,'zm':2,'fsy':600,'fsu':850,'esu':0.8,'esv':0.02,'Es':200000,'ka':-1,'kb':-1,'kc':-1,'as':5,'dm':20,'psi':90}
+reinf_1L={'stahl':1,'zm':2,'fsy':500,'fsu':600,'esu':0.8,'esv':0.02,'Es':200000,'ka':-1,'kb':-1,'kc':-1,'as':1,'dm':20,'psi':-90}
+reinf_2L={'stahl':1,'zm':2,'fsy':600,'fsu':700,'esu':0.8,'esv':0.02,'Es':200000,'ka':-1,'kb':-1,'kc':-1,'as':1,'dm':20,'psi':0}
+reinf_3L={'stahl':1,'zm':2,'fsy':700,'fsu':800,'esu':0.8,'esv':0.02,'Es':200000,'ka':-1,'kb':-1,'kc':-1,'as':1,'dm':20,'psi':0}
+reinf_4L={'stahl':1,'zm':2,'fsy':800,'fsu':900,'esu':0.8,'esv':0.02,'Es':200000,'ka':-1,'kb':-1,'kc':-1,'as':1,'dm':20,'psi':-90}
 
 mdl.add(CMMUsermat(name='elset_deck_element_mat', geo=geo, concrete=concrete, reinf_1L=reinf_1L, reinf_2L=reinf_2L, reinf_3L=reinf_3L, reinf_4L=reinf_4L,)) 
 
@@ -100,7 +100,7 @@ mdl.add(GravityLoad(name='load_gravity',  x=0.0,  y=0.0,  z=1.0, elements=[ 'els
 
 # Area Load
 loaded_element_numbers=area_load_generator_elements(mdl,layer='area_load_left') 
-mdl.add(AreaLoad(name='area_load_left', elements=loaded_element_numbers,x=0,y=0,z=1.0)) 
+mdl.add(AreaLoad(name='area_load_left', elements=loaded_element_numbers,x=0,y=0,z=0.95)) 
  
 
 # Steps
@@ -115,7 +115,8 @@ mdl.steps_order = [ 'step_1', 'step_2', 'step_3' ]
 # Run analyses
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
-mdl.analyse_and_extract(software='ansys_sel', fields=[ 'u', 'sf', 's', 'eps'], lstep = ['step_3'], ansys_version='22') 
+mdl.analyse_and_extract(software='ansys_sel', fields=[ 'u', 'sf', 's', 'eps', 'sig_sr'], lstep = ['step_3'], ansys_version='22') 
+
 
 # Plot Results
 # ------------------------------------------------------------------------------
@@ -137,3 +138,7 @@ rhino.plot_principal_stresses(mdl, step='step_3', shell_layer='top', scale=10**4
 rhino.plot_principal_stresses(mdl, step='step_3', shell_layer='bot', scale=10**4) # Hauptspannungen bot (Resultate: Gauspunkte)
 rhino.plot_principal_strains(mdl, step='step_3', shell_layer='top', scale=10**7) # Hauptverzerrungen top (Resultate: Gauspunkte)
 rhino.plot_principal_strains(mdl, step='step_3', shell_layer='bot', scale=10**7) # Hauptverzerrungen bot (Resultate: Gauspunkte)
+rhino.plot_steel_stresses(mdl, step='step_3', Reinf_layer='RL_1', scale=1.3) # Stahlspannungen am Riss 1. Bewehrungslage (Resultate: Gauspunkte)
+rhino.plot_steel_stresses(mdl, step='step_3', Reinf_layer='RL_2', scale=1.3) # Stahlspannungen am Riss 2. Bewehrungslage (Resultate: Gauspunkte)
+rhino.plot_steel_stresses(mdl, step='step_3', Reinf_layer='RL_3', scale=1.3) # Stahlspannungen am Riss 3. Bewehrungslage (Resultate: Gauspunkte)
+rhino.plot_steel_stresses(mdl, step='step_3', Reinf_layer='RL_4', scale=1.3) # Stahlspannungen am Riss 4. Bewehrungslage (Resultate: Gauspunkte)
