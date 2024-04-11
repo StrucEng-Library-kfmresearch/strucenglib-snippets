@@ -100,7 +100,7 @@ mdl.add(GravityLoad(name='load_gravity',  x=0.0,  y=0.0,  z=1.0, elements=[ 'els
 
 # Area Load
 loaded_element_numbers=area_load_generator_elements(mdl,layer='area_load_left') 
-mdl.add(AreaLoad(name='area_load_left', elements=loaded_element_numbers,x=0,y=0,z=0.2)) 
+mdl.add(AreaLoad(name='area_load_left', elements=loaded_element_numbers,x=0,y=0,z=0.4)) 
  
 
 # Steps
