@@ -115,7 +115,7 @@ mdl.steps_order = [ 'step_1', 'step_2', 'step_3' ]
 # Run analyses
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
-mdl.analyse_and_extract(software='ansys_sel', fields=[ 'u', 'sf', 's', 'eps', 'sig_sr'], lstep = ['step_3'], ansys_version='22') 
+mdl.analyse_and_extract(software='ansys_sel', fields=[ 'u', 'eps'], lstep = ['step_3'], ansys_version='22') 
 # mdl.analyse_and_extract(software='ansys_sel', fields=[ 'u', 'sf', 'sig_sr', 'eps'], lstep = ['step_3'], ansys_version='22') 
 
 
@@ -141,7 +141,7 @@ mdl.analyse_and_extract(software='ansys_sel', fields=[ 'u', 'sf', 's', 'eps', 's
 #rhino.plot_principal_stresses(mdl, step='step_3', shell_layer='top', cbar_size=0.5, scale=1000, numeric='no', values='1') # Hauptspannungen 1 top (Resultate: Gauspunkte)
 #rhino.plot_principal_stresses(mdl, step='step_3', shell_layer='bot', cbar_size=0.5, scale=10**1, numeric='no', values='3') # Hauptspannungen 3 bot (Resultate: Gauspunkte)
 #rhino.plot_principal_stresses(mdl, step='step_3', shell_layer='bot', cbar_size=0.5, scale=10**1, numeric='no', values='1') # Hauptspannungen 1 bot (Resultate: Gauspunkte)
-#rhino.plot_principal_strains(mdl, step='step_3', shell_layer='top', cbar_size=0.5, scale=10**5, numeric='no', values='3') # Hauptverzerrungen 3 top (Resultate: Gauspunkte)
+rhino.plot_principal_strains(mdl, step='step_3', shell_layer='top', cbar_size=0.5, scale=10**5, numeric='no', values='3') # Hauptverzerrungen 3 top (Resultate: Gauspunkte)
 #rhino.plot_principal_strains(mdl, step='step_3', shell_layer='top', cbar_size=0.5, scale=10**5, numeric='no', values='1') # Hauptverzerrungen 1 top (Resultate: Gauspunkte)
 #rhino.plot_principal_strains(mdl, step='step_3', shell_layer='bot', cbar_size=0.5, scale=10**5, numeric='no', values='3') # Hauptverzerrungen 3 bot (Resultate: Gauspunkte)
 #rhino.plot_principal_strains(mdl, step='step_3', shell_layer='bot', cbar_size=0.5, scale=10**5, numeric='no', values='1') # Hauptverzerrungen 1 bot (Resultate: Gauspunkte)
