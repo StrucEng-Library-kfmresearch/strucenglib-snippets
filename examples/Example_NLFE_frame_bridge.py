@@ -134,8 +134,8 @@ mdl.steps_order = [ 'step_1', 'step_2', 'step_3' ]
 # Run analyses
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
-#mdl.analyse_and_extract(software='ansys_sel', fields=[ 'u', 'sf', 's', 'eps', 'sig_sr'], lstep = ['step_3'], ansys_version='22') 
-mdl.analyse_and_extract(software='ansys_sel', fields=[ 'u', 's'], lstep = ['step_3'], ansys_version='22') 
+mdl.analyse_and_extract(software='ansys_sel', fields=[ 'u', 'sf', 's', 'eps', 'sig_sr'], lstep = ['step_3'], ansys_version='22') 
+
 
 
 # Plot Results
@@ -143,27 +143,27 @@ mdl.analyse_and_extract(software='ansys_sel', fields=[ 'u', 's'], lstep = ['step
 # ------------------------------------------------------------------------------
 
 # Plot Results for step_3
-#rhino.plot_data(mdl, lstep='step_3', field='uz', scale=10, cbar_size=1, source='CMMUsermat') # Ploten der Verformungen uz (Resultate: Knoten)
-#rhino.plot_data(mdl, lstep='step_3', field='ux', cbar_size=1, source='CMMUsermat') # Ploten der Verformungen ux (Resultate: Knoten)
-#rhino.plot_data(mdl, lstep='step_3', field='uy', cbar_size=1, source='CMMUsermat') # Ploten der Verformungen uy (Resultate: Knoten)
-#rhino.plot_data(mdl, lstep='step_3', field='sf1', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
-#rhino.plot_data(mdl, lstep='step_3', field='sf2', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
-#rhino.plot_data(mdl, lstep='step_3', field='sf3', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
-#rhino.plot_data(mdl, lstep='step_3', field='sf4', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
-#rhino.plot_data(mdl, lstep='step_3', field='sf5', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
-#rhino.plot_data(mdl, lstep='step_3', field='sm1', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
-#rhino.plot_data(mdl, lstep='step_3', field='sm2', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
-#rhino.plot_data(mdl, lstep='step_3', field='sm3', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
+rhino.plot_data(mdl, lstep='step_3', field='uz', scale=10, cbar_size=1, source='CMMUsermat') # Ploten der Verformungen uz (Resultate: Knoten)
+rhino.plot_data(mdl, lstep='step_3', field='ux', cbar_size=1, source='CMMUsermat') # Ploten der Verformungen ux (Resultate: Knoten)
+rhino.plot_data(mdl, lstep='step_3', field='uy', cbar_size=1, source='CMMUsermat') # Ploten der Verformungen uy (Resultate: Knoten)
+rhino.plot_data(mdl, lstep='step_3', field='sf1', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
+rhino.plot_data(mdl, lstep='step_3', field='sf2', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
+rhino.plot_data(mdl, lstep='step_3', field='sf3', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
+rhino.plot_data(mdl, lstep='step_3', field='sf4', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
+rhino.plot_data(mdl, lstep='step_3', field='sf5', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
+rhino.plot_data(mdl, lstep='step_3', field='sm1', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
+rhino.plot_data(mdl, lstep='step_3', field='sm2', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
+rhino.plot_data(mdl, lstep='step_3', field='sm3', cbar_size=1, source='CMMUsermat') # Ploten der verallgemeinerten Spannungen (Resultate: Elementmitte)
 rhino.plot_principal_stresses(mdl, step='step_3', shell_layer='top', scale=10**1, numeric='no', values='3') # Hauptspannungen 3 top (Resultate: Gauspunkte)
-#rhino.plot_principal_stresses(mdl, step='step_3', shell_layer='top', scale=10**1, numeric='no', values='1') # Hauptspannungen 1 top (Resultate: Gauspunkte)
-#rhino.plot_principal_stresses(mdl, step='step_3', shell_layer='bot', scale=10**1, numeric='no', values='3') # Hauptspannungen 3 bot (Resultate: Gauspunkte)
-#rhino.plot_principal_stresses(mdl, step='step_3', shell_layer='bot', scale=10**1, numeric='no', values='1') # Hauptspannungen 1 bot (Resultate: Gauspunkte)
-#rhino.plot_principal_strains(mdl, step='step_3', shell_layer='top', scale=10**5, numeric='no', values='3') # Hauptverzerrungen 3 top (Resultate: Gauspunkte)
-#rhino.plot_principal_strains(mdl, step='step_3', shell_layer='top', scale=10**5, numeric='no', values='1') # Hauptverzerrungen 1 top (Resultate: Gauspunkte)
-#rhino.plot_principal_strains(mdl, step='step_3', shell_layer='bot', scale=10**5, numeric='no', values='3') # Hauptverzerrungen 3 bot (Resultate: Gauspunkte)
-#rhino.plot_principal_strains(mdl, step='step_3', shell_layer='bot', scale=10**5, numeric='no', values='1') # Hauptverzerrungen 1 bot (Resultate: Gauspunkte)
-#rhino.plot_steel_stresses(mdl, step='step_3', Reinf_layer='RL_1', scale=1.3, numeric='no') # Stahlspannungen am Riss 1. Bewehrungslage (Resultate: Gauspunkte)
-#rhino.plot_steel_stresses(mdl, step='step_3', Reinf_layer='RL_2', scale=1.3, numeric='no') # Stahlspannungen am Riss 2. Bewehrungslage (Resultate: Gauspunkte)
-#rhino.plot_steel_stresses(mdl, step='step_3', Reinf_layer='RL_3', scale=1.3, numeric='no') # Stahlspannungen am Riss 3. Bewehrungslage (Resultate: Gauspunkte)
-#rhino.plot_steel_stresses(mdl, step='step_3', Reinf_layer='RL_4', scale=1.3, numeric='no') # Stahlspannungen am Riss 4. Bewehrungslage (Resultate: Gauspunkte)
-#rhino.plot_principal_shear(mdl, step='step_3', field='shear', cbar_size=0.5, scale=4, numeric='no', shear_verification='yes', D_max=32, tau_cd=1.4) # (Resultate: Gauspunkte)
+rhino.plot_principal_stresses(mdl, step='step_3', shell_layer='top', scale=10**1, numeric='no', values='1') # Hauptspannungen 1 top (Resultate: Gauspunkte)
+rhino.plot_principal_stresses(mdl, step='step_3', shell_layer='bot', scale=10**1, numeric='no', values='3') # Hauptspannungen 3 bot (Resultate: Gauspunkte)
+rhino.plot_principal_stresses(mdl, step='step_3', shell_layer='bot', scale=10**1, numeric='no', values='1') # Hauptspannungen 1 bot (Resultate: Gauspunkte)
+rhino.plot_principal_strains(mdl, step='step_3', shell_layer='top', scale=10**5, numeric='no', values='3') # Hauptverzerrungen 3 top (Resultate: Gauspunkte)
+rhino.plot_principal_strains(mdl, step='step_3', shell_layer='top', scale=10**5, numeric='no', values='1') # Hauptverzerrungen 1 top (Resultate: Gauspunkte)
+rhino.plot_principal_strains(mdl, step='step_3', shell_layer='bot', scale=10**5, numeric='no', values='3') # Hauptverzerrungen 3 bot (Resultate: Gauspunkte)
+rhino.plot_principal_strains(mdl, step='step_3', shell_layer='bot', scale=10**5, numeric='no', values='1') # Hauptverzerrungen 1 bot (Resultate: Gauspunkte)
+rhino.plot_steel_stresses(mdl, step='step_3', Reinf_layer='RL_1', scale=1.3, numeric='no') # Stahlspannungen am Riss 1. Bewehrungslage (Resultate: Gauspunkte)
+rhino.plot_steel_stresses(mdl, step='step_3', Reinf_layer='RL_2', scale=1.3, numeric='no') # Stahlspannungen am Riss 2. Bewehrungslage (Resultate: Gauspunkte)
+rhino.plot_steel_stresses(mdl, step='step_3', Reinf_layer='RL_3', scale=1.3, numeric='no') # Stahlspannungen am Riss 3. Bewehrungslage (Resultate: Gauspunkte)
+rhino.plot_steel_stresses(mdl, step='step_3', Reinf_layer='RL_4', scale=1.3, numeric='no') # Stahlspannungen am Riss 4. Bewehrungslage (Resultate: Gauspunkte)
+rhino.plot_principal_shear(mdl, step='step_3', field='shear', cbar_size=0.5, scale=4, numeric='no', shear_verification='yes', D_max=32, tau_cd=1.4) # (Resultate: Gauspunkte)
