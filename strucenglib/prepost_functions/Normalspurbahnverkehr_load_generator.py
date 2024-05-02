@@ -212,9 +212,9 @@ def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s
     # Schleife uber neg und pos richtung ausgehend von x_A, y_A
     # d.h. es werden in neg. und pos Richtung weitrere Lastblocke gemass Abstand Lastmodell angeordnet
     if direction == 'positive':
-        i_list=[1]
+        i_list=[0]
     elif direction == 'negative':
-        i_list=[2]
+        i_list=[-1]
     elif direction in ['all', 'both']:
         i_list=range(1,3)
     else:
@@ -223,9 +223,13 @@ def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s
     for LB_VZ in i_list: # zweimal durchlaufen - einmal pos. und einmal neg. Richtung
 
         # Liste mit absolunten Abstanden L_i zum Punkt x_A, y_A
-        if LB_VZ==1:  # in positive Richtung (y wird grosser)
+        if LB_VZ==0: #in positive Richtung (y wird grosser)
+            L_i_list=[0,+1800,+1800+m,1800+m+1800,+1800+m+1800+3000,+1800+m+1800+3000+1800,+1800+m+1800+3000+1800+m,+1800+m+1800+3000+1800+m+1800]
+        if LB_VZ==-1: #in negative Richtung (y wird kleiner)
+            L_i_list=[0,-1800,-1800-m,-1800-m-1800,-1800-m-1800-3000,-1800-m-1800-3000-1800,-1800-m-1800-3000-1800-m,-1800-m-1800-3000-1800-m-1800]
+        if LB_VZ==1:  # all direction, in positive Richtung (y wird grosser)
             L_i_list=[0,3000,3000+1800,3000+1800+m,3000+1800+m+1800,3000+1800+m+1800+3000,3000+1800+m+1800+3000+1800,3000+1800+m+1800+3000+1800+m,3000+1800+m+1800+3000+1800+m+1800]            
-        else: # in negative Richtung (y wird kleiner)
+        if LB_VZ==2: #  all direction, in negative Richtung (y wird kleiner) (with first train in negative y direction)
             L_i_list=[-1800,-1800-m,-1800-m-1800,-1800-m-1800-3000,-1800-m-1800-3000-1800,-1800-m-1800-3000-1800-m,-1800-m-1800-3000-1800-m-1800]
             
 
