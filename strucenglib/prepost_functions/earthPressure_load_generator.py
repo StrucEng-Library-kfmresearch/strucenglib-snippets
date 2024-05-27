@@ -29,7 +29,7 @@ def earthPressure_gravel_generator(structure, elements,h_G, gamma_E, phi_k, gamm
     gamma_E : float
         sp. Weight [N/mm3] (e.g. Verdichteter Schotter 0.000020 N/mm3 )
     phi_k: int
-        ..[Degree] (e.g. 30)
+        friction angle of gravel [Degree] (e.g. 30)
     verbalise: bool
         Defining weather to verbalise the calculation 
 
@@ -87,7 +87,7 @@ def earthPressure_backfill_generator(structure, elements, h_w, t_p, h_G, gamma_E
     gamma_E : float
         sp. Weight [N/mm3] (e.g. Verdichteter Schotter 0.000020 N/mm3 )
     phi_k: int
-        ..[Degree] (e.g. 30)
+        friction angle of backfill material [Degree] (e.g. 30)
     verbalise: bool
         Defining weather to verbalise the calculation 
 
