@@ -18,7 +18,7 @@ from compas_fea.structure import AreaLoad
 
 def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s=None, beta=None, q_Gl=4.8+1.7, b_Bs=2500, 
                                          h_Strich=None, h_GL=160, h_w=None, Q_k=225*1000, y_A=200, m=4650, gamma_G=1, gamma_Q=1, 
-                                         verbalise=False):
+                                         direction='all', verbalise=False):
 
     """  
     Function calculating and generating the loading resulting from a railway track. It generates the dead load of the track as
@@ -211,12 +211,25 @@ def Normalspurbahnverkehr_load_generator(mdl, name=None, l_Pl=None, h_Pl=None, s
        
     # Schleife uber neg und pos richtung ausgehend von x_A, y_A
     # d.h. es werden in neg. und pos Richtung weitrere Lastblocke gemass Abstand Lastmodell angeordnet
-    for LB_VZ in xrange(1,3): # zweimal durchlaufen - einmal pos. und einmal neg. Richtung
+    if direction == 'positive':
+        i_list=[0]
+    elif direction == 'negative':
+        i_list=[-1]
+    elif direction in ['all', 'both']:
+        i_list=range(1,3)
+    else:
+        raise ValueError('Invalid input for direction. Choose between "negative", "positive", and "all".')
+    
+    for LB_VZ in i_list: # zweimal durchlaufen - einmal pos. und einmal neg. Richtung
 
         # Liste mit absolunten Abstanden L_i zum Punkt x_A, y_A
-        if LB_VZ==1:  # in positive Richtung (y wird grosser)
+        if LB_VZ==0: #in positive Richtung (y wird grosser)
+            L_i_list=[0,+1800,+1800+m,1800+m+1800,+1800+m+1800+3000,+1800+m+1800+3000+1800,+1800+m+1800+3000+1800+m,+1800+m+1800+3000+1800+m+1800]
+        if LB_VZ==-1: #in negative Richtung (y wird kleiner)
+            L_i_list=[0,-1800,-1800-m,-1800-m-1800,-1800-m-1800-3000,-1800-m-1800-3000-1800,-1800-m-1800-3000-1800-m,-1800-m-1800-3000-1800-m-1800]
+        if LB_VZ==1:  # all direction, in positive Richtung (y wird grosser)
             L_i_list=[0,3000,3000+1800,3000+1800+m,3000+1800+m+1800,3000+1800+m+1800+3000,3000+1800+m+1800+3000+1800,3000+1800+m+1800+3000+1800+m,3000+1800+m+1800+3000+1800+m+1800]            
-        else: # in negative Richtung (y wird kleiner)
+        if LB_VZ==2: #  all direction, in negative Richtung (y wird kleiner) (with first train in negative y direction)
             L_i_list=[-1800,-1800-m,-1800-m-1800,-1800-m-1800-3000,-1800-m-1800-3000-1800,-1800-m-1800-3000-1800-m,-1800-m-1800-3000-1800-m-1800]
             
 
